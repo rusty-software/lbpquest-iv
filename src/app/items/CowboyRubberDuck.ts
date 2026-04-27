@@ -1,0 +1,22 @@
+import { GameEngine } from "../GameEngine";
+import { BaseItem } from "./BaseItem";
+import { ItemKey } from "./ItemKey";
+
+export class CowboyRubberDuck extends BaseItem {
+  public id = ItemKey.CowboyRubberDuck;
+  public name = "duck";
+  public isShown = true;
+  public value = 2;
+
+  public canTake(_gameEngine: GameEngine): boolean {
+    return true;
+  }
+
+  public examine(_gameEngine: GameEngine): string {
+    return "A rubber duck on the edge of the master bathroom tub. It is wearing a tiny brown cowboy hat, secured with what appears to be a very small amount of rubber cement. The hat fits perfectly. The duck stares at you with the confidence of something that has nothing to prove.";
+  }
+
+  public use(_gameEngine: GameEngine): string {
+    return "You squeeze the duck. It makes a small, dignified sound. The cowboy hat does not fall off.";
+  }
+}
