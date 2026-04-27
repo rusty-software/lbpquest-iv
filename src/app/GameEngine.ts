@@ -269,7 +269,7 @@ export class GameEngine {
 
     if (
       location.id === LocationKey.OakGroveNorth &&
-      this.inventoryContains(ItemKey.LGGKey) &&
+      this.inventoryContains(ItemKey.WhiskeyKey) &&
       !this.geraldKeyTheftDone
     ) {
       this.triggerGeraldKeyTheft();
@@ -279,7 +279,7 @@ export class GameEngine {
       new LocationChangeEvent(location.title, location.description())
     );
 
-    if (location.id === LocationKey.VodkaRoom && !this.winScoreAwarded) {
+    if (location.id === LocationKey.WhiskeyRoom && !this.winScoreAwarded) {
       this.winScoreAwarded = true;
       this.score += 23;
     }
@@ -306,7 +306,7 @@ export class GameEngine {
 
   private triggerGeraldKeyTheft(): void {
     this.geraldKeyTheftDone = true;
-    this.removeFromInventory(ItemKey.LGGKey);
+    this.removeFromInventory(ItemKey.WhiskeyKey);
 
     const currentGeraldLoc = this.getLocation(this.geraldLocationKey);
     if (currentGeraldLoc.hasItem(ItemKey.Gerald)) {
@@ -315,7 +315,7 @@ export class GameEngine {
 
     const geraldTree = this.getLocation(LocationKey.GeraldTree);
     geraldTree.items.push(this.getItem(ItemKey.Gerald));
-    geraldTree.items.push(this.getItem(ItemKey.LGGKey));
+    geraldTree.items.push(this.getItem(ItemKey.WhiskeyKey));
     this.geraldLocationKey = LocationKey.GeraldTree;
 
     this.events.push(

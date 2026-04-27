@@ -25,4 +25,5 @@ export enum ItemKey {
   PickleballPaddle,
   Binoculars,
   Gerald,
+  WhiskeyKey,
 }

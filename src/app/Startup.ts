@@ -15,6 +15,7 @@ import {
   GlowStick,
   ItemKey,
   LGGKey,
+  WhiskeyKey,
   LoneAntler,
   LoneStick,
   PickleballPaddle,
@@ -145,6 +146,7 @@ export class Startup {
     Startup.items.set(ItemKey.PickleballPaddle, new PickleballPaddle());
     Startup.items.set(ItemKey.Binoculars, new Binoculars());
     Startup.items.set(ItemKey.Gerald, new Gerald());
+    Startup.items.set(ItemKey.WhiskeyKey, new WhiskeyKey());
   }
 
   private static arrange() {
@@ -447,7 +449,7 @@ export class Startup {
     const loc = Startup.getLocation(LocationKey.WhiskeyRoomPorch);
     loc.neighbors = new NeighborMap([
       ["e" as Direction, Startup.getLocation(LocationKey.WhiskeyRoomTrail)],
-      ["w" as Direction, Startup.getLocation(LocationKey.WhiskeyRoom)],
+      // "w" to WhiskeyRoom is added at runtime when WhiskeyKey is used
     ]);
     loc.items = [Startup.getItem(ItemKey.LoneAntler)];
   }
@@ -455,11 +457,10 @@ export class Startup {
   private static arrangeWhiskeyRoom() {
     const loc = Startup.getLocation(LocationKey.WhiskeyRoom);
     loc.neighbors = new NeighborMap([
-      ["e" as Direction, Startup.getLocation(LocationKey.WhiskeyRoomPorch)],
+      // "e" back to porch is added at runtime when WhiskeyKey is used
     ]);
     loc.items = [
       Startup.getItem(ItemKey.BrokenJigger),
-      Startup.getItem(ItemKey.LGGKey),
       Startup.getItem(ItemKey.BlantonsBottle),
     ];
   }
@@ -470,6 +471,7 @@ export class Startup {
       ["se" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
       // LGGRoom is unlocked at runtime by using the LGGKey here
     ]);
+    loc.items = [Startup.getItem(ItemKey.LGGKey)];
   }
 
   private static arrangeLGGRoom() {
@@ -485,5 +487,6 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["s" as Direction, Startup.getLocation(LocationKey.LGGRoom)],
     ]);
+    loc.items = [Startup.getItem(ItemKey.WhiskeyKey)];
   }
 }

@@ -13,7 +13,7 @@ You have just arrived at Oakridge Ranch for an LBP weekend. Your friends got her
 
 Unlike previous lbpquests, Oakridge has a **wandering antagonist** (Gerald the turkey, Zork's thief analog) and a **darkness mechanic** (something low and fast in the cedar brake, Zork's grue analog). Neither is punishing by default — the tone is comedic and exploratory — but darkness blocks progress and Gerald actively interferes with your inventory.
 
-The **win condition** is reaching The Vodka Room, the innermost sanctum of the outbuildings, where your friends have been since last night.
+The **win condition** is reaching The Whiskey Room, the locked whiskey cabin at the end of the string-light trail. Your friends moved there from the Vodka Room sometime during the night — a note tells you as much, but first you have to find the note.
 
 ---
 
@@ -79,7 +79,8 @@ graph TD
         WR["Whiskey Room"]
         LGGExt["LGG Exterior"]
         LGGRoom["LGG Room"]
-        VR["The Vodka Room ★ WIN"]
+        VR["The Vodka Room"]
+        WR["Whiskey Room ★ WIN"]
     end
 
     ER --- RS
@@ -104,7 +105,7 @@ graph TD
     OGN --- WoodP
     OGN --- WRT
     WRT --- WRP
-    WRP --- WR
+    WRP -. "🔒 cabin key required" .- WR
     OGN --- LGGExt
     LGGExt -. "🔒 LGG key required" .- LGGRoom
     LGGRoom --- VR
@@ -119,8 +120,8 @@ graph TD
     CB --- DB
 ```
 
-> Dashed line (🔒) = locked until the LGG key is obtained from the Whiskey Room.  
-> Dark outdoor locations (Fire Pit, Cedar Brake, Deer Blind, Whiskey Room Trail, Whiskey Room Porch) require the flashlight after dark.
+> Dashed lines (🔒) = locked doors requiring a key. LGG key found at LGG Exterior lean-to shelf. Cabin key found in The Vodka Room.  
+> Dark outdoor locations (Fire Pit, Cedar Brake, Deer Blind, Whiskey Room Trail) require the flashlight after dark.
 
 ---
 
@@ -332,28 +333,32 @@ A short path winds west through the oaks, following the string lights. Cedar mul
 ---
 
 **29. Whiskey Room Porch**  
-A small step and narrow covered stoop in front of the Whiskey Room cabin. A boot scraper. A mounted antler beside the door — two tines, modest, decorative. The door is unlocked.  
-*Exits: E → Whiskey Room Trail | W (door) → Whiskey Room*
+A small step and narrow covered stoop in front of the Whiskey Room cabin. A boot scraper. A mounted antler beside the door — two tines, modest, decorative. The door is locked — a small brass plate where the handle should be.  
+*Exits: E → Whiskey Room Trail | W (door, 🔒 cabin key required) → Whiskey Room*
 
 ---
 
-**30. Whiskey Room**  
+**30. Whiskey Room ★ WIN**  
 Dark inside, in a pleasant way. Knotty pine walls stained almost black. Four whitetail deer heads mounted above long dark shelving lined with Texas whiskey bottles — Garrison Brothers, Treaty Oak, one unopened fifth of Blanton's. The centerpiece: a long bar table built on two actual whiskey barrels, tops inlaid with Jack Daniel's medallions. A hammered copper sink. Loose antlers on a lower shelf. Antler chandelier with Edison bulbs overhead.
 
-On the bar top: antler coasters, an empty whiskey glass, a broken mechanical bar jigger (brass, shiny), and a **key on a leather fob** stamped with the letters *LGG*.
+On the bar top: antler coasters, an empty whiskey glass, a broken mechanical bar jigger (brass, shiny).
 
-> **THE SECOND MOUNTED LORD** (the largest of the four heads, a buck with a broken-off tine):  
-> *"You found the Whiskey Room. Not many do on the first night. I am Lord of the Dark Interior. The key before you opens the door to the neon room — but she does not admit just anyone. You must first demonstrate that you have walked every corner of this estate. The Lord of the Stags will know when you are ready."*
+Your friends are here. Someone is at the bar. Someone is in the corner chair with a whiskey. They look up when you come in.
+
+*"There you are. We've been here for an hour. Grab a glass."*
+
+**You win.**
 
 *Exits: E → Whiskey Room Porch*  
-*Items: LGG Key (leather fob), Broken Jigger (brass, shiny — Gerald bait)*
+*Items: Broken Jigger (brass, shiny — Gerald bait), Blanton's Bottle*
 
 ---
 
 **31. LGG Exterior**  
 The second outbuilding is stranger than the Whiskey Room. Corrugated metal sides, faded white. A cedar-framed open-air lean-to addition along the front, with string lights and a rough-cut bar shelf on the railing. Through a smudged window: a neon sign glows pink and green — LET'S GO GIRLS. A rooster weathervane on the peak turns slowly in a wind you cannot feel. On the door: *"SKIP'S SHACK — Members Only."*  
 *Exits: SE → Oak Grove North | In (🔒 LGG key required) → LGG Room*  
-*Notes: The neon sign provides enough light after dark — this location is safe without a flashlight.*
+*Notes: The neon sign provides enough light after dark — this location is safe without a flashlight.*  
+*Items: LGG Key (on lean-to bar shelf)*
 
 ---
 
@@ -364,14 +369,13 @@ On the back wall: a door, painted the same green as the velvet chairs, nearly in
 
 ---
 
-**33. The Vodka Room ★ WIN**  
-A small, dark anteroom. The only light is a neon sign: **THE VODKA ROOM**, cold purple-white. Wire industrial shelving stocked with flavored vodkas, mixers, and one extremely out-of-place bottle of Kahlúa. A purple fur rug. A single camp chair.
+**33. The Vodka Room**  
+A small, dark anteroom. The only light is a neon sign: **THE VODKA ROOM**, cold purple-white. Wire industrial shelving stocked with flavored vodkas, mixers, and one extremely out-of-place bottle of Kahlúa. A purple fur rug. Two camp chairs, one knocked sideways.
 
-In the camp chair: your friends. All of them. Someone is asleep. Someone else is playing a card game with the Kahlúa bottle as a placeholder hand.
+Someone was here recently — empty glasses, a card game left mid-hand, the Kahlúa bottle moved to a chair with apparent deliberateness. On the side table: a note in marker. WENT TO THE CABIN. FOLLOW THE STRING LIGHTS.
 
-*"Oh good,"* someone says without looking up. *"You made it. Grab a chair. We were about to start the next round."*
-
-**You win.**
+*Exits: S → LGG Room*  
+*Items: Cabin Key (turkey-embossed fob — unlocks Whiskey Room Porch door)*
 
 ---
 
@@ -383,7 +387,8 @@ In the camp chair: your friends. All of them. Someone is asleep. Someone else is
 |------|---------------|---------|
 | Flashlight | Kitchen (drawer) | Unlocks dark locations after dark; needs batteries |
 | Batteries | Bunk Room (cactus nightlight) | Powers flashlight |
-| LGG Key | Whiskey Room (bar top, leather fob) | Unlocks LGG Exterior door |
+| LGG Key | LGG Exterior (lean-to bar shelf) | Unlocks LGG Exterior door |
+| Cabin Key | Vodka Room (side table, turkey fob) | Unlocks Whiskey Room Porch door |
 | Crackers | Kitchen (counter) | Gerald distraction option 1 |
 | Broken Jigger | Whiskey Room (bar top, brass) | Gerald distraction option 2 (shiny) |
 
@@ -420,7 +425,7 @@ Gerald is a wild tom turkey — large, iridescent, and fully convinced the prope
 
 **What Gerald does:**
 - Blocks paths (you must wait or distract him to pass)
-- Steals one item from inventory when you're not paying attention (any food item, any shiny object, or the LGG Key if you've just picked it up without pocketing it)
+- Steals one item from inventory when you're not paying attention (any food item, any shiny object, or the Cabin Key if you're carrying it through Oak Grove North)
 - Drops stolen items at Gerald's Tree eventually
 - Contributes to the scoreboard (GERALD: 3 / HUMANS: 0)
 
@@ -436,7 +441,7 @@ Gerald is a wild tom turkey — large, iridescent, and fully convinced the prope
 - *"Gerald appears to have eaten something. He seems satisfied. He does not explain."*
 - *"Gerald is at Gerald's Tree. He is simply Gerald, being Gerald, in his place."*
 
-**Gerald and the LGG Key:** On the player's first attempt to leave the Whiskey Room Trail with the key, Gerald intercepts and grabs it (flavor text: *"Gerald materializes from the darkness and snatches something from your hand before you can react. He disappears back into the oaks."*). The key lands at Gerald's Tree. This sequence is scripted — it happens once, then Gerald ignores the key thereafter.
+**Gerald and the Cabin Key:** When the player first passes through Oak Grove North carrying the Cabin Key (picked up from the Vodka Room), Gerald intercepts and snatches it (flavor text: *"As you step back under the oaks, something crashes through the cedar at full speed. Gerald snatches the key off your person with his beak in a single practiced motion and is gone north before you finish the sentence you were starting to form."*). The key lands at Gerald's Tree. This sequence is scripted — it happens once, then Gerald ignores the key thereafter.
 
 ---
 
@@ -468,9 +473,9 @@ The Thing is never described, encountered, or named. It exists only as the sound
 
 The Great Room's central buck speaks to the player on first visit and again whenever they return. He tracks how many of the 33 locations the player has visited.
 
-> *"Come ye to seek your companions? They are in the innermost room, beyond the neon of the LGG. But the way there is guarded. The Lord of the Dark Interior keeps the key you seek. Find him in the west, in the building that smells of oak and barrel."*
+> *"Come ye to seek your companions? They are in the cabin at the end of the string lights, beyond the dark trail to the west. But the door is locked. The key is in the neon room — find it, and follow the lights."*
 
-Once the Mounted Lord confirms the player has visited all 33 locations (an optional completionist goal), the win text in The Vodka Room gets an extended variant:
+Once the Mounted Lord confirms the player has visited all 33 locations (an optional completionist goal), the win text in The Whiskey Room gets an extended variant:
 
 > *(The deer heads in the Great Room turn, as one, and dip slightly as you walk past. You don't look back, but you feel it.)*
 
@@ -484,15 +489,16 @@ ARRIVE (Entrance Road)
     → explore Bunk Room → find BATTERIES (cactus nightlight)
     → combine: working flashlight
     → now explore after-dark areas
-    → follow Whiskey Room Trail → Whiskey Room Porch → Whiskey Room
-    → find LGG KEY (bar top)
-    → EXIT Whiskey Room Trail
-    → SCRIPTED: Gerald steals key
-    → find CRACKERS or JIGGER (kitchen / whiskey room)
-    → distract Gerald → retrieve key from Gerald's Tree
-    → navigate to LGG Exterior
+    → navigate to LGG Exterior → find LGG KEY (lean-to bar shelf)
     → USE LGG KEY → enter LGG Room
     → find HIDDEN DOOR → The Vodka Room
+    → find CABIN KEY (side table) + note: "WENT TO THE CABIN"
+    → head back through Oak Grove North
+    → SCRIPTED: Gerald steals cabin key
+    → find CRACKERS or JIGGER (kitchen / whiskey room bar)
+    → distract Gerald → retrieve cabin key from Gerald's Tree
+    → follow Whiskey Room Trail → Whiskey Room Porch
+    → USE CABIN KEY → unlock door → enter Whiskey Room
     → WIN
 ```
 
@@ -579,7 +585,7 @@ lbpquest-iv/
 8. **Darkness logic** — move counter, location lit-status, flashlight state check  
 9. **Mounted Lord** — Great Room and Whiskey Room special location classes  
 10. **Remaining locations and flavor items** — room by room  
-11. **Win condition** — VodkaRoom triggers end state  
+11. **Win condition** — WhiskeyRoom triggers end state  
 12. **Deploy** — GitHub Pages via gh-pages or Actions  
 
 ---
