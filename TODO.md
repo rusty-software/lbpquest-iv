@@ -1,0 +1,1 @@
+- Parking area: remove the "east" description
