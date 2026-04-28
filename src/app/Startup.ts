@@ -15,11 +15,12 @@ import {
   GlowStick,
   ItemKey,
   LGGKey,
-  WhiskeyKey,
   LoneAntler,
   LoneStick,
+  OrderNote,
   PickleballPaddle,
   PlainRubberDuck,
+  PoolSchedule,
   PropaneLantern,
   ScoreboardSign,
   StuffedArmadillo,
@@ -136,6 +137,7 @@ export class Startup {
     Startup.items.set(ItemKey.WesternNovel, new WesternNovel());
     Startup.items.set(ItemKey.CowboyRubberDuck, new CowboyRubberDuck());
     Startup.items.set(ItemKey.PlainRubberDuck, new PlainRubberDuck());
+    Startup.items.set(ItemKey.PoolSchedule, new PoolSchedule());
     Startup.items.set(ItemKey.ScoreboardSign, new ScoreboardSign());
     Startup.items.set(ItemKey.WhiteboardNote, new WhiteboardNote());
     Startup.items.set(ItemKey.EmptyBeerCan, new EmptyBeerCan());
@@ -146,7 +148,7 @@ export class Startup {
     Startup.items.set(ItemKey.PickleballPaddle, new PickleballPaddle());
     Startup.items.set(ItemKey.Binoculars, new Binoculars());
     Startup.items.set(ItemKey.Gerald, new Gerald());
-    Startup.items.set(ItemKey.WhiskeyKey, new WhiskeyKey());
+    Startup.items.set(ItemKey.OrderNote, new OrderNote());
   }
 
   private static arrange() {
@@ -199,6 +201,13 @@ export class Startup {
       ["s" as Direction, Startup.getLocation(LocationKey.EntranceRoad)],
       ["n" as Direction, Startup.getLocation(LocationKey.NorthField)],
     ]);
+    loc.customVerbs = new Map([
+      [
+        "examine sign",
+        (_gameEngine) =>
+          "OAKRIDGE RANCH. Black powder-coated steel. A silhouette of a black-tailed stag leaping left, LED-backlit. Beneath the name, smaller text: Est. whenever the cedar got serious. Someone has added a handwritten sticky note to the back of the sign post, visible only from the field side: 'GERALD KNOWS THE CODE. DO NOT ASK GERALD.'",
+      ],
+    ]);
   }
 
   private static arrangeNorthField() {
@@ -208,6 +217,13 @@ export class Startup {
       ["e" as Direction, Startup.getLocation(LocationKey.GeraldTree)],
       ["n" as Direction, Startup.getLocation(LocationKey.ParkingArea)],
     ]);
+    loc.customVerbs = new Map([
+      [
+        "examine grasshoppers",
+        (_gameEngine) =>
+          "The grasshoppers are enormous and indifferent. One lands on your shoe, regards you with a compound eye, and departs without comment. You feel evaluated.",
+      ],
+    ]);
   }
 
   private static arrangeGeraldTree() {
@@ -216,7 +232,17 @@ export class Startup {
       ["w" as Direction, Startup.getLocation(LocationKey.NorthField)],
       ["n" as Direction, Startup.getLocation(LocationKey.ParkingArea)],
     ]);
-    loc.items = [Startup.getItem(ItemKey.EmptyBeerCan)];
+    loc.items = [
+      Startup.getItem(ItemKey.EmptyBeerCan),
+      Startup.getItem(ItemKey.LGGKey),
+    ];
+    loc.customVerbs = new Map([
+      [
+        "examine tree",
+        (_gameEngine) =>
+          "The oak is ancient — the bark deeply furrowed, the roots surfacing and diving like something that has long since stopped asking permission. The claw marks are deliberate: seven scored lines on the east face, three on the south. Gerald has been keeping track of something. You are not sure you want to know what.",
+      ],
+    ]);
   }
 
   private static arrangeParkingArea() {
@@ -226,6 +252,13 @@ export class Startup {
       ["se" as Direction, Startup.getLocation(LocationKey.GeraldTree)],
       ["n" as Direction, Startup.getLocation(LocationKey.FrontPorch)],
     ]);
+    loc.customVerbs = new Map([
+      [
+        "examine camera",
+        (_gameEngine) =>
+          "A small security camera above the Lodge entrance, pointing down at the parking area. The red indicator light blinks steadily. Somewhere, a recording of Gerald doing something inexplicable is accumulating on a hard drive. There is nothing you can do about this.",
+      ],
+    ]);
   }
 
   private static arrangeFrontPorch() {
@@ -233,6 +266,13 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["s" as Direction, Startup.getLocation(LocationKey.ParkingArea)],
       ["e" as Direction, Startup.getLocation(LocationKey.GreatRoom)],
+    ]);
+    loc.customVerbs = new Map([
+      [
+        "sit in rocking chair",
+        (_gameEngine) =>
+          "You sit in one of the rocking chairs. It creaks agreeably. From here you can see the parking area, Gerald's Tree in the distance, and a sliver of the north field. Somewhere out there, Gerald is operating on his own schedule. You rock once. You get up. The chair continues to rock slightly after you leave.",
+      ],
     ]);
   }
 
@@ -265,6 +305,13 @@ export class Startup {
       ["s" as Direction, Startup.getLocation(LocationKey.Kitchen)],
       ["n" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
     ]);
+    loc.customVerbs = new Map([
+      [
+        "examine coats",
+        (_gameEngine) =>
+          "A row of hooks, most holding fleece vests and rain jackets belonging to no one in particular. In the pocket of a canvas barn coat: a golf tee, a receipt from a gas station in Fredericksburg, and a note that reads 'DO NOT LEAVE GATE OPEN — G.' Gerald has apparently left notes in multiple locations on this property.",
+      ],
+    ]);
   }
 
   private static arrangeHallway() {
@@ -285,6 +332,13 @@ export class Startup {
       ["s" as Direction, Startup.getLocation(LocationKey.Hallway)],
     ]);
     loc.items = [Startup.getItem(ItemKey.CactusNightlight)];
+    loc.customVerbs = new Map([
+      [
+        "examine bunks",
+        (_gameEngine) =>
+          "Three sets of bunk beds, each made with the same geometric precision. Under the pillow of the lowest bunk: a hand-drawn map of the ranch property on graph paper. Labeled in careful pencil. One location is circled twice with an arrow pointing to it: the deer blind, labeled STAND 1.",
+      ],
+    ]);
   }
 
   private static arrangeMasterBedroom() {
@@ -309,6 +363,13 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["n" as Direction, Startup.getLocation(LocationKey.Hallway)],
     ]);
+    loc.customVerbs = new Map([
+      [
+        "look out window",
+        (_gameEngine) =>
+          "The window faces the oak grove. Through the leaves you can see the string lights strung between trunks, already lit against the darkening sky. They trace a path toward something to the west. You cannot quite see what.",
+      ],
+    ]);
   }
 
   private static arrangeSharedBathroom() {
@@ -325,6 +386,13 @@ export class Startup {
       ["n" as Direction, Startup.getLocation(LocationKey.GreatRoom)],
       ["s" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
     ]);
+    loc.customVerbs = new Map([
+      [
+        "examine bar",
+        (_gameEngine) =>
+          "The oak bar is rough-cut and well-used. Pinned to the post behind it: a handwritten cocktail menu on cardstock, slightly warped from humidity.\n\nTHE BLIND BUCK — 1 oz bourbon, honey, splash of bitters\nTHE COURT JESTER — 3 oz ranch water, lime, never enough ice\nTHE SHED SPECIAL — 7-year rye, neat, no argument\nTHE TUB FLOAT — 2 oz coconut rum, pineapple, served in whatever's clean\n\nThe prices are crossed out. Everything here is on the ranch.",
+      ],
+    ]);
   }
 
   private static arrangeOakGroveNorth() {
@@ -337,6 +405,13 @@ export class Startup {
       ["w" as Direction, Startup.getLocation(LocationKey.WhiskeyRoomTrail)],
       ["nw" as Direction, Startup.getLocation(LocationKey.LGGExterior)],
     ]);
+    loc.customVerbs = new Map([
+      [
+        "examine does",
+        (_gameEngine) =>
+          "The two does stand their ground as you approach. One flicks an ear. The other blinks slowly. They have clearly decided you are not a threat and also not particularly interesting. You stand there for a moment. They go back to eating. That's it. That's the interaction.",
+      ],
+    ]);
   }
 
   private static arrangeOakGroveSouth() {
@@ -346,6 +421,13 @@ export class Startup {
       ["e" as Direction, Startup.getLocation(LocationKey.PoolDeck)],
       ["s" as Direction, Startup.getLocation(LocationKey.SouthMeadow)],
     ]);
+    loc.customVerbs = new Map([
+      [
+        "examine string lights",
+        (_gameEngine) =>
+          "Warm white bulbs strung between oak trunks, running northwest and west through the trees. They disappear around a bend, but you can trace the line — they lead somewhere. Probably the outbuildings. Follow them and you'll end up somewhere specific.",
+      ],
+    ]);
   }
 
   private static arrangeWoodenPavilion() {
@@ -354,6 +436,13 @@ export class Startup {
       ["w" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
     ]);
     loc.items = [Startup.getItem(ItemKey.PropaneLantern)];
+    loc.customVerbs = new Map([
+      [
+        "examine table",
+        (_gameEngine) =>
+          "A weathered cedar picnic table under the pavilion roof. Someone has carved into the wood over the years — initials, dates, a crude star. Near the corner, in deeper cuts than the rest: a turkey silhouette, recognizable to anyone who has spent time here, with the letters G.T.K. below it. Gerald the Gobbler King. He has always been here. He will outlast the table.",
+      ],
+    ]);
   }
 
   private static arrangeSouthMeadow() {
@@ -363,6 +452,13 @@ export class Startup {
       ["se" as Direction, Startup.getLocation(LocationKey.FirePit)],
       ["s" as Direction, Startup.getLocation(LocationKey.CedarBrake)],
       ["e" as Direction, Startup.getLocation(LocationKey.PoolDeck)],
+    ]);
+    loc.customVerbs = new Map([
+      [
+        "examine deer",
+        (_gameEngine) =>
+          "A doe steps out of the treeline, regards you for a long moment with the calm of something that has never had a mortgage, and then steps back into the cedar. You feel briefly envied.",
+      ],
     ]);
   }
 
@@ -374,6 +470,13 @@ export class Startup {
       ["n" as Direction, Startup.getLocation(LocationKey.SportsCourt)],
       ["s" as Direction, Startup.getLocation(LocationKey.FirePit)],
       ["sw" as Direction, Startup.getLocation(LocationKey.SouthMeadow)],
+    ]);
+    loc.customVerbs = new Map([
+      [
+        "examine pool",
+        (_gameEngine) =>
+          "The pool shifts between blue and green in the LED lighting cycle. The water is exceptionally clear. Near the far drain, something glints on the bottom. You peer closer. It's a quarter. You do not go in after it.",
+      ],
     ]);
   }
 
@@ -409,6 +512,7 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["w" as Direction, Startup.getLocation(LocationKey.SportsCourt)],
     ]);
+    loc.items = [Startup.getItem(ItemKey.PoolSchedule)];
   }
 
   private static arrangeFirePit() {
@@ -426,6 +530,15 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["n" as Direction, Startup.getLocation(LocationKey.FirePit)],
       ["s" as Direction, Startup.getLocation(LocationKey.DeerBlind)],
+    ]);
+    loc.customVerbs = new Map([
+      [
+        "examine trees",
+        (gameEngine) =>
+          gameEngine.flashlightActive
+            ? "Your flashlight sweeps across the cedar trunks. The trees grow in close here, old and twisted. On one trunk near the center, scratched at shoulder height: GOT U. Two letters. Gerald's work, or just bark damage from something passing through. You choose not to decide."
+            : "You can't see much in the dark. The cedar presses close. Something moves in the branches. It is probably just wind.",
+      ],
     ]);
   }
 
@@ -449,7 +562,7 @@ export class Startup {
     const loc = Startup.getLocation(LocationKey.WhiskeyRoomPorch);
     loc.neighbors = new NeighborMap([
       ["e" as Direction, Startup.getLocation(LocationKey.WhiskeyRoomTrail)],
-      // "w" to WhiskeyRoom is added at runtime when WhiskeyKey is used
+      // "w" to WhiskeyRoom is added at runtime when the correct code is entered
     ]);
     loc.items = [Startup.getItem(ItemKey.LoneAntler)];
   }
@@ -457,7 +570,7 @@ export class Startup {
   private static arrangeWhiskeyRoom() {
     const loc = Startup.getLocation(LocationKey.WhiskeyRoom);
     loc.neighbors = new NeighborMap([
-      // "e" back to porch is added at runtime when WhiskeyKey is used
+      // "e" back to porch is added at runtime when the correct code is entered
     ]);
     loc.items = [
       Startup.getItem(ItemKey.BrokenJigger),
@@ -471,7 +584,7 @@ export class Startup {
       ["se" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
       // LGGRoom is unlocked at runtime by using the LGGKey here
     ]);
-    loc.items = [Startup.getItem(ItemKey.LGGKey)];
+    // LGGKey is hidden at Gerald's Tree — examine the beer can to find it
   }
 
   private static arrangeLGGRoom() {
@@ -487,6 +600,6 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["s" as Direction, Startup.getLocation(LocationKey.LGGRoom)],
     ]);
-    loc.items = [Startup.getItem(ItemKey.WhiskeyKey)];
+    loc.items = [Startup.getItem(ItemKey.OrderNote)];
   }
 }

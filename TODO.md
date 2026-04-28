@@ -1,1 +1,9 @@
+- Gerald's Tree: Navigation directions aren't necessarily consisten
 - Parking area: remove the "east" description
+- Mudroom: tallboy isn't takeable?
+- Hallway: shared bathroom direction isn't displayed
+  - navigation inconsistency
+- bunk room: can't take the nightlight, also can't take the batteries
+  - you get the batteries by examining the nightlight
+- oak grove north: two destinations to the north?
+  - mudroom should be ne

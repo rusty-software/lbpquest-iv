@@ -34,6 +34,7 @@ export class GameEngine {
   private geraldPatrolIndex: number = 0;
   private lastGeraldMoveAt: number = 0;
   private winScoreAwarded: boolean = false;
+  private cabinCodeEntered: boolean = false;
 
   private readonly geraldPatrol: LocationKey[] = [
     LocationKey.EntranceRoad,
@@ -98,6 +99,30 @@ export class GameEngine {
       case CommandType.l:
       case CommandType.look: {
         this.changeLocation(this.currentLocation);
+        break;
+      }
+
+      case CommandType.enter: {
+        this.actionCount++;
+        if (this.currentLocation.id === LocationKey.WhiskeyRoomPorch) {
+          if (rest === "3721" && !this.cabinCodeEntered) {
+            this.cabinCodeEntered = true;
+            this.score += 10;
+            const porch = this.currentLocation;
+            const whiskeyRoom = this.getLocation(LocationKey.WhiskeyRoom);
+            porch.neighbors.set("w" as Direction, whiskeyRoom);
+            whiskeyRoom.neighbors.set("e" as Direction, porch);
+            this.events.push(new ItemEvent("You enter 3-7-2-1. Four soft tones in sequence. A click — distinct and satisfied — and the door swings open on cedar and woodsmoke. Warm amber light spills out from inside.\n\nYou can go west to enter."));
+          } else if (this.cabinCodeEntered) {
+            this.events.push(new ItemEvent("The door is already open."));
+          } else if (/^\d+$/.test(rest)) {
+            this.events.push(new ItemEvent("The keypad responds with two flat beeps. The door does not open."));
+          } else {
+            this.events.push(new GameErrorEvent(GameError.UnknownCommand, ""));
+          }
+        } else {
+          this.events.push(new ItemEvent("There's nothing here that accepts a code."));
+        }
         break;
       }
 
@@ -269,10 +294,10 @@ export class GameEngine {
 
     if (
       location.id === LocationKey.OakGroveNorth &&
-      this.inventoryContains(ItemKey.WhiskeyKey) &&
+      this.inventoryContains(ItemKey.OrderNote) &&
       !this.geraldKeyTheftDone
     ) {
-      this.triggerGeraldKeyTheft();
+      this.triggerGeraldTheft();
     }
 
     this.events.push(
@@ -304,9 +329,9 @@ export class GameEngine {
     }
   }
 
-  private triggerGeraldKeyTheft(): void {
+  private triggerGeraldTheft(): void {
     this.geraldKeyTheftDone = true;
-    this.removeFromInventory(ItemKey.WhiskeyKey);
+    this.removeFromInventory(ItemKey.OrderNote);
 
     const currentGeraldLoc = this.getLocation(this.geraldLocationKey);
     if (currentGeraldLoc.hasItem(ItemKey.Gerald)) {
@@ -314,13 +339,15 @@ export class GameEngine {
     }
 
     const geraldTree = this.getLocation(LocationKey.GeraldTree);
+    const orderNote = this.getItem(ItemKey.OrderNote);
+    orderNote.isShown = true;
     geraldTree.items.push(this.getItem(ItemKey.Gerald));
-    geraldTree.items.push(this.getItem(ItemKey.WhiskeyKey));
+    geraldTree.items.push(orderNote);
     this.geraldLocationKey = LocationKey.GeraldTree;
 
     this.events.push(
       new ItemEvent(
-        "As you step back under the oaks, something crashes through the cedar at full speed. Gerald — it is definitely Gerald — snatches the key off your person with his beak in a single practiced motion and is gone north before you finish the sentence you were starting to form. You hear the crunch of gravel. The key is gone."
+        "As you step back under the oaks, something crashes through the cedar at full speed. Gerald — it is definitely Gerald — snatches the folded note right out of your hand with his beak, in a single practiced motion, and is gone north before you finish the sentence you were starting to form. You hear the crunch of gravel. The cabin note is gone."
       )
     );
   }
@@ -407,8 +434,8 @@ export class GameEngine {
       const item = itemObject as Item;
       max += item.value;
     }
-    // puzzle milestone bonuses: load flashlight(5) + unlock LGG(10) + defeat Gerald(5) + win(23)
-    return max + 43;
+    // puzzle milestone bonuses: flashlight(5) + unlock LGG(10) + defeat Gerald(5) + cabin code(10) + win(23)
+    return max + 53;
   }
 
   private getItemByName(itemName: string): Item | undefined {

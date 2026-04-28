@@ -26,4 +26,5 @@ export enum ItemKey {
   Binoculars,
   Gerald,
   WhiskeyKey,
+  OrderNote,
 }

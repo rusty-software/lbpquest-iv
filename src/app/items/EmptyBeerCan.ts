@@ -1,6 +1,7 @@
 import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
+import { LocationKey } from "../locations";
 
 export class EmptyBeerCan extends BaseItem {
   public id = ItemKey.EmptyBeerCan;
@@ -12,8 +13,13 @@ export class EmptyBeerCan extends BaseItem {
     return true;
   }
 
-  public examine(_gameEngine: GameEngine): string {
-    return "An empty Lone Star tallboy. Placed at the base of Gerald's Tree with what appears to be intention — not dropped, placed. Gerald does not drink beer. Someone left this for Gerald. Gerald accepted the tribute.";
+  public examine(gameEngine: GameEngine): string {
+    const geraldTree = gameEngine.getLocation(LocationKey.GeraldTree);
+    if (geraldTree.hasItem(ItemKey.LGGKey)) {
+      geraldTree.showItem(ItemKey.LGGKey);
+      return "An empty Lone Star tallboy. You tilt it — placed deliberately, not dropped. Underneath, pressed flat into the soil: a small key on a leather fob. LGG is stamped into the leather in a neat serif font. Someone left this here. Someone with feathers and no regard for conventional key storage.";
+    }
+    return "An empty Lone Star tallboy. Placed at the base of Gerald's Tree with clear intention. Gerald does not drink beer. Someone left this for him. Gerald accepted.";
   }
 
   public use(_gameEngine: GameEngine): string {

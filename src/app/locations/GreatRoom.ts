@@ -13,13 +13,13 @@ export class GreatRoom extends BaseLocation {
 
     if (visitCount < 5) {
       s +=
-        "\n\nThe great buck swivels its mounted head in your direction. \"You. Yes, you. Don't walk past me. I, Lord of the Oakridge Stags, address you. Your companions are in the innermost room — beyond the neon, through the hidden door. The path there is shut. The Lord of the Dark Interior holds the key. Find him in the building that smells of oak and barrel, to the west in the trees. Begin there.\"";
+        "\n\nThe great buck fixes you with one glass eye. \"You. Yes. I'll be brief. Your companions have gone to the innermost room — through the neon, into the dark, to the cabin at the end of the trail. The way is sealed by a four-digit code. The numbers are written in the ranch itself. Look at what has been scored, scheduled, measured, and labeled. The order of those numbers waits for you somewhere in the neon.\"";
     } else if (visitCount < 15) {
       s +=
-        "\n\nThe great buck regards you steadily. \"You venture forth. The Lord of the Dark Interior awaits in the whiskey room. He has what you seek.\"";
+        "\n\nThe great buck regards you. \"Still ranging. Good. Four numbers, four places on this property — court, shed, tub, and blind. Their order is in the neon room, if you've been there yet.\"";
     } else {
       s +=
-        "\n\nThe great buck dips slightly. \"You have walked these grounds thoroughly. The way to the neon room lies open to those who seek it. Well done.\"";
+        "\n\nThe great buck dips slightly. \"You've covered the ground. The digits and their order — you have them, or you know where they are. The cabin waits.\"";
     }
 
     s +=

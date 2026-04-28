@@ -7,7 +7,7 @@ import { LocationKey } from "../locations";
 export class LGGKey extends BaseItem {
   public id = ItemKey.LGGKey;
   public name = "key";
-  public isShown = true;
+  public isShown = false;
   public value = 10;
 
   public canTake(_gameEngine: GameEngine): boolean {
@@ -16,6 +16,10 @@ export class LGGKey extends BaseItem {
 
   public examine(_gameEngine: GameEngine): string {
     return "A small key on a leather fob. The fob is stamped with the letters LGG in a neat serif font. It smells faintly of cedar.";
+  }
+
+  public getLocationText(): string {
+    return "A small key on a leather fob stamped LGG lies in the soil here.";
   }
 
   public use(gameEngine: GameEngine): string {

@@ -17,7 +17,7 @@ export class ScoreboardSign extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A small whiteboard on a hook by the sports court gate. Written in green marker:\n\nGERALD: 3\nHUMANS: 0\n\nThe scores appear to be permanent. The marker is drying out.";
+    return "A small whiteboard on a hook by the sports court gate. Written in green marker:\n\nGERALD: 3\nHUMANS: 0\n\nThe 3 has a quality of permanence to it — not a score so much as a fact of the property. The marker is nearly dry. No one has tried to change it.";
   }
 
   public use(_gameEngine: GameEngine): string {

@@ -13,7 +13,7 @@ export class PlainRubberDuck extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A rubber duck in the hot tub. Unadorned, unhatted, making no particular statement. It has less charisma than the one in the master bathroom, but it has made peace with this.";
+    return "A rubber duck in the hot tub. Unadorned, unhatted, at peace with its limitations. You pick it up out of curiosity and flip it over. On the flat bottom, in faded permanent marker: 2. Just the number 2. No explanation. You set it back in the water.";
   }
 
   public use(_gameEngine: GameEngine): string {
