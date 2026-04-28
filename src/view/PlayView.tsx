@@ -6,17 +6,18 @@ import { DisplayView } from "./DisplayView";
 interface HeaderProps {
   location: string;
   score: number;
+  maxScore: number;
   moves: number;
 }
 
 const HeaderView = (props: HeaderProps) => {
-  const { location, score, moves } = props;
+  const { location, score, maxScore, moves } = props;
 
   return (
     <div className="header">
       <span>{location}</span>
       <div className="alignRight">
-        <span> Score: {score} </span>
+        <span> Score: {score} of {maxScore} </span>
         <span> Moves: {moves} </span>
       </div>
     </div>
@@ -102,6 +103,7 @@ export class PlayView extends Component<any, GameState> {
         <HeaderView
           location={this.gameEngine.currentLocation!.title}
           score={this.gameEngine.score}
+          maxScore={this.gameEngine.maxScore()}
           moves={this.gameEngine.actionCount}
         />
         <DisplayView events={this.gameEngine.events} />

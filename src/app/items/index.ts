@@ -17,7 +17,7 @@ export * from "./PlainRubberDuck";
 export * from "./ScoreboardSign";
 export * from "./WhiteboardNote";
 export * from "./EmptyBeerCan";
-export * from "./TopoChiboBottle";
+export * from "./TopoChicoBottle";
 export * from "./BlantonsBottle";
 export * from "./PropaneLantern";
 export * from "./LoneAntler";

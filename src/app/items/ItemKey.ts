@@ -18,7 +18,7 @@ export enum ItemKey {
   ScoreboardSign,
   WhiteboardNote,
   EmptyBeerCan,
-  TopoChiboBottle,
+  TopoChicoBottle,
   BlantonsBottle,
   PropaneLantern,
   LoneAntler,

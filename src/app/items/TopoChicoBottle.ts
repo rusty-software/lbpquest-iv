@@ -2,8 +2,8 @@ import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
 
-export class TopoChiboBottle extends BaseItem {
-  public id = ItemKey.TopoChiboBottle;
+export class TopoChicoBottle extends BaseItem {
+  public id = ItemKey.TopoChicoBottle;
   public name = "topo chico";
   public isShown = true;
   public value = 3;

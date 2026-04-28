@@ -24,7 +24,7 @@ import {
   PropaneLantern,
   ScoreboardSign,
   StuffedArmadillo,
-  TopoChiboBottle,
+  TopoChicoBottle,
   WesternNovel,
   WhiteboardNote,
 } from "./items";
@@ -141,7 +141,7 @@ export class Startup {
     Startup.items.set(ItemKey.ScoreboardSign, new ScoreboardSign());
     Startup.items.set(ItemKey.WhiteboardNote, new WhiteboardNote());
     Startup.items.set(ItemKey.EmptyBeerCan, new EmptyBeerCan());
-    Startup.items.set(ItemKey.TopoChiboBottle, new TopoChiboBottle());
+    Startup.items.set(ItemKey.TopoChicoBottle, new TopoChicoBottle());
     Startup.items.set(ItemKey.BlantonsBottle, new BlantonsBottle());
     Startup.items.set(ItemKey.PropaneLantern, new PropaneLantern());
     Startup.items.set(ItemKey.LoneAntler, new LoneAntler());
@@ -365,7 +365,7 @@ export class Startup {
     ]);
     loc.customVerbs = new Map([
       [
-        "look out window",
+        "examine window",
         (_gameEngine) =>
           "The window faces the oak grove. Through the leaves you can see the string lights strung between trunks, already lit against the darkening sky. They trace a path toward something to the west. You cannot quite see what.",
       ],
@@ -522,7 +522,7 @@ export class Startup {
       ["nw" as Direction, Startup.getLocation(LocationKey.SouthMeadow)],
       ["s" as Direction, Startup.getLocation(LocationKey.CedarBrake)],
     ]);
-    loc.items = [Startup.getItem(ItemKey.TopoChiboBottle)];
+    loc.items = [Startup.getItem(ItemKey.TopoChicoBottle)];
   }
 
   private static arrangeCedarBrake() {

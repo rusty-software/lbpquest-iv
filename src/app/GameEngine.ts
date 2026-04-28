@@ -132,6 +132,11 @@ export class GameEngine {
         const item = this.getAvailableItemByName(rest);
         if (item) {
           this.events.push(new ItemEvent(item!.examine(this)));
+        } else {
+          const locationVerb = this.currentLocation.customVerbs.get(`examine ${rest}`);
+          if (locationVerb) {
+            this.events.push(new ItemEvent(locationVerb(this)));
+          }
         }
         break;
       }
@@ -306,7 +311,7 @@ export class GameEngine {
 
     if (location.id === LocationKey.WhiskeyRoom && !this.winScoreAwarded) {
       this.winScoreAwarded = true;
-      this.score += 23;
+      this.score += 21;
     }
   }
 
@@ -434,8 +439,8 @@ export class GameEngine {
       const item = itemObject as Item;
       max += item.value;
     }
-    // puzzle milestone bonuses: flashlight(5) + unlock LGG(10) + defeat Gerald(5) + cabin code(10) + win(23)
-    return max + 53;
+    // puzzle milestone bonuses: flashlight(5) + unlock LGG(10) + defeat Gerald(5) + cabin code(10) + win(21)
+    return max + 51;
   }
 
   private getItemByName(itemName: string): Item | undefined {
