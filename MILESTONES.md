@@ -37,18 +37,18 @@ Status key: ✅ done · ⬜ pending · 🚧 in progress
 
 ---
 
-## Milestone 2 — Code Puzzle Overhaul
+## Milestone 2 — Code Puzzle Overhaul ✅
 
 High-level intent: make finding the 4 code digits an active puzzle requiring discovery, not just reading the porch keypad.
 
-- ⬜ Remove digit hints from WhiskeyRoomPorch description — keypad shows only "four digits"
-- ⬜ Each digit requires a specific `examine` action to discover:
+- ✅ Remove digit hints from WhiskeyRoomPorch description — keypad shows only "four digits"
+- ✅ Each digit requires a specific `examine` action to discover:
   - COURT (3): `examine scoreboard` — already returns "GERALD: 3"
   - SHED (7): `examine schedule` — already returns "TUESDAY 7:00 PM"
   - TUB (2): `examine plain duck` — already returns "2" on the bottom
-  - BLIND (1): add a physical marker in DeerBlind (logbook, tag, etc.) returning "Blind No. 1"
-- ⬜ OrderNote gives the ORDER only (COURT·SHED·TUB·BLIND) — player must find all four numbers separately
-- ⬜ WhiskeyRoomPorch keypad: change description to a standard 0–9 numeric keypad; move the COURT·SHED·TUB·BLIND labels to a separate plaque or sign near the door
+  - BLIND (1): `examine stencil` in DeerBlind returns "BLIND NO. 1"
+- ✅ OrderNote gives the ORDER only (COURT·SHED·TUB·BLIND) — player must find all four numbers separately
+- ✅ WhiskeyRoomPorch keypad: standard 0–9 numeric keypad; COURT·SHED·TUB·BLIND labels on a brass plaque (`examine plaque`)
 
 ---
 

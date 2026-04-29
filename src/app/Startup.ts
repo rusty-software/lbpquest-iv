@@ -557,6 +557,13 @@ export class Startup {
       ["n" as Direction, Startup.getLocation(LocationKey.CedarBrake)],
     ]);
     loc.items = [Startup.getItem(ItemKey.Binoculars)];
+    loc.customVerbs = new Map([
+      [
+        "examine stencil",
+        (_gameEngine) =>
+          "Above the door frame, in faded stenciled paint: BLIND NO. 1.",
+      ],
+    ]);
   }
 
   private static arrangeWhiskeyRoomTrail() {
@@ -574,6 +581,13 @@ export class Startup {
       // "w" to WhiskeyRoom is added at runtime when the correct code is entered
     ]);
     loc.items = [Startup.getItem(ItemKey.LoneAntler)];
+    loc.customVerbs = new Map([
+      [
+        "examine plaque",
+        (_gameEngine) =>
+          "A small brass plaque mounted above the keypad. It reads:\n\nCOURT · SHED · TUB · BLIND",
+      ],
+    ]);
   }
 
   private static arrangeWhiskeyRoom() {

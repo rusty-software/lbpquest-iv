@@ -17,7 +17,7 @@ export class OrderNote extends BaseItem {
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You read the note again. Four locations, in order. The keypad at the cabin needs those four numbers entered that way.";
+    return "You read the note again. COURT · SHED · TUB · BLIND — in that order.";
   }
 
   public getLocationText(): string {
