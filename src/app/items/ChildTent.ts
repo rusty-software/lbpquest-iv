@@ -24,7 +24,7 @@ export class ChildTent extends BaseItem {
       gameEngine.getItem(ItemKey.GlowStick).isShown = true;
       gameEngine.getItem(ItemKey.StuffedArmadillo).isShown = true;
       gameEngine.getItem(ItemKey.GeraldNote).isShown = true;
-      return "A child's pop-up tent in the corner of the master bedroom, fully assembled, door flap open. Inside: a green glow stick still faintly active, a stuffed armadillo, and a handwritten note.";
+      return "A child's pop-up tent in the corner of the master bedroom, fully assembled, door flap open. Inside: a green glow stick still faintly active, a stuffed armadillo, and a handwritten tent note.";
     }
     return "A child's pop-up tent. It is exactly as strange as it was the first time you looked.";
   }

@@ -8,7 +8,7 @@ export class VodkaRoom extends BaseLocation {
 
   public description(): string {
     const noteText = this.hasItem(ItemKey.OrderNote)
-      ? "On the side table: a folded note in black marker. Someone wrote in a hurry."
+      ? "On the side table: a folded cabin note in black marker. Someone wrote in a hurry."
       : "The side table is empty now.";
 
     return (

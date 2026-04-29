@@ -12,8 +12,12 @@ export class PropaneLantern extends BaseItem {
     return true;
   }
 
+  public getLocationText(): string {
+    return "A propane lantern is here.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
-    return "A propane lantern hanging from a hook in the wooden pavilion. You twist the valve. Nothing. Empty. It has the particular sadness of things left underfueled.";
+    return "A propane lantern. You twist the valve. Nothing. Empty. It has the particular sadness of things left underfueled.";
   }
 
   public use(_gameEngine: GameEngine): string {

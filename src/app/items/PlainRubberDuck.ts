@@ -12,8 +12,12 @@ export class PlainRubberDuck extends BaseItem {
     return true;
   }
 
+  public getLocationText(): string {
+    return "A plain rubber duck is here.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
-    return "A rubber duck in the hot tub. Unadorned, unhatted, at peace with its limitations. You pick it up out of curiosity and flip it over. On the flat bottom, in faded permanent marker: 2. Just the number 2. No explanation. You set it back in the water.";
+    return "A plain rubber duck. Unadorned, unhatted, at peace with its limitations. On the flat bottom, in faded permanent marker: 2. Just the number 2. No explanation.";
   }
 
   public use(_gameEngine: GameEngine): string {

@@ -15,11 +15,11 @@ export class LGGKey extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A small key on a leather fob. The fob is stamped with the letters LGG in a neat serif font. It smells faintly of cedar.";
+    return "A small key on a leather fob. The fob is stamped with the letters LGG in a neat serif font.";
   }
 
   public getLocationText(): string {
-    return "A small key on a leather fob stamped LGG lies in the soil here.";
+    return "A small key on a leather fob stamped LGG is here.";
   }
 
   public use(gameEngine: GameEngine): string {

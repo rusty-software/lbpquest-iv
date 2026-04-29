@@ -4,7 +4,7 @@ import { ItemKey } from "./ItemKey";
 
 export class CowboyRubberDuck extends BaseItem {
   public id = ItemKey.CowboyRubberDuck;
-  public name = "duck";
+  public name = "cowboy duck";
   public isShown = true;
   public value = 2;
 
@@ -12,8 +12,12 @@ export class CowboyRubberDuck extends BaseItem {
     return true;
   }
 
+  public getLocationText(): string {
+    return "A cowboy duck in a tiny brown hat is here.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
-    return "A rubber duck on the edge of the master bathroom tub. It is wearing a tiny brown cowboy hat, secured with what appears to be a very small amount of rubber cement. The hat fits perfectly. The duck stares at you with the confidence of something that has nothing to prove.";
+    return "A rubber duck wearing a tiny brown cowboy hat, secured with what appears to be a very small amount of rubber cement. The hat fits perfectly. The duck stares at you with the confidence of something that has nothing to prove.";
   }
 
   public use(_gameEngine: GameEngine): string {

@@ -8,6 +8,7 @@ const helpMapper: { [s: string]: string } = {
   take: " <object> : e.g. `take flashlight` to add an item to your bag",
   use: " <object> : e.g. `use flashlight` to activate an item",
   drop: " <object> : e.g. `drop flashlight` to leave an item behind",
+  enter: " <code> : e.g. `enter 1234` to enter a numeric code",
 };
 
 interface HelpViewProps {

@@ -16,7 +16,11 @@ export class Crackers extends BaseItem {
     return "A sleeve of Ritz crackers. Mostly intact. These would be very interesting to a turkey.";
   }
 
-  public use(_gameEngine: GameEngine): string {
+  public use(gameEngine: GameEngine): string {
+    if (gameEngine.currentLocation.hasItem(ItemKey.Gerald)) {
+      const geraldVerb = gameEngine.getItem(ItemKey.Gerald).customVerbs.get("give crackers to");
+      if (geraldVerb) return geraldVerb(gameEngine);
+    }
     return "You open the crackers. Nothing nearby seems immediately interested. Maybe Gerald needs to be here first.";
   }
 

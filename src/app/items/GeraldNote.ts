@@ -4,7 +4,7 @@ import { ItemKey } from "./ItemKey";
 
 export class GeraldNote extends BaseItem {
   public id = ItemKey.GeraldNote;
-  public name = "note";
+  public name = "tent note";
   public isShown = false;
   public value = 2;
 

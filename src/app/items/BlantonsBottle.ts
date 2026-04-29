@@ -16,6 +16,10 @@ export class BlantonsBottle extends BaseItem {
     return "An unopened fifth of Blanton's Single Barrel Bourbon. The gold wax cap is unbroken. The little horse-and-jockey stopper sealed inside. Someone showed remarkable restraint. You put it back.";
   }
 
+  public getLocationText(): string {
+    return "An unopened fifth of Blanton's is here.";
+  }
+
   public use(_gameEngine: GameEngine): string {
     return "You open the Blanton's. You smell the bourbon. You close it again. Some things should wait for the right moment.";
   }

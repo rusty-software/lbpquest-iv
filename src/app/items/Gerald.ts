@@ -3,11 +3,11 @@ import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
 
 const geraldDescriptions = [
-  "Gerald is standing in the middle of the path. He looks at you with one eye, then the other. He does not move. He makes a sound like a rusty gate.",
-  "Gerald has arrived and is now patrolling the area with the grim efficiency of a regional manager doing a surprise audit.",
-  "Gerald is here. He is simply Gerald, being Gerald, in his place. You are the intruder in this arrangement.",
-  "Gerald appears to have eaten something. He seems satisfied. He does not explain.",
-  "Gerald is standing very close to something of yours. He is not touching it. He is thinking about touching it.",
+  "Gerald is a large tom turkey, and he is standing in the middle of the path. He looks at you with one eye, then the other. He does not move. He makes a sound like a rusty gate.",
+  "Gerald — a full-grown tom turkey, for the record — has arrived and is now patrolling the area with the grim efficiency of a regional manager doing a surprise audit.",
+  "Gerald is here. A turkey. Your size, approximately. He is simply being Gerald, in his place. You are the intruder in this arrangement.",
+  "Gerald the turkey appears to have eaten something. He seems satisfied. He does not explain.",
+  "Gerald — large, bronze-feathered, deeply unimpressed — is standing very close to something of yours. He is not touching it. He is thinking about touching it.",
 ];
 
 export class Gerald extends BaseItem {

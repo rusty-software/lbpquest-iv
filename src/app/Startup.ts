@@ -311,6 +311,11 @@ export class Startup {
         (_gameEngine) =>
           "A row of hooks, most holding fleece vests and rain jackets belonging to no one in particular. In the pocket of a canvas barn coat: a golf tee, a receipt from a gas station in Fredericksburg, and a note that reads 'DO NOT LEAVE GATE OPEN — G.' Gerald has apparently left notes in multiple locations on this property.",
       ],
+      [
+        "examine tallboy",
+        (_gameEngine) =>
+          "Empty. Gerald got to it first — drank the whole thing somewhere and left the can here as a trophy, apparently. Nothing worth taking.",
+      ],
     ]);
   }
 
@@ -386,6 +391,10 @@ export class Startup {
       ["n" as Direction, Startup.getLocation(LocationKey.GreatRoom)],
       ["s" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
     ]);
+    loc.items = [
+      Startup.getItem(ItemKey.BrokenJigger),
+      Startup.getItem(ItemKey.BlantonsBottle),
+    ];
     loc.customVerbs = new Map([
       [
         "examine bar",
@@ -572,10 +581,7 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       // "e" back to porch is added at runtime when the correct code is entered
     ]);
-    loc.items = [
-      Startup.getItem(ItemKey.BrokenJigger),
-      Startup.getItem(ItemKey.BlantonsBottle),
-    ];
+    loc.items = [];
   }
 
   private static arrangeLGGExterior() {

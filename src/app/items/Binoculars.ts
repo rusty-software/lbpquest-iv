@@ -13,8 +13,12 @@ export class Binoculars extends BaseItem {
     return true;
   }
 
+  public getLocationText(): string {
+    return "A pair of binoculars is here.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
-    return "A pair of 8x42 binoculars on a hook in the deer blind. Good glass — these were not bought cheaply. Someone left them here. Someone who does not need them back, apparently.";
+    return "A pair of 8x42 binoculars. Good glass — these were not bought cheaply. Someone left them here and apparently does not need them back.";
   }
 
   public use(gameEngine: GameEngine): string {

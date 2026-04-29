@@ -20,6 +20,10 @@ export class TopoChicoBottle extends BaseItem {
     return "You look through the bottle at the sky. The light is interesting. Nothing happens.";
   }
 
+  public getLocationText(): string {
+    return "An empty Topo Chico bottle is here.";
+  }
+
   public getName(): string {
     return "is an empty Topo Chico bottle";
   }

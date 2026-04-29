@@ -12,8 +12,12 @@ export class PickleballPaddle extends BaseItem {
     return true;
   }
 
+  public getLocationText(): string {
+    return "A pickleball paddle is here.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
-    return "A pickleball paddle resting on top of the net post. Standard weight, slightly worn grip tape. Gerald ignores it entirely, which says something about Gerald that you can't quite articulate.";
+    return "A pickleball paddle. Standard weight, slightly worn grip tape. Gerald ignores it entirely, which says something about Gerald that you can't quite articulate.";
   }
 
   public use(_gameEngine: GameEngine): string {
