@@ -76,11 +76,10 @@ graph TD
     subgraph ZF["ZONE F · Outbuildings"]
         WRT["Whiskey Room Trail"]
         WRP["Whiskey Room Porch"]
-        WR["Whiskey Room"]
+        WR["Whiskey Room ★ WIN"]
         LGGExt["LGG Exterior"]
         LGGRoom["LGG Room"]
         VR["The Vodka Room"]
-        WR["Whiskey Room ★ WIN"]
     end
 
     ER --- RS
@@ -99,13 +98,13 @@ graph TD
     H --- B3
     H --- SBath
     GR --- BP
-    BP --- OGN
+    BP --- PoolD
     MU --- OGN
     OGN --- OGS
     OGN --- WoodP
     OGN --- WRT
     WRT --- WRP
-    WRP -. "🔒 cabin key required" .- WR
+    WRP -. "🔒 enter code" .- WR
     OGN --- LGGExt
     LGGExt -. "🔒 LGG key required" .- LGGRoom
     LGGRoom --- VR
@@ -116,11 +115,12 @@ graph TD
     PoolD --- FireP
     OGS --- SM
     SM --- FireP
+    SM --- PoolD
     FireP --- CB
     CB --- DB
 ```
 
-> Dashed lines (🔒) = locked doors requiring a key. LGG key found at LGG Exterior lean-to shelf. Cabin key found in The Vodka Room.  
+> Dashed lines (🔒) = locked door (LGG key required) or keypad entry (4-digit code). LGG key is hidden at Gerald's Tree under the empty beer can. Code digits are scattered around the ranch; code order is found in The Vodka Room.  
 > Dark outdoor locations (Fire Pit, Cedar Brake, Deer Blind, Whiskey Room Trail) require the flashlight after dark.
 
 ---
@@ -150,9 +150,9 @@ The open grassy approach between the sign and the Lodge. Late afternoon heat. Gr
 ---
 
 **4. Gerald's Tree**  
-A massive gnarled live oak at the edge of the field, claimed entirely by Gerald. Claw marks on the bark. One (1) empty beer can on the ground beneath it (Lone Star). From up in the branches, something watches you.  
-*Exits: W → North Field | N → Parking Area*  
-*Notable: Gerald's home base. Stolen items are eventually found here.*
+A massive gnarled live oak at the edge of the field, claimed entirely by Gerald. Claw marks on the bark — seven notches on the east face, three on the south. One (1) empty beer can on the ground beneath it (Lone Star). Examining the can reveals the LGG key hidden in the soil beneath it.  
+*Exits: W → North Field | NW → Parking Area*  
+*Notable: Gerald's home base. LGG key hidden here. Stolen items (including the Order Note) eventually found here.*
 
 ---
 
@@ -234,8 +234,9 @@ A full bathroom off the hallway. Someone left a paperback western novel on the b
 ---
 
 **16. Back Porch**  
-The back porch is the Lodge's best feature. A broad cedar-roofed pavilion extending from the rear of the building. A massive flatscreen TV is mounted flush to the cedar wall, currently showing a highway somewhere in the mountains. Outdoor sectional sofa, low fire table, two wooden rocking chairs. Against one post: a high-top bar built from the cross-section of an enormous live oak trunk, still rough on the edges. String lights run from the eaves out into the oak grove.  
-*Exits: N → Great Room | S → Oak Grove North*
+The back porch is the Lodge's best feature. A broad cedar-roofed pavilion extending from the rear of the building. A massive flatscreen TV is mounted flush to the cedar wall, currently showing a highway somewhere in the mountains. Outdoor sectional sofa, low fire table, two wooden rocking chairs. Against one post: a high-top bar built from the cross-section of an enormous live oak trunk, still rough on the edges. String lights run from the eaves out toward the pool deck.  
+*Exits: N → Great Room | SE → Pool Deck*  
+*Notable: Bar menu lists cocktails embedding all four code digits.*
 
 ---
 
@@ -243,7 +244,7 @@ The back porch is the Lodge's best feature. A broad cedar-roofed pavilion extend
 
 **17. Oak Grove North**  
 A cathedral of live oaks — gnarled, wide-canopied, ancient. String lights run between trunks and off toward the outbuildings in the trees. The grass is cool even in the afternoon heat. Concrete paths branch in multiple directions. Two does stand near the center. They look at you. One flicks an ear.  
-*Exits: N → Back Porch | NW (also from Mudroom) | S → Oak Grove South | E → Wooden Pavilion | W → Whiskey Room Trail | NW → LGG Exterior*  
+*Exits: NE → Mudroom | S → Oak Grove South | E → Wooden Pavilion | W → Whiskey Room Trail | NW → LGG Exterior*  
 *Notes: Gerald wanders here. Deer visible. String lights = safe after dark.*
 
 ---
@@ -262,8 +263,8 @@ A standalone open-sided wooden pavilion in the middle of the grove, separate fro
 ---
 
 **20. South Meadow**  
-The open field south of the grove widens here. The cedar thicket is visible at the far southern edge. Red patio umbrellas mark the fire pit clearing to the southeast. To the east, around the back of the pool area, is the pool deck. Two deer were just here — you can see their tracks — but they heard you coming.  
-*Exits: N → Oak Grove South | SE → Fire Pit | S → Cedar Brake | E → Pool Deck (looping path)*
+The open field south of the grove widens here. The cedar thicket is visible at the far southern edge. Two red patio umbrellas mark the fire pit clearing to the southeast. The pool deck loops around to the northeast. Two deer were just here — you can see their tracks — but they heard you coming.  
+*Exits: N → Oak Grove South | SE → Fire Pit | NE → Pool Deck*
 
 ---
 
@@ -333,8 +334,8 @@ A short path winds west through the oaks, following the string lights. Cedar mul
 ---
 
 **29. Whiskey Room Porch**  
-A small step and narrow covered stoop in front of the Whiskey Room cabin. A boot scraper. A mounted antler beside the door — two tines, modest, decorative. The door is locked — a small brass plate where the handle should be.  
-*Exits: E → Whiskey Room Trail | W (door, 🔒 cabin key required) → Whiskey Room*
+A small step and narrow covered stoop in front of the Whiskey Room cabin. A boot scraper. A mounted antler beside the door — two tines, modest, decorative. The door has a small numeric keypad (0–9) and a brass plaque engraved: COURT · SHED · TUB · BLIND.  
+*Exits: E → Whiskey Room Trail | W (🔒 enter 4-digit code) → Whiskey Room*
 
 ---
 
@@ -357,8 +358,7 @@ Your friends are here. Someone is at the bar. Someone is in the corner chair wit
 **31. LGG Exterior**  
 The second outbuilding is stranger than the Whiskey Room. Corrugated metal sides, faded white. A cedar-framed open-air lean-to addition along the front, with string lights and a rough-cut bar shelf on the railing. Through a smudged window: a neon sign glows pink and green — LET'S GO GIRLS. A rooster weathervane on the peak turns slowly in a wind you cannot feel. On the door: *"SKIP'S SHACK — Members Only."*  
 *Exits: SE → Oak Grove North | In (🔒 LGG key required) → LGG Room*  
-*Notes: The neon sign provides enough light after dark — this location is safe without a flashlight.*  
-*Items: LGG Key (on lean-to bar shelf)*
+*Notes: The neon sign provides enough light after dark — this location is safe without a flashlight. LGG key is NOT here — it's hidden at Gerald's Tree.*
 
 ---
 
@@ -372,10 +372,10 @@ On the back wall: a door, painted the same green as the velvet chairs, nearly in
 **33. The Vodka Room**  
 A small, dark anteroom. The only light is a neon sign: **THE VODKA ROOM**, cold purple-white. Wire industrial shelving stocked with flavored vodkas, mixers, and one extremely out-of-place bottle of Kahlúa. A purple fur rug. Two camp chairs, one knocked sideways.
 
-Someone was here recently — empty glasses, a card game left mid-hand, the Kahlúa bottle moved to a chair with apparent deliberateness. On the side table: a note in marker. WENT TO THE CABIN. FOLLOW THE STRING LIGHTS.
+Someone was here recently — empty glasses, a card game left mid-hand, the Kahlúa bottle moved to a chair with apparent deliberateness. On the side table: a folded cabin note in black marker. WENT TO THE CABIN. FOLLOW THE STRING LIGHTS. CODE ORDER: COURT · SHED · TUB · BLIND.
 
 *Exits: S → LGG Room*  
-*Items: Cabin Key (turkey-embossed fob — unlocks Whiskey Room Porch door)*
+*Items: Order Note (folded cabin note — reveals code digit order; Gerald will steal this)*
 
 ---
 
@@ -387,8 +387,8 @@ Someone was here recently — empty glasses, a card game left mid-hand, the Kahl
 |------|---------------|---------|
 | Flashlight | Kitchen (drawer) | Unlocks dark locations after dark; needs batteries |
 | Batteries | Bunk Room (cactus nightlight) | Powers flashlight |
-| LGG Key | LGG Exterior (lean-to bar shelf) | Unlocks LGG Exterior door |
-| Cabin Key | Vodka Room (side table, turkey fob) | Unlocks Whiskey Room Porch door |
+| LGG Key | Gerald's Tree (hidden under empty beer can) | Unlocks LGG Exterior door |
+| Order Note | Vodka Room (side table, folded) | Reveals code digit order (COURT·SHED·TUB·BLIND); Gerald steals this |
 | Crackers | Kitchen (counter) | Gerald distraction option 1 |
 | Broken Jigger | Whiskey Room (bar top, brass) | Gerald distraction option 2 (shiny) |
 
@@ -404,9 +404,11 @@ Someone was here recently — empty glasses, a card game left mid-hand, the Kahl
 | Cactus Nightlight | Bunk Room | Contains batteries — take batteries to get them |
 | Western Novel | Shared Bathroom | Bookmarked at page 12. Has always been page 12. |
 | Rubber Duck (cowboy hat) | Master Bathroom | Examine only. |
-| Rubber Duck (plain) | Hot Tub | Examine only. Less charisma. |
-| Pool Schedule | Pool Equipment Shed | Lists "GERALD — UNSUPERVISED SWIM" Tuesdays at 2pm |
-| Scoreboard | Sports Court | GERALD: 3 / HUMANS: 0 |
+| Rubber Duck (plain) | Hot Tub | Examine → "2" on bottom (code digit for TUB). |
+| Pool Schedule | Pool Equipment Shed | Lists "TUESDAY 7:00 PM — GERALD" — digit 7 (SHED) |
+| Scoreboard Sign | Sports Court | GERALD: 3 / HUMANS: 0 — digit 3 (COURT) |
+| Plain Rubber Duck | Hot Tub | "2" marked on bottom — digit 2 (TUB) |
+| Order Note | Vodka Room / Gerald's Tree | Code order: COURT·SHED·TUB·BLIND → 3721 |
 | Whiteboard Note | Kitchen (fridge) | "Gerald got the last two beers. Check the whiskey room." |
 | Binoculars | Deer Blind | Takeable; reveals flavor descriptions from Pavilion and Back Porch |
 | Empty Beer Can | Gerald's Tree | Lone Star. Gerald did this. |
@@ -441,7 +443,7 @@ Gerald is a wild tom turkey — large, iridescent, and fully convinced the prope
 - *"Gerald appears to have eaten something. He seems satisfied. He does not explain."*
 - *"Gerald is at Gerald's Tree. He is simply Gerald, being Gerald, in his place."*
 
-**Gerald and the Cabin Key:** When the player first passes through Oak Grove North carrying the Cabin Key (picked up from the Vodka Room), Gerald intercepts and snatches it (flavor text: *"As you step back under the oaks, something crashes through the cedar at full speed. Gerald snatches the key off your person with his beak in a single practiced motion and is gone north before you finish the sentence you were starting to form."*). The key lands at Gerald's Tree. This sequence is scripted — it happens once, then Gerald ignores the key thereafter.
+**Gerald and the Order Note:** When the player first passes through Oak Grove North carrying the Order Note (picked up from the Vodka Room), Gerald intercepts and snatches it (flavor text: *"As you step back under the oaks, something crashes through the cedar at full speed. Gerald snatches the note off your person with his beak in a single practiced motion and is gone north before you finish the sentence you were starting to form."*). The note lands at Gerald's Tree (shown in the location description). This sequence is scripted — it happens once. Examining the note at Gerald's Tree still reveals the code order.
 
 ---
 
@@ -489,16 +491,21 @@ ARRIVE (Entrance Road)
     → explore Bunk Room → find BATTERIES (cactus nightlight)
     → combine: working flashlight
     → now explore after-dark areas
-    → navigate to LGG Exterior → find LGG KEY (lean-to bar shelf)
-    → USE LGG KEY → enter LGG Room
+    → explore Gerald's Tree → EXAMINE BEER CAN → find LGG KEY (hidden in soil)
+    → navigate to LGG Exterior → USE LGG KEY → enter LGG Room
     → find HIDDEN DOOR → The Vodka Room
-    → find CABIN KEY (side table) + note: "WENT TO THE CABIN"
+    → find ORDER NOTE (side table): "WENT TO THE CABIN / CODE ORDER: COURT·SHED·TUB·BLIND"
     → head back through Oak Grove North
-    → SCRIPTED: Gerald steals cabin key
-    → find CRACKERS or JIGGER (kitchen / whiskey room bar)
-    → distract Gerald → retrieve cabin key from Gerald's Tree
+    → SCRIPTED: Gerald steals Order Note
+    → gather four code digits from around the ranch:
+        · Sports Court scoreboard: GERALD: 3 → digit 3 (COURT)
+        · Pool Equipment Shed schedule: TUESDAY 7:00 PM → digit 7 (SHED)
+        · Hot Tub rubber duck bottom: "2" → digit 2 (TUB)
+        · Deer Blind door frame stencil: BLIND NO. 1 → digit 1 (BLIND)
+    → code order: COURT(3) · SHED(7) · TUB(2) · BLIND(1) → 3721
+    → (optional: examine Order Note at Gerald's Tree, or examine plaque at Whiskey Room Porch for order reminder)
     → follow Whiskey Room Trail → Whiskey Room Porch
-    → USE CABIN KEY → unlock door → enter Whiskey Room
+    → ENTER 3721 → door opens → enter Whiskey Room
     → WIN
 ```
 

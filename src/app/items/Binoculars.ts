@@ -26,7 +26,7 @@ export class Binoculars extends BaseItem {
       case LocationKey.WoodenPavilion:
         return "Through the binoculars you can see the Lodge's back porch clearly — the rocking chairs, the flatscreen TV, the log bar. In one of the rocking chairs, something large and brown is sitting. You adjust the focus. It is Gerald. He is just sitting there. In a rocking chair. On the back porch.";
       case LocationKey.BackPorch:
-        return "Through the binoculars you can see the fire pit clearing in the south meadow. The chairs are arranged. The fire pit is cold. No one is there. Or near there. Or visible anywhere back there.";
+        return "Through the binoculars you can see past the pool deck to the fire pit clearing beyond. The camp chairs are arranged. The fire pit is cold. No one is there, or near there, or visible anywhere in that direction.";
       case LocationKey.DeerBlind:
         return "Through the shooting window you scan the south meadow. Two deer near the treeline. A red umbrella folded by the pool. Distantly, the pool lights cycling through violet and blue. No sign of your friends.";
       default:

@@ -232,7 +232,7 @@ export class Startup {
     const loc = Startup.getLocation(LocationKey.GeraldTree);
     loc.neighbors = new NeighborMap([
       ["w" as Direction, Startup.getLocation(LocationKey.NorthField)],
-      ["n" as Direction, Startup.getLocation(LocationKey.ParkingArea)],
+      ["nw" as Direction, Startup.getLocation(LocationKey.ParkingArea)],
     ]);
     loc.items = [
       Startup.getItem(ItemKey.EmptyBeerCan),
@@ -305,7 +305,7 @@ export class Startup {
     const loc = Startup.getLocation(LocationKey.Mudroom);
     loc.neighbors = new NeighborMap([
       ["s" as Direction, Startup.getLocation(LocationKey.Kitchen)],
-      ["n" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
+      ["sw" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
     ]);
     loc.customVerbs = new Map([
       [
@@ -382,7 +382,7 @@ export class Startup {
   private static arrangeSharedBathroom() {
     const loc = Startup.getLocation(LocationKey.SharedBathroom);
     loc.neighbors = new NeighborMap([
-      ["w" as Direction, Startup.getLocation(LocationKey.Hallway)],
+      ["nw" as Direction, Startup.getLocation(LocationKey.Hallway)],
     ]);
     loc.items = [Startup.getItem(ItemKey.WesternNovel)];
   }
@@ -391,7 +391,7 @@ export class Startup {
     const loc = Startup.getLocation(LocationKey.BackPorch);
     loc.neighbors = new NeighborMap([
       ["n" as Direction, Startup.getLocation(LocationKey.GreatRoom)],
-      ["s" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
+      ["se" as Direction, Startup.getLocation(LocationKey.PoolDeck)],
     ]);
     loc.items = [
       Startup.getItem(ItemKey.BrokenJigger),
@@ -409,7 +409,6 @@ export class Startup {
   private static arrangeOakGroveNorth() {
     const loc = Startup.getLocation(LocationKey.OakGroveNorth);
     loc.neighbors = new NeighborMap([
-      ["n" as Direction, Startup.getLocation(LocationKey.BackPorch)],
       ["ne" as Direction, Startup.getLocation(LocationKey.Mudroom)],
       ["s" as Direction, Startup.getLocation(LocationKey.OakGroveSouth)],
       ["e" as Direction, Startup.getLocation(LocationKey.WoodenPavilion)],
@@ -461,8 +460,7 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["n" as Direction, Startup.getLocation(LocationKey.OakGroveSouth)],
       ["se" as Direction, Startup.getLocation(LocationKey.FirePit)],
-      ["s" as Direction, Startup.getLocation(LocationKey.CedarBrake)],
-      ["e" as Direction, Startup.getLocation(LocationKey.PoolDeck)],
+      ["ne" as Direction, Startup.getLocation(LocationKey.PoolDeck)],
     ]);
     loc.customVerbs = new Map([
       [
@@ -476,6 +474,7 @@ export class Startup {
   private static arrangePoolDeck() {
     const loc = Startup.getLocation(LocationKey.PoolDeck);
     loc.neighbors = new NeighborMap([
+      ["nw" as Direction, Startup.getLocation(LocationKey.BackPorch)],
       ["w" as Direction, Startup.getLocation(LocationKey.OakGroveSouth)],
       ["e" as Direction, Startup.getLocation(LocationKey.HotTub)],
       ["n" as Direction, Startup.getLocation(LocationKey.SportsCourt)],
