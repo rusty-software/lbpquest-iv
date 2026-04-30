@@ -52,14 +52,14 @@ High-level intent: make finding the 4 code digits an active puzzle requiring dis
 
 ---
 
-## Milestone 3 — Puzzle A: The Lantern
+## Milestone 3 — Puzzle A: The Lantern ✅
 
 High-level intent: PropaneLantern is currently a dead-end collectible. Give it a fuel source and a purpose.
 
-- ⬜ Add a fuel canister item somewhere logical (pool equipment shed or fire pit area)
-- ⬜ `use fuel` on lantern (or `fill lantern`) lights it — awards activation bonus
-- ⬜ Lit lantern enables something new in DeerBlind (reveals a marking, a note, a code element)
-- ⬜ Lit lantern counts as an alternative light source for dark areas
+- ✅ Add `FuelCanister` to PoolEquipmentShed (among the utility supplies)
+- ✅ `use fuel canister` (with lantern in inventory) or `use lantern` (with fuel canister in inventory) lights it — +3 score first time
+- ✅ Lit lantern reveals carved initials in DeerBlind via `examine markings` — +2 score first time; flashlight only washes the marks out
+- ✅ Lit lantern counts as an alternative light source for dark areas (`isDark` check in GameEngine)
 
 ---
 

@@ -27,4 +27,5 @@ export enum ItemKey {
   Gerald,
   WhiskeyKey,
   OrderNote,
+  FuelCanister,
 }

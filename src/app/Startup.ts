@@ -10,6 +10,7 @@ import {
   Crackers,
   EmptyBeerCan,
   Flashlight,
+  FuelCanister,
   Gerald,
   GeraldNote,
   GlowStick,
@@ -149,6 +150,7 @@ export class Startup {
     Startup.items.set(ItemKey.Binoculars, new Binoculars());
     Startup.items.set(ItemKey.Gerald, new Gerald());
     Startup.items.set(ItemKey.OrderNote, new OrderNote());
+    Startup.items.set(ItemKey.FuelCanister, new FuelCanister());
   }
 
   private static arrange() {
@@ -521,7 +523,7 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["w" as Direction, Startup.getLocation(LocationKey.SportsCourt)],
     ]);
-    loc.items = [Startup.getItem(ItemKey.PoolSchedule)];
+    loc.items = [Startup.getItem(ItemKey.PoolSchedule), Startup.getItem(ItemKey.FuelCanister)];
   }
 
   private static arrangeFirePit() {
@@ -557,11 +559,25 @@ export class Startup {
       ["n" as Direction, Startup.getLocation(LocationKey.CedarBrake)],
     ]);
     loc.items = [Startup.getItem(ItemKey.Binoculars)];
+    let markingsRead = false;
     loc.customVerbs = new Map([
       [
         "examine stencil",
         (_gameEngine) =>
           "Above the door frame, in faded stenciled paint: BLIND NO. 1.",
+      ],
+      [
+        "examine markings",
+        (gameEngine) => {
+          if (gameEngine.lanternLit) {
+            if (!markingsRead) {
+              markingsRead = true;
+              gameEngine.score += 2;
+            }
+            return "You hold the lantern close. In the warm amber light, scratched into the cedar plank above the rifle rest: R.B. & K.C. — OPENING WEEKEND, NOV '18. Someone brought their person. There are small hearts drawn on either side, careful despite the medium. The lantern light makes them readable where the flashlight's beam never could.";
+          }
+          return "You can tell something is scratched into the plank, but the beam washes the faded marks out. A warmer light might do better.";
+        },
       ],
     ]);
   }

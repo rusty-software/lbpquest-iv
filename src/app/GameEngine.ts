@@ -23,6 +23,7 @@ export class GameEngine {
   public display: string;
   public events: GameEvent[];
   public flashlightActive: boolean;
+  public lanternLit: boolean;
   public visitedLocations: Set<LocationKey>;
 
   private readonly inventory: Item[];
@@ -55,6 +56,7 @@ export class GameEngine {
     this.score = 0;
     this.actionCount = 0;
     this.flashlightActive = false;
+    this.lanternLit = false;
     this.visitedLocations = new Set();
 
     this.currentLocation = this.getLocation(LocationKey.EntranceRoad);
@@ -70,7 +72,7 @@ export class GameEngine {
   private parseCommand(input: string): CommandType | undefined {
     const cmdText = input.split(" ").shift()!;
     return CommandType.values.find(
-      (type) => cmdText === type.name.toLowerCase()
+      (type) => cmdText === type.name.toLowerCase(),
     );
   }
 
@@ -112,16 +114,26 @@ export class GameEngine {
             const whiskeyRoom = this.getLocation(LocationKey.WhiskeyRoom);
             porch.neighbors.set("w" as Direction, whiskeyRoom);
             whiskeyRoom.neighbors.set("e" as Direction, porch);
-            this.events.push(new ItemEvent("You enter 3-7-2-1. Four soft tones in sequence. A click — distinct and satisfied — and the door swings open on cedar and woodsmoke. Warm amber light spills out from inside.\n\nYou can go west to enter."));
+            this.events.push(
+              new ItemEvent(
+                "You enter 3-7-2-1. Four soft tones in sequence. A click — distinct and satisfied — and the door swings open on cedar and woodsmoke. Warm amber light spills out from inside.\n\nYou can go west to enter.",
+              ),
+            );
           } else if (this.cabinCodeEntered) {
             this.events.push(new ItemEvent("The door is already open."));
           } else if (/^\d+$/.test(rest)) {
-            this.events.push(new ItemEvent("The keypad responds with two flat beeps. The door does not open."));
+            this.events.push(
+              new ItemEvent(
+                "The keypad responds with two flat beeps. The door does not open.",
+              ),
+            );
           } else {
             this.events.push(new GameErrorEvent(GameError.UnknownCommand, ""));
           }
         } else {
-          this.events.push(new ItemEvent("There's nothing here that accepts a code."));
+          this.events.push(
+            new ItemEvent("There's nothing here that accepts a code."),
+          );
         }
         break;
       }
@@ -133,7 +145,9 @@ export class GameEngine {
         if (item) {
           this.events.push(new ItemEvent(item!.examine(this)));
         } else {
-          const locationVerb = this.currentLocation.customVerbs.get(`examine ${rest}`);
+          const locationVerb = this.currentLocation.customVerbs.get(
+            `examine ${rest}`,
+          );
           if (locationVerb) {
             this.events.push(new ItemEvent(locationVerb(this)));
           }
@@ -165,28 +179,28 @@ export class GameEngine {
             this.inventory.push(locationItem);
             this.currentLocation.items.splice(
               this.currentLocation.items.indexOf(locationItem),
-              1
+              1,
             );
           }
           this.events.push(new ItemEvent(locationItem.take(this)));
         } else if (this.getInventoryItemByName(rest)) {
           this.events.push(
-            new ItemEvent(`You're already carrying the ${rest}.`)
+            new ItemEvent(`You're already carrying the ${rest}.`),
           );
         } else {
           if (this.getItemByName(rest)) {
             this.events.push(
               new GameErrorEvent(
                 GameError.NoItem,
-                `Sorry, there is no ${rest} here.`
-              )
+                `Sorry, there is no ${rest} here.`,
+              ),
             );
           } else {
             this.events.push(
               new GameErrorEvent(
                 GameError.UnknownItem,
-                `Sorry, ${rest} is not a real or take-able item.`
-              )
+                `Sorry, ${rest} is not a real or take-able item.`,
+              ),
             );
           }
         }
@@ -207,15 +221,15 @@ export class GameEngine {
               this.events.push(
                 new GameErrorEvent(
                   GameError.NoItem,
-                  "Maybe try taking it first...?"
-                )
+                  "Maybe try taking it first...?",
+                ),
               );
             } else {
               this.events.push(
                 new GameErrorEvent(
                   GameError.NoItem,
-                  `You cannot drop the ${locationItem.name}. Ever.`
-                )
+                  `You cannot drop the ${locationItem.name}. Ever.`,
+                ),
               );
             }
           } else {
@@ -225,8 +239,8 @@ export class GameEngine {
               this.events.push(
                 new GameErrorEvent(
                   GameError.UnknownItem,
-                  `Sorry, ${rest} is not a real or droppable item.`
-                )
+                  `Sorry, ${rest} is not a real or droppable item.`,
+                ),
               );
             }
           }
@@ -244,15 +258,15 @@ export class GameEngine {
             this.events.push(
               new GameErrorEvent(
                 GameError.NoItem,
-                `Sorry, there is no ${rest} here.`
-              )
+                `Sorry, there is no ${rest} here.`,
+              ),
             );
           } else {
             this.events.push(
               new GameErrorEvent(
                 GameError.UnknownItem,
-                `Sorry, ${rest} is not a real or usable item.`
-              )
+                `Sorry, ${rest} is not a real or usable item.`,
+              ),
             );
           }
         }
@@ -267,7 +281,7 @@ export class GameEngine {
         if (targetItem) {
           const customVerbText = lowerInput.substr(
             0,
-            lowerInput.length - (targetItem.name.length + 1)
+            lowerInput.length - (targetItem.name.length + 1),
           );
           const customVerb = targetItem.customVerbs.get(customVerbText);
           if (customVerb) {
@@ -306,7 +320,7 @@ export class GameEngine {
     }
 
     this.events.push(
-      new LocationChangeEvent(location.title, location.description())
+      new LocationChangeEvent(location.title, location.description()),
     );
 
     if (location.id === LocationKey.WhiskeyRoom && !this.winScoreAwarded) {
@@ -315,15 +329,26 @@ export class GameEngine {
     }
   }
 
+  private hasActiveFlashlight(): boolean {
+    return this.inventoryContains(ItemKey.Flashlight) && !this.flashlightActive;
+  }
+
+  private hasLitLantern(): boolean {
+    return this.inventoryContains(ItemKey.PropaneLantern) && !this.lanternLit;
+  }
+
   public move(direction: Direction): void {
     const newLocation = this.currentLocation.neighbors.get(direction);
     if (newLocation) {
-      if (newLocation.isDark && !this.flashlightActive) {
+      if (
+        newLocation.isDark &&
+        !(this.hasActiveFlashlight() || this.hasLitLantern())
+      ) {
         this.events.push(
           new GameErrorEvent(
             GameError.InvalidPath,
-            "It's too dark to go that way. You'd need a light source."
-          )
+            "It's too dark to go that way. You'd need a light source.",
+          ),
         );
         return;
       }
@@ -352,8 +377,8 @@ export class GameEngine {
 
     this.events.push(
       new ItemEvent(
-        "As you step back under the oaks, something crashes through the cedar at full speed. Gerald — it is definitely Gerald — snatches the folded note right out of your hand with his beak, in a single practiced motion, and is gone north before you finish the sentence you were starting to form. You hear the crunch of gravel. The cabin note is gone."
-      )
+        "As you step back under the oaks, something crashes through the cedar at full speed. Gerald — it is definitely Gerald — snatches the folded note right out of your hand with his beak, in a single practiced motion, and is gone north before you finish the sentence you were starting to form. You hear the crunch of gravel. The cabin note is gone.",
+      ),
     );
   }
 
@@ -390,14 +415,16 @@ export class GameEngine {
     toLoc.items.push(this.getItem(ItemKey.Gerald));
 
     if (geraldWasHere) {
-      const msg = this.geraldDepartureMessages[
-        this.geraldPatrolIndex % this.geraldDepartureMessages.length
-      ];
+      const msg =
+        this.geraldDepartureMessages[
+          this.geraldPatrolIndex % this.geraldDepartureMessages.length
+        ];
       this.events.push(new ItemEvent(msg));
     } else if (toLoc === this.currentLocation) {
-      const msg = this.geraldArrivalMessages[
-        this.geraldPatrolIndex % this.geraldArrivalMessages.length
-      ];
+      const msg =
+        this.geraldArrivalMessages[
+          this.geraldPatrolIndex % this.geraldArrivalMessages.length
+        ];
       this.events.push(new ItemEvent(msg));
     }
   }
