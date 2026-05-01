@@ -8,6 +8,7 @@ export enum GameEventType {
   Inventory,
   Help,
   Error,
+  Win,
 }
 
 export class LocationChangeEvent {
@@ -40,12 +41,18 @@ export class GameErrorEvent {
   public constructor(public errorType: GameError, public customText: string) {}
 }
 
+export class WinEvent {
+  public readonly type = GameEventType.Win;
+  public constructor(public text: string) {}
+}
+
 export type GameEvent =
   | LocationChangeEvent
   | HelpEvent
   | NewInputEvent
   | ItemEvent
   | InventoryEvent
-  | GameErrorEvent;
+  | GameErrorEvent
+  | WinEvent;
 
 export {};

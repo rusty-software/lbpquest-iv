@@ -112,8 +112,13 @@ High-level intent: binoculars already have location-specific `use` text at multi
 - ✅ Per-digit discovery points added (2 pts each): COURT via scoreboard, SHED via pool schedule, TUB via rubber duck or binoculars at deer blind, BLIND via stencil
 - ✅ All scattered `gameEngine.score +=` quest rewards migrated to `Constants.Quests` entries
 
-### Game Over Screen
-- ⬜ Proper win state display (currently handled in WhiskeyRoom description prose)
+### Game Over Screen ✅
+- ✅ `WinEvent` pushed on first WhiskeyRoom entry via `questTracker.complete()` return value
+- ✅ Win narrative moved out of `WhiskeyRoom.description()` into `WinEvent` text
+- ✅ `WinView.tsx` renders win text with a separator line (`.win` class)
+- ✅ `GameEngine.isOver` getter derived from Win quest completion
+- ✅ `send()` gates on `isOver` — no commands accepted after win
+- ✅ `PlayView` replaces input field with `[ fin ]` once game is over
 
 ---
 

@@ -46,7 +46,9 @@ export class PlayView extends Component<any, GameState> {
   }
 
   public onBlur() {
-    setTimeout(() => this.commandInput.focus(), 0);
+    if (!this.gameEngine.isOver) {
+      setTimeout(() => this.commandInput.focus(), 0);
+    }
   }
 
   public componentDidMount() {
@@ -107,19 +109,25 @@ export class PlayView extends Component<any, GameState> {
           moves={this.gameEngine.actionCount}
         />
         <DisplayView events={this.gameEngine.events} />
-        <span id="input">
-          <div id="input-tag">{"> "}</div>
-          <input
-            id="input-element"
-            aria-label="Input your game commands here"
-            ref={(input: HTMLInputElement) => {
-              this.commandInput = input;
-            }}
-            autoFocus={true}
-            onBlur={this.onBlur}
-            onKeyDown={this.handleKeyDown}
-          />
-        </span>
+        {this.gameEngine.isOver ? (
+          <div id="input">
+            <div id="input-tag">{"[ fin ]"}</div>
+          </div>
+        ) : (
+          <span id="input">
+            <div id="input-tag">{"> "}</div>
+            <input
+              id="input-element"
+              aria-label="Input your game commands here"
+              ref={(input: HTMLInputElement) => {
+                this.commandInput = input;
+              }}
+              autoFocus={true}
+              onBlur={this.onBlur}
+              onKeyDown={this.handleKeyDown}
+            />
+          </span>
+        )}
       </div>
     );
   }

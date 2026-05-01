@@ -155,6 +155,12 @@ button {
     font-size: 1em;
 }
 
+.win {
+    margin-top: 1.5em;
+    padding-top: 1.5em;
+    border-top: 1px solid #ffbb33;
+}
+
 @media (max-width: 481px) {
     body {
         font-size: 1em;

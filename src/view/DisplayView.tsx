@@ -7,6 +7,7 @@ import { InventoryView } from "./InventoryView";
 import { ItemView } from "./ItemView";
 import { LocationView } from "./LocationView";
 import { HelpView } from "./HelpView";
+import { WinView } from "./WinView";
 
 interface DisplayViewProps {
   events: GameEvent[];
@@ -87,6 +88,9 @@ export class DisplayView extends React.Component<DisplayViewProps, any> {
                     customText={event.customText}
                   />
                 );
+              }
+              case GameEventType.Win: {
+                return <WinView key={index} text={event.text} />;
               }
               default: {
                 return (

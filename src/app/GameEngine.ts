@@ -9,6 +9,7 @@ import {
   ItemEvent,
   LocationChangeEvent,
   NewInputEvent,
+  WinEvent,
 } from "./events";
 import { GameError } from "./GameError";
 import { Item } from "./Item";
@@ -26,6 +27,10 @@ export class GameEngine {
   public events: GameEvent[];
   public readonly questTracker: QuestTracker;
   public visitedLocations: Set<LocationKey>;
+
+  public get isOver(): boolean {
+    return this.questTracker.isComplete(Constants.Quests.Win);
+  }
 
   private readonly inventory: Item[];
   private items: Map<ItemKey, Item> = new Map();
@@ -60,6 +65,21 @@ export class GameEngine {
 
     this.currentLocation = this.getLocation(LocationKey.EntranceRoad);
     this.display = this.currentLocation.description();
+
+    // ============================================================
+    // HACK ZONE — comment out before shipping
+    // ============================================================
+    // {
+    //   const porch = this.getLocation(LocationKey.WhiskeyRoomPorch);
+    //   const whiskeyRoom = this.getLocation(LocationKey.WhiskeyRoom);
+    //   porch.neighbors.set("w" as Direction, whiskeyRoom);
+    //   whiskeyRoom.neighbors.set("e" as Direction, porch);
+    //   this.questTracker.complete(Constants.Quests.CabinCodeEntered, this);
+    //   this.currentLocation = porch;
+    // }
+    // // ============================================================
+    // END HACK ZONE
+    // ============================================================
     this.inventory = [];
     this.events = [];
   }
@@ -76,6 +96,7 @@ export class GameEngine {
   }
 
   public send(input: string) {
+    if (this.isOver) return;
     const lowerInput = input.toLowerCase().trim();
     const cmd = this.parseCommand(lowerInput);
     const rest = lowerInput.substr(!!cmd ? cmd.name.length + 1 : 0);
@@ -106,7 +127,10 @@ export class GameEngine {
       case CommandType.enter: {
         this.actionCount++;
         if (this.currentLocation.id === LocationKey.WhiskeyRoomPorch) {
-          if (rest === "3721" && !this.questTracker.isComplete(Constants.Quests.CabinCodeEntered)) {
+          if (
+            rest === "3721" &&
+            !this.questTracker.isComplete(Constants.Quests.CabinCodeEntered)
+          ) {
             this.questTracker.complete(Constants.Quests.CabinCodeEntered, this);
             const porch = this.currentLocation;
             const whiskeyRoom = this.getLocation(LocationKey.WhiskeyRoom);
@@ -117,7 +141,9 @@ export class GameEngine {
                 "You enter 3-7-2-1. Four soft tones in sequence. A click — distinct and satisfied — and the door swings open on cedar and woodsmoke. Warm amber light spills out from inside.\n\nYou can go west to enter.",
               ),
             );
-          } else if (this.questTracker.isComplete(Constants.Quests.CabinCodeEntered)) {
+          } else if (
+            this.questTracker.isComplete(Constants.Quests.CabinCodeEntered)
+          ) {
             this.events.push(new ItemEvent("The door is already open."));
           } else if (/^\d+$/.test(rest)) {
             this.events.push(
@@ -322,7 +348,14 @@ export class GameEngine {
     );
 
     if (location.id === LocationKey.WhiskeyRoom) {
-      this.questTracker.complete(Constants.Quests.Win, this);
+      const firstVisit = this.questTracker.complete(Constants.Quests.Win, this);
+      if (firstVisit) {
+        this.events.push(
+          new WinEvent(
+            'And here, finally: your friends. Someone is in the corner chair with a whiskey. Someone else is at the bar, mid-explanation of a card game to a person who is clearly not listening. They look up when you come in.\n\n"There you are," someone says. "We\'ve been here for an hour. Grab a glass."\n\nYou do.\n\nThe walk through the property — the field, the grove, the turkey, all of it — becomes a story you\'ll tell at this bar, in this room, at the end of these string lights, before the weekend is done.',
+          ),
+        );
+      }
     }
   }
 
