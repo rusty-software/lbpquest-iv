@@ -17,7 +17,7 @@ export class WhiskeyRoom extends BaseLocation {
     if (this.firstVisit) {
       this.firstVisit = false;
       s +=
-        "\n\nAnd here, finally: your friends. Someone is in the corner chair with a whiskey. Someone else is at the bar, attempting to explain a card game to a person who is clearly not listening. They look up when you come in.\n\n\"There you are,\" someone says. \"We've been here for an hour. Grab a glass.\"\n\n** You have found your friends. The quest is complete. **";
+        "\n\nAnd here, finally: your friends. Someone is in the corner chair with a whiskey. Someone else is at the bar, mid-explanation of a card game to a person who is clearly not listening. They look up when you come in.\n\n\"There you are,\" someone says. \"We've been here for an hour. Grab a glass.\"\n\nYou do.\n\nThe walk through the property — the field, the grove, the turkey, all of it — becomes a story you'll tell at this bar, in this room, at the end of these string lights, before the weekend is done.";
     }
 
     s += "\n\nThe porch is to the east.";

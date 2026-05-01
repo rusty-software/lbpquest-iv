@@ -44,7 +44,7 @@ export class Gerald extends BaseItem {
   }
 
   public getLocationText(): string {
-    return "Gerald the Gobbler King is here.";
+    return "A large tom turkey stands here. Gerald. He was here first.";
   }
 
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map<string, (gameEngine: GameEngine) => string>([

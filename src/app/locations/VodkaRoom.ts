@@ -12,8 +12,8 @@ export class VodkaRoom extends BaseLocation {
       : "The side table is empty now.";
 
     return (
-      "A small, dark anteroom. The only light is a neon sign on the wall: THE VODKA ROOM, in cold purple-white. Wire industrial shelving lines three walls, stocked with an eclectic mix of flavored vodkas, mixers, and one extremely out-of-place bottle of Kahlua. A purple fur rug on the floor. Two camp chairs, one knocked sideways.\n\n" +
-      "Someone was here recently. Empty glasses. A card game left mid-hand — someone was winning. The Kahlua bottle has been moved from the shelf and placed in a chair with apparent deliberateness.\n\n" +
+      "The neon says THE VODKA ROOM. Cold purple-white. It is the only light in here, which is either deliberate or nobody thought to put in a window. Wire industrial shelving on three walls — flavored vodkas, mixers, one deeply out-of-place bottle of Kahlúa. A purple fur rug. Two camp chairs, one knocked sideways.\n\n" +
+      "Someone was here recently. Empty glasses. A card game left mid-hand — someone was winning and clearly not worried about it. The Kahlúa has been moved from the shelf to the seat of one of the camp chairs, with a deliberateness that suggests whoever placed it had reasons.\n\n" +
       noteText +
       "\n\nThe LGG room is to the south." +
       this.appendItems()

@@ -75,16 +75,18 @@ High-level intent: Gerald's patrol is mechanically interesting but narratively p
 
 ---
 
-## Milestone 5 — Description Rewrites
+## Milestone 5 — Description Rewrites ✅
 
 High-level intent: tighten the writing voice, fix cross-references, improve the worst descriptions.
 
-- ⬜ Remove all cross-location references ("stranger than the Whiskey Room", etc.)
-- ⬜ Gerald's `getLocationText()` and first-encounter text — should be unmistakably a turkey immediately
-- ⬜ LGG Room and Vodka Room — underselling the surprise; rewrite
-- ⬜ Any description using "smelling of oak and time" or similar — tighten
-- ⬜ Win screen — currently tacked onto the room description; give it a proper moment
-- ⬜ Audit all location descriptions for tone consistency
+- ✅ Remove all cross-location references ("stranger than the Whiskey Room", etc.)
+- ✅ Gerald's `getLocationText()` — now reads "A large tom turkey stands here. Gerald. He was here first."
+- ✅ LGG Room — removed "Not what you expected"; juxtaposition lands via "You are standing in the back of a corrugated metal outbuilding at a ranch in Johnson City, Texas."
+- ✅ Vodka Room — opens with the neon discovery ("The neon says THE VODKA ROOM") instead of "A small, dark anteroom"
+- ✅ WhiskeyRoomTrail — replaced "smelling of oak and time" with "cedar and woodsmoke"
+- ✅ Win screen — replaced meta-announcement with narrative landing ("You do. The walk through the property...")
+- ✅ WoodenPavilion — removed hardcoded lantern line (item handles it); replaced with neutral hook reference
+- ✅ OakGroveNorth — "mudroom exit" → "Lodge back door"
 
 ---
 
