@@ -90,7 +90,10 @@ export class Startup {
 
   private static instantiateLocations() {
     Startup.locations.set(LocationKey.EntranceRoad, new EntranceRoad());
-    Startup.locations.set(LocationKey.RanchEntranceSign, new RanchEntranceSign());
+    Startup.locations.set(
+      LocationKey.RanchEntranceSign,
+      new RanchEntranceSign(),
+    );
     Startup.locations.set(LocationKey.NorthField, new NorthField());
     Startup.locations.set(LocationKey.GeraldTree, new GeraldTree());
     Startup.locations.set(LocationKey.ParkingArea, new ParkingArea());
@@ -112,7 +115,10 @@ export class Startup {
     Startup.locations.set(LocationKey.PoolDeck, new PoolDeck());
     Startup.locations.set(LocationKey.HotTub, new HotTub());
     Startup.locations.set(LocationKey.SportsCourt, new SportsCourt());
-    Startup.locations.set(LocationKey.PoolEquipmentShed, new PoolEquipmentShed());
+    Startup.locations.set(
+      LocationKey.PoolEquipmentShed,
+      new PoolEquipmentShed(),
+    );
     Startup.locations.set(LocationKey.FirePit, new FirePit());
     Startup.locations.set(LocationKey.CedarBrake, new CedarBrake());
     Startup.locations.set(LocationKey.DeerBlind, new DeerBlind());
@@ -200,6 +206,8 @@ export class Startup {
 
   private static arrangeRanchEntranceSign() {
     const loc = Startup.getLocation(LocationKey.RanchEntranceSign);
+    const noteText =
+      "The note reads 'GERALD KNOWS THE CODE. DO NOT ASK GERALD FOR THE CODE.'";
     loc.neighbors = new NeighborMap([
       ["s" as Direction, Startup.getLocation(LocationKey.EntranceRoad)],
       ["n" as Direction, Startup.getLocation(LocationKey.NorthField)],
@@ -208,8 +216,10 @@ export class Startup {
       [
         "examine sign",
         (_gameEngine) =>
-          "OAKRIDGE RANCH. Black powder-coated steel. A silhouette of a black-tailed stag leaping left, LED-backlit. Beneath the name, smaller text: Est. whenever the cedar got serious. Someone has added a handwritten sticky note to the back of the sign post, visible only from the field side: 'GERALD KNOWS THE CODE. DO NOT ASK GERALD.'",
+          'The sign reads "OAKRIDGE RANCH" and appears to be made of black powder-coated steel. A silhouette of a black-tailed stag in profile dominates the center of the sign, and the entire thing is backlit with a variable LED. You can see a sticky note attached to the back of the sign post.',
       ],
+      ["read note", (_gameEngine) => noteText],
+      ["examine note", (_gameEngine) => noteText],
     ]);
   }
 
@@ -523,7 +533,10 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["w" as Direction, Startup.getLocation(LocationKey.SportsCourt)],
     ]);
-    loc.items = [Startup.getItem(ItemKey.PoolSchedule), Startup.getItem(ItemKey.FuelCanister)];
+    loc.items = [
+      Startup.getItem(ItemKey.PoolSchedule),
+      Startup.getItem(ItemKey.FuelCanister),
+    ];
   }
 
   private static arrangeFirePit() {
@@ -546,7 +559,9 @@ export class Startup {
       [
         "examine trees",
         (gameEngine) =>
-          gameEngine.questTracker.isComplete(Constants.Quests.FlashlightActivated)
+          gameEngine.questTracker.isComplete(
+            Constants.Quests.FlashlightActivated,
+          )
             ? "Your flashlight sweeps across the cedar trunks. The trees grow in close here, old and twisted. On one trunk near the center, scratched at shoulder height: GOT U. Two letters. Gerald's work, or just bark damage from something passing through. You choose not to decide."
             : "You can't see much in the dark. The cedar presses close. Something moves in the branches. It is probably just wind.",
       ],
@@ -563,7 +578,10 @@ export class Startup {
       [
         "examine stencil",
         (gameEngine) => {
-          gameEngine.questTracker.complete(Constants.Quests.DigitBlind, gameEngine);
+          gameEngine.questTracker.complete(
+            Constants.Quests.DigitBlind,
+            gameEngine,
+          );
           return "Above the door frame, in faded stenciled paint: BLIND NO. 1.";
         },
       ],
@@ -571,7 +589,10 @@ export class Startup {
         "examine markings",
         (gameEngine) => {
           if (gameEngine.questTracker.isComplete(Constants.Quests.LanternLit)) {
-            gameEngine.questTracker.complete(Constants.Quests.LanternMarkings, gameEngine);
+            gameEngine.questTracker.complete(
+              Constants.Quests.LanternMarkings,
+              gameEngine,
+            );
             return "You hold the lantern close. In the warm amber light, scratched into the cedar plank above the rifle rest: R.B. & K.C. — OPENING WEEKEND, NOV '18. Someone brought their person. There are small hearts drawn on either side, careful despite the medium. The lantern light makes them readable where the flashlight's beam never could.";
           }
           return "You can tell something is scratched into the plank, but the beam washes the faded marks out. A warmer light might do better.";

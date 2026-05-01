@@ -23,7 +23,7 @@ export class EmptyBeerCan extends BaseItem {
   }
 
   public getLocationText(): string {
-    return "An empty Lone Star tallboy is here.";
+    return "An empty beer can of the Lone Star tallboy variety is here.";
   }
 
   public examine(gameEngine: GameEngine): string {
@@ -32,7 +32,7 @@ export class EmptyBeerCan extends BaseItem {
       geraldTree.showItem(ItemKey.LGGKey);
       return "An empty Lone Star tallboy. You tilt it — placed deliberately, not dropped. Underneath, pressed flat into the soil: a small key on a leather fob. LGG is stamped into the leather in a neat serif font. Someone left this here. Someone with feathers and no regard for conventional key storage.";
     }
-    return "An empty Lone Star tallboy. Placed at the base of Gerald's Tree with clear intention. Gerald does not drink beer. Someone left this for him. Gerald accepted.";
+    return "An empty beer can of the Lone Star tallboy variety. It was originally placed at the base of Gerald's Tree with clear intention. Gerald does not drink beer. Someone left this for him. Gerald accepted.";
   }
 
   public use(_gameEngine: GameEngine): string {
