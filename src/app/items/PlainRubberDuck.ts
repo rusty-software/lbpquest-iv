@@ -24,7 +24,7 @@ export class PlainRubberDuck extends BaseItem {
 
   public examine(gameEngine: GameEngine): string {
     gameEngine.questTracker.complete(Constants.Quests.DigitTub, gameEngine);
-    return "A plain rubber duck. Unadorned, unhatted, at peace with its limitations. On the flat bottom, in faded permanent marker: 2. Just the number 2. No explanation.";
+    return "A plain rubber duck, unadorned and unhatted, apparently at peace with its limitations. On the flat bottom, in faded permanent marker, someone has written the number 2 and nothing else.";
   }
 
   public use(_gameEngine: GameEngine): string {

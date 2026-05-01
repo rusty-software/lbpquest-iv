@@ -14,7 +14,7 @@ export class Batteries extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "Two AA batteries. They came out of the cactus nightlight. They will work fine.";
+    return "A pair of AA batteries pulled from the cactus nightlight. They should work fine.";
   }
 
   public use(gameEngine: GameEngine): string {

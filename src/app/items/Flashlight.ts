@@ -19,7 +19,7 @@ export class Flashlight extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A heavy-duty Maglite in olive drab. You click it. Nothing happens. Dead batteries.";
+    return "A heavy-duty Maglite in olive drab. You click it. Nothing happens. The batteries are dead.";
   }
 
   public use(gameEngine: GameEngine): string {

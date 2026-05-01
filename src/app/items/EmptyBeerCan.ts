@@ -23,7 +23,7 @@ export class EmptyBeerCan extends BaseItem {
   }
 
   public getLocationText(): string {
-    return "An empty beer can of the Lone Star tallboy variety is here.";
+    return "An empty Lone Star tallboy beer can is here.";
   }
 
   public examine(gameEngine: GameEngine): string {
@@ -36,7 +36,7 @@ export class EmptyBeerCan extends BaseItem {
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You shake the can. Empty.";
+    return "You shake the can. It's empty.";
   }
 
   public getName(): string {

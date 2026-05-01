@@ -13,7 +13,7 @@ export class StuffedArmadillo extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A stuffed toy armadillo, well-loved, with a slightly flattened snout from years of deployment in some child's nightly defensive operations. Button eyes. No judgment. An armadillo of sterling character.";
+    return "A stuffed toy armadillo, well-loved, with a slightly flattened snout from years of deployment in some child's nightly defensive operations. It has button eyes and passes no judgment whatsoever. Its character is unimpeachable.";
   }
 
   public use(_gameEngine: GameEngine): string {

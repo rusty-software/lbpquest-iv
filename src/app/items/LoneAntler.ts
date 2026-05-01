@@ -17,7 +17,7 @@ export class LoneAntler extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A single antler mounted beside the whiskey room porch door. Two tines. Modest. Decorative. It has been here long enough that it no longer draws comment from whoever comes and goes.";
+    return "A single antler, two tines, mounted beside the whiskey room porch door. It has been here long enough that it no longer draws comment from whoever comes and goes.";
   }
 
   public use(_gameEngine: GameEngine): string {

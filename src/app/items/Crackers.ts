@@ -18,7 +18,7 @@ export class Crackers extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A sleeve of Ritz crackers. Mostly intact. These would be very interesting to a turkey.";
+    return "A sleeve of Ritz crackers, mostly intact, the kind of thing that would be very interesting to a turkey.";
   }
 
   public use(gameEngine: GameEngine): string {

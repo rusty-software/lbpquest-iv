@@ -13,7 +13,7 @@ export class TopoChicoBottle extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "An empty Topo Chico bottle on the armrest of an Adirondack chair at the fire pit. Someone was here. Recently. The bottle is dry inside — they finished it properly, at least.";
+    return "An empty Topo Chico bottle on the armrest of an Adirondack chair at the fire pit. Someone was here recently. The bottle is dry inside — they finished it properly, at least.";
   }
 
   public use(_gameEngine: GameEngine): string {

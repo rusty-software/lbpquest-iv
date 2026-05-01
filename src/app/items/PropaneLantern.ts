@@ -24,7 +24,7 @@ export class PropaneLantern extends BaseItem {
     if (this.isLit) {
       return "A propane lantern burning with a steady amber flame. The light is warm and even — better for reading fine detail than a flashlight's harsh beam.";
     }
-    return "A propane lantern. You twist the valve. Nothing. Empty. It has the particular sadness of things left underfueled.";
+    return "A propane lantern. You twist the valve and get nothing. It has the particular sadness of things left underfueled.";
   }
 
   public use(gameEngine: GameEngine): string {
