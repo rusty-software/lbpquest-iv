@@ -13,6 +13,19 @@ export class EmptyBeerCan extends BaseItem {
     return true;
   }
 
+  public take(gameEngine: GameEngine): string {
+    this.taken = true;
+    const geraldTree = gameEngine.getLocation(LocationKey.GeraldTree);
+    if (geraldTree.hasItem(ItemKey.LGGKey)) {
+      geraldTree.showItem(ItemKey.LGGKey);
+    }
+    return "Taken.";
+  }
+
+  public getLocationText(): string {
+    return "An empty Lone Star tallboy is here.";
+  }
+
   public examine(gameEngine: GameEngine): string {
     const geraldTree = gameEngine.getLocation(LocationKey.GeraldTree);
     if (geraldTree.hasItem(ItemKey.LGGKey)) {

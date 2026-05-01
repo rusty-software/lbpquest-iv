@@ -63,14 +63,15 @@ High-level intent: PropaneLantern is currently a dead-end collectible. Give it a
 
 ---
 
-## Milestone 4 — Puzzle B: Gerald as Gatekeeper
+## Milestone 4 — Puzzle B: Gerald as Gatekeeper ✅
 
 High-level intent: Gerald's patrol is mechanically interesting but narratively purposeless. Give him a reason to be guarding the beer can/LGGKey area.
 
-- ⬜ Gerald's first appearance (or early examine) should establish he's been sitting on / near the beer can deliberately
-- ⬜ Make defeating Gerald feel like solving the problem "how do I get this turkey off this thing" rather than just clearing an annoyance
-- ⬜ BrokenJigger (now at BackPorch bar) works as Gerald distractor — player finds it before reaching Whiskey Room, can use `show jigger to gerald` as an alternative to crackers
-- ⬜ Revisit Gerald patrol behavior / hint text as needed
+- ✅ **GeraldTree.ts** — dynamic description(): when can + Gerald both present, says "Gerald is standing directly over it. He is not moving from it."; when can present alone, says "Something has been left at the base of the tree. Deliberately."; can mention disappears once can is taken
+- ✅ **EmptyBeerCan.ts** — added `take()` override: reveals LGGKey whenever can is taken (whether examined first or not); added `getLocationText()` (fixes pre-existing double-listing with hardcoded description)
+- ✅ **Gerald.ts** — updated last cycling examine description to "standing very close to something on the ground. He is not touching it. He is not moving from it."
+- ✅ **GameEngine.ts** — patrol expanded to 5 stops: EntranceRoad → GeraldTree → NorthField → OakGroveSouth → ParkingArea
+- ✅ BrokenJigger alternative (`show jigger to gerald`) already implemented in M1
 
 ---
 

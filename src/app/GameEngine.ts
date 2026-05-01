@@ -41,6 +41,7 @@ export class GameEngine {
     LocationKey.EntranceRoad,
     LocationKey.GeraldTree,
     LocationKey.NorthField,
+    LocationKey.OakGroveSouth,
     LocationKey.ParkingArea,
   ];
 

@@ -7,7 +7,7 @@ const geraldDescriptions = [
   "Gerald — a full-grown tom turkey, for the record — has arrived and is now patrolling the area with the grim efficiency of a regional manager doing a surprise audit.",
   "Gerald is here. A turkey. Your size, approximately. He is simply being Gerald, in his place. You are the intruder in this arrangement.",
   "Gerald the turkey appears to have eaten something. He seems satisfied. He does not explain.",
-  "Gerald — large, bronze-feathered, deeply unimpressed — is standing very close to something of yours. He is not touching it. He is thinking about touching it.",
+  "Gerald — large, bronze-feathered, deeply unimpressed — is standing very close to something on the ground. He is not touching it. He is not moving from it.",
 ];
 
 export class Gerald extends BaseItem {
