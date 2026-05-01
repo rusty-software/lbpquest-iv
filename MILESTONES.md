@@ -102,8 +102,18 @@ High-level intent: binoculars already have location-specific `use` text at multi
 
 ## Milestone 7 — Quest Tracker + Game Over
 
-- ⬜ Quest tracker — game-state display (dev/HUD), not a player-accessible command; shows puzzle completion flags (code digits found, LGG unlocked, Gerald defeated, flashlight active)
-- ⬜ Game over screen — proper win state, not just a line in the room description
+### Quest Tracker ✅
+
+- ✅ `Constants.ts` — all quest definitions in one place (`id`, `value`); `maxScore()` iterates over them instead of using a hard-coded sum
+- ✅ `QuestTracker.ts` — `complete(quest, scorer)` is idempotent (awards points only on first call, returns `true`/`false`); `isComplete(quest)` replaces scattered boolean flags
+- ✅ Removed `flashlightActive`, `lanternLit`, `winScoreAwarded`, `cabinCodeEntered` from `GameEngine` — all replaced by `questTracker.isComplete(...)`
+- ✅ Fixed `hasActiveFlashlight()` and `hasLitLantern()` — both were inverted (dark areas were accessible when light was off, blocked when on)
+- ✅ Fixed `Batteries.use()` — was incorrectly removing the flashlight from inventory instead of the batteries
+- ✅ Per-digit discovery points added (2 pts each): COURT via scoreboard, SHED via pool schedule, TUB via rubber duck or binoculars at deer blind, BLIND via stencil
+- ✅ All scattered `gameEngine.score +=` quest rewards migrated to `Constants.Quests` entries
+
+### Game Over Screen
+- ⬜ Proper win state display (currently handled in WhiskeyRoom description prose)
 
 ---
 

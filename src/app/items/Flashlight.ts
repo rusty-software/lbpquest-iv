@@ -1,3 +1,4 @@
+import { Constants } from "../Constants";
 import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
@@ -18,8 +19,7 @@ export class Flashlight extends BaseItem {
 
   public use(gameEngine: GameEngine): string {
     if (gameEngine.inventoryContains(ItemKey.Batteries)) {
-      if (!gameEngine.flashlightActive) gameEngine.score += 5;
-      gameEngine.flashlightActive = true;
+      gameEngine.questTracker.complete(Constants.Quests.FlashlightActivated, gameEngine);
       gameEngine.removeFromInventory(ItemKey.Batteries);
       return "You load the batteries. The flashlight clicks on with a satisfying snap. A bright beam cuts through the room. You feel considerably better about the cedar brake now.";
     }

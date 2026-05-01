@@ -1,3 +1,4 @@
+import { Constants } from "./Constants";
 import { Item } from "./Item";
 import {
   Batteries,
@@ -545,7 +546,7 @@ export class Startup {
       [
         "examine trees",
         (gameEngine) =>
-          gameEngine.flashlightActive
+          gameEngine.questTracker.isComplete(Constants.Quests.FlashlightActivated)
             ? "Your flashlight sweeps across the cedar trunks. The trees grow in close here, old and twisted. On one trunk near the center, scratched at shoulder height: GOT U. Two letters. Gerald's work, or just bark damage from something passing through. You choose not to decide."
             : "You can't see much in the dark. The cedar presses close. Something moves in the branches. It is probably just wind.",
       ],
@@ -558,21 +559,19 @@ export class Startup {
       ["n" as Direction, Startup.getLocation(LocationKey.CedarBrake)],
     ]);
     loc.items = [Startup.getItem(ItemKey.Binoculars)];
-    let markingsRead = false;
     loc.customVerbs = new Map([
       [
         "examine stencil",
-        (_gameEngine) =>
-          "Above the door frame, in faded stenciled paint: BLIND NO. 1.",
+        (gameEngine) => {
+          gameEngine.questTracker.complete(Constants.Quests.DigitBlind, gameEngine);
+          return "Above the door frame, in faded stenciled paint: BLIND NO. 1.";
+        },
       ],
       [
         "examine markings",
         (gameEngine) => {
-          if (gameEngine.lanternLit) {
-            if (!markingsRead) {
-              markingsRead = true;
-              gameEngine.score += 2;
-            }
+          if (gameEngine.questTracker.isComplete(Constants.Quests.LanternLit)) {
+            gameEngine.questTracker.complete(Constants.Quests.LanternMarkings, gameEngine);
             return "You hold the lantern close. In the warm amber light, scratched into the cedar plank above the rifle rest: R.B. & K.C. — OPENING WEEKEND, NOV '18. Someone brought their person. There are small hearts drawn on either side, careful despite the medium. The lantern light makes them readable where the flashlight's beam never could.";
           }
           return "You can tell something is scratched into the plank, but the beam washes the faded marks out. A warmer light might do better.";

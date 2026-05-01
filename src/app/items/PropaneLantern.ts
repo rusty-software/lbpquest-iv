@@ -1,3 +1,4 @@
+import { Constants } from "../Constants";
 import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
@@ -32,8 +33,7 @@ export class PropaneLantern extends BaseItem {
     }
     if (gameEngine.inventoryContains(ItemKey.FuelCanister)) {
       this.isLit = true;
-      if (!gameEngine.lanternLit) gameEngine.score += 3;
-      gameEngine.lanternLit = true;
+      gameEngine.questTracker.complete(Constants.Quests.LanternLit, gameEngine);
       gameEngine.removeFromInventory(ItemKey.FuelCanister);
       return "You screw the canister into the lantern base and turn the valve. A soft hiss, then a click — the mantle catches and blooms into warm amber light. The lantern is lit.";
     }

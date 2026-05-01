@@ -1,4 +1,5 @@
 import { CommandType } from "./CommandType";
+import { Constants } from "./Constants";
 import { Direction } from "./Direction";
 import {
   GameErrorEvent,
@@ -14,6 +15,7 @@ import { Item } from "./Item";
 import { ItemKey } from "./items";
 import { Location } from "./Location";
 import { LocationKey } from "./locations";
+import { QuestTracker } from "./QuestTracker";
 import { Startup } from "./Startup";
 
 export class GameEngine {
@@ -22,8 +24,7 @@ export class GameEngine {
   public actionCount: number;
   public display: string;
   public events: GameEvent[];
-  public flashlightActive: boolean;
-  public lanternLit: boolean;
+  public readonly questTracker: QuestTracker;
   public visitedLocations: Set<LocationKey>;
 
   private readonly inventory: Item[];
@@ -34,8 +35,6 @@ export class GameEngine {
   private geraldKeyTheftDone: boolean = false;
   private geraldPatrolIndex: number = 0;
   private lastGeraldMoveAt: number = 0;
-  private winScoreAwarded: boolean = false;
-  private cabinCodeEntered: boolean = false;
 
   private readonly geraldPatrol: LocationKey[] = [
     LocationKey.EntranceRoad,
@@ -56,8 +55,7 @@ export class GameEngine {
 
     this.score = 0;
     this.actionCount = 0;
-    this.flashlightActive = false;
-    this.lanternLit = false;
+    this.questTracker = new QuestTracker();
     this.visitedLocations = new Set();
 
     this.currentLocation = this.getLocation(LocationKey.EntranceRoad);
@@ -108,9 +106,8 @@ export class GameEngine {
       case CommandType.enter: {
         this.actionCount++;
         if (this.currentLocation.id === LocationKey.WhiskeyRoomPorch) {
-          if (rest === "3721" && !this.cabinCodeEntered) {
-            this.cabinCodeEntered = true;
-            this.score += 10;
+          if (rest === "3721" && !this.questTracker.isComplete(Constants.Quests.CabinCodeEntered)) {
+            this.questTracker.complete(Constants.Quests.CabinCodeEntered, this);
             const porch = this.currentLocation;
             const whiskeyRoom = this.getLocation(LocationKey.WhiskeyRoom);
             porch.neighbors.set("w" as Direction, whiskeyRoom);
@@ -120,7 +117,7 @@ export class GameEngine {
                 "You enter 3-7-2-1. Four soft tones in sequence. A click — distinct and satisfied — and the door swings open on cedar and woodsmoke. Warm amber light spills out from inside.\n\nYou can go west to enter.",
               ),
             );
-          } else if (this.cabinCodeEntered) {
+          } else if (this.questTracker.isComplete(Constants.Quests.CabinCodeEntered)) {
             this.events.push(new ItemEvent("The door is already open."));
           } else if (/^\d+$/.test(rest)) {
             this.events.push(
@@ -324,18 +321,23 @@ export class GameEngine {
       new LocationChangeEvent(location.title, location.description()),
     );
 
-    if (location.id === LocationKey.WhiskeyRoom && !this.winScoreAwarded) {
-      this.winScoreAwarded = true;
-      this.score += 21;
+    if (location.id === LocationKey.WhiskeyRoom) {
+      this.questTracker.complete(Constants.Quests.Win, this);
     }
   }
 
   private hasActiveFlashlight(): boolean {
-    return this.inventoryContains(ItemKey.Flashlight) && !this.flashlightActive;
+    return (
+      this.inventoryContains(ItemKey.Flashlight) &&
+      this.questTracker.isComplete(Constants.Quests.FlashlightActivated)
+    );
   }
 
   private hasLitLantern(): boolean {
-    return this.inventoryContains(ItemKey.PropaneLantern) && !this.lanternLit;
+    return (
+      this.inventoryContains(ItemKey.PropaneLantern) &&
+      this.questTracker.isComplete(Constants.Quests.LanternLit)
+    );
   }
 
   public move(direction: Direction): void {
@@ -462,13 +464,15 @@ export class GameEngine {
   }
 
   public maxScore(): number {
-    let max = 0;
-    for (let itemObject of this.items.values()) {
-      const item = itemObject as Item;
-      max += item.value;
+    const questTotal = Object.values(Constants.Quests).reduce(
+      (sum, q) => sum + q.value,
+      0,
+    );
+    let itemTotal = 0;
+    for (const item of this.items.values()) {
+      itemTotal += item.value;
     }
-    // puzzle milestone bonuses: flashlight(5) + unlock LGG(10) + defeat Gerald(5) + cabin code(10) + win(21)
-    return max + 51;
+    return questTotal + itemTotal;
   }
 
   private getItemByName(itemName: string): Item | undefined {

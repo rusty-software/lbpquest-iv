@@ -1,3 +1,4 @@
+import { Constants } from "../Constants";
 import { GameEngine } from "../GameEngine";
 import { Direction } from "../Direction";
 import { BaseItem } from "./BaseItem";
@@ -26,9 +27,7 @@ export class LGGKey extends BaseItem {
     if (gameEngine.currentLocation.id === LocationKey.LGGExterior) {
       const lggExterior = gameEngine.currentLocation;
       const lggRoom = gameEngine.getLocation(LocationKey.LGGRoom);
-      if (!lggExterior.neighbors.has("n" as Direction)) {
-        gameEngine.score += 10;
-      }
+      gameEngine.questTracker.complete(Constants.Quests.LGGUnlocked, gameEngine);
       lggExterior.neighbors.set("n" as Direction, lggRoom);
       lggRoom.neighbors.set("s" as Direction, lggExterior);
       return "The key slides in smoothly. A small sound, like a held breath released. The door swings open on cedar-scented air, and pink neon light spills out from inside.\n\nYou can go north to enter.";

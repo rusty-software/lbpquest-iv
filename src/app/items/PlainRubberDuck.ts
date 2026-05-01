@@ -1,3 +1,4 @@
+import { Constants } from "../Constants";
 import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
@@ -16,7 +17,8 @@ export class PlainRubberDuck extends BaseItem {
     return "A plain rubber duck is here.";
   }
 
-  public examine(_gameEngine: GameEngine): string {
+  public examine(gameEngine: GameEngine): string {
+    gameEngine.questTracker.complete(Constants.Quests.DigitTub, gameEngine);
     return "A plain rubber duck. Unadorned, unhatted, at peace with its limitations. On the flat bottom, in faded permanent marker: 2. Just the number 2. No explanation.";
   }
 
