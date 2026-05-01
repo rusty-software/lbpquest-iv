@@ -12,7 +12,7 @@ export class VodkaRoom extends BaseLocation {
       : "The side table is empty now.";
 
     return (
-      "The neon says THE VODKA ROOM. Cold purple-white. It is the only light in here, which is either deliberate or nobody thought to put in a window. Wire industrial shelving on three walls — flavored vodkas, mixers, one deeply out-of-place bottle of Kahlúa. A purple fur rug. Two camp chairs, one knocked sideways.\n\n" +
+      "You enter and the neon says THE VODKA ROOM. The light is cold purple-white — the only light in here, which is either deliberate or nobody thought to put in a window. Wire industrial shelving covers three walls, lined with flavored vodkas, mixers, and one deeply out-of-place bottle of Kahlúa. A purple fur rug covers the floor. Two camp chairs face the center, one knocked sideways.\n\n" +
       "Someone was here recently. Empty glasses. A card game left mid-hand — someone was winning and clearly not worried about it. The Kahlúa has been moved from the shelf to the seat of one of the camp chairs, with a deliberateness that suggests whoever placed it had reasons.\n\n" +
       noteText +
       "\n\nThe LGG room is to the south." +

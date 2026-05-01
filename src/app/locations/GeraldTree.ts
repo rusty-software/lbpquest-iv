@@ -8,7 +8,7 @@ export class GeraldTree extends BaseLocation {
 
   public description(): string {
     let s =
-      "A massive gnarled live oak at the edge of the field. It has claimed this corner of the property with the patient authority of something that has been here longer than the roads and will be here longer than the fences. Claw marks scored into the bark — seven notches on the east face, three on the south side. Gerald keeps his own tally.";
+      "You are standing beside a massive gnarled live oak at the edge of the field. It has claimed this corner of the property with the patient authority of something that has been here longer than the roads and will be here longer than the fences. Claw marks scored into the bark — seven notches on the east face, three on the south side. Gerald keeps his own tally.";
 
     const hasCan = this.hasItem(ItemKey.EmptyBeerCan);
     const hasGerald = this.hasItem(ItemKey.Gerald);
