@@ -90,12 +90,13 @@ High-level intent: tighten the writing voice, fix cross-references, improve the 
 
 ---
 
-## Milestone 6 — Puzzle C: Binoculars
+## Milestone 6 — Puzzle C: Binoculars ✅
 
 High-level intent: binoculars already have location-specific `use` text at multiple locations; one of those views should reveal something actionable.
 
-- ⬜ From DeerBlind or WoodenPavilion, `use binoculars` reveals a detail that gives a code digit or item location
-- ⬜ Tie into milestone 2 or 3 puzzle structure
+- ✅ From DeerBlind, `use binoculars` now reveals the rubber duck in the hot tub and the "2" on its base — alternative discovery path for the TUB code digit (M2 tie-in)
+- ✅ WoodenPavilion view unchanged (Gerald in a rocking chair — comedy beat, not actionable by design)
+- Note: M2 and M3 already complete when M6 was implemented; binoculars add an alternative route to an existing clue rather than a new one
 
 ---
 

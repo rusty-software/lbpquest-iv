@@ -28,7 +28,7 @@ export class Binoculars extends BaseItem {
       case LocationKey.BackPorch:
         return "Through the binoculars you can see past the pool deck to the fire pit clearing beyond. The camp chairs are arranged. The fire pit is cold. No one is there, or near there, or visible anywhere in that direction.";
       case LocationKey.DeerBlind:
-        return "Through the shooting window you scan the south meadow. Two deer near the treeline. A red umbrella folded by the pool. Distantly, the pool lights cycling through violet and blue. No sign of your friends.";
+        return "Through the shooting window you scan north. Two deer in the meadow, motionless. The pool deck. The hot tub above it, jets running. You train the glass on the hot tub. There is a rubber duck in there. You hold the focus on the flat base of it. Faded marker. The number 2.";
       default:
         return "You raise the binoculars and look around. The view is interesting from here.";
     }
