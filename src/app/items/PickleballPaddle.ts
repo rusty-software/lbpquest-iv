@@ -12,6 +12,11 @@ export class PickleballPaddle extends BaseItem {
     return true;
   }
 
+  public take(_gameEngine: GameEngine): string {
+    this.taken = true;
+    return "You take the paddle. Your form is already worse than you think.";
+  }
+
   public getLocationText(): string {
     return "A pickleball paddle is here.";
   }

@@ -12,6 +12,11 @@ export class Crackers extends BaseItem {
     return true;
   }
 
+  public take(_gameEngine: GameEngine): string {
+    this.taken = true;
+    return "You take the crackers. They rattle. You feel oddly well-armed.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
     return "A sleeve of Ritz crackers. Mostly intact. These would be very interesting to a turkey.";
   }

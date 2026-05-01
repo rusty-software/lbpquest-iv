@@ -13,6 +13,11 @@ export class Flashlight extends BaseItem {
     return true;
   }
 
+  public take(_gameEngine: GameEngine): string {
+    this.taken = true;
+    return "You take the flashlight. It's surprisingly heavy — probably the kind of flashlight that can double as a weapon.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
     return "A heavy-duty Maglite in olive drab. You click it. Nothing happens. Dead batteries.";
   }

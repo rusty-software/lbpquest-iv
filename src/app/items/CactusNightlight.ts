@@ -13,7 +13,7 @@ export class CactusNightlight extends BaseItem {
   }
 
   public take(_gameEngine: GameEngine): string {
-    return "It's plugged into the wall. You don't need the whole nightlight — just the batteries.";
+    return "You don't need the whole nightlight. Just the batteries.";
   }
 
   public examine(gameEngine: GameEngine): string {
@@ -23,12 +23,12 @@ export class CactusNightlight extends BaseItem {
       const batteries = gameEngine.getItem(ItemKey.Batteries);
       batteries.taken = true;
       gameEngine.score += batteries.value;
-      return "A small ceramic cactus nightlight plugged into the wall beside the bedside table. Green, squat, cheerful. You pop open the battery compartment on the back. Two AA batteries. You take them.";
+      return "A small ceramic cactus nightlight on the bedside table. Green, squat, cheerful. You pop open the battery compartment on the back. Two AA batteries. You take them.";
     }
     if (this.batteriesTaken) {
       return "A small ceramic cactus nightlight. The battery compartment is open and empty. It is less cheerful now.";
     }
-    return "A small ceramic cactus nightlight plugged into the wall. Green, squat, cheerful. It has a battery compartment on the back.";
+    return "A small ceramic cactus nightlight on the bedside table. Green, squat, cheerful. It has a battery compartment on the back.";
   }
 
   public use(_gameEngine: GameEngine): string {

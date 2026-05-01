@@ -14,7 +14,7 @@ export class ScoreboardSign extends BaseItem {
   }
 
   public take(_gameEngine: GameEngine): string {
-    return "It's hung on the gate. You leave it.";
+    return "You reach for it, then stop. Gerald: 3. Humans: 0. Some records deserve to stand.";
   }
 
   public examine(gameEngine: GameEngine): string {

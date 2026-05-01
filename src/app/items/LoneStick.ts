@@ -13,7 +13,7 @@ export class LoneStick extends BaseItem {
   }
 
   public take(_gameEngine: GameEngine): string {
-    return "It is mounted. You leave it.";
+    return "The bracket is bolted firmly into the wall. You give the stick an experimental tug. It doesn't move. You tug it again. It doesn't move again. You will not be mentioning this to anyone.";
   }
 
   public examine(_gameEngine: GameEngine): string {

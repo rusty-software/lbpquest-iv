@@ -12,6 +12,11 @@ export class GeraldNote extends BaseItem {
     return true;
   }
 
+  public take(_gameEngine: GameEngine): string {
+    this.taken = true;
+    return "You take the note. G would not approve.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
     return "A handwritten note on a torn piece of paper, written in a surprisingly neat hand:\n\nTHIS IS MY TENT\n— G";
   }

@@ -13,6 +13,11 @@ export class PlainRubberDuck extends BaseItem {
     return true;
   }
 
+  public take(_gameEngine: GameEngine): string {
+    this.taken = true;
+    return "You take the duck. As you do, it squeaks. The sound surprises both you and the duck.";
+  }
+
   public getLocationText(): string {
     return "A plain rubber duck is here.";
   }

@@ -12,6 +12,11 @@ export class WesternNovel extends BaseItem {
     return true;
   }
 
+  public take(_gameEngine: GameEngine): string {
+    this.taken = true;
+    return "You take the novel. You get the sense that you will also stop at page 12.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
     return "NO QUARTER GIVEN, a western novel. The cover shows a cowboy silhouetted against a sunset. The bookmark is at page 12. It has always been at page 12. You open to page 12. It is the middle of a sentence that started on page 11. You read it. Nothing in it suggests why someone stopped here.";
   }

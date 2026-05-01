@@ -12,6 +12,11 @@ export class CowboyRubberDuck extends BaseItem {
     return true;
   }
 
+  public take(_gameEngine: GameEngine): string {
+    this.taken = true;
+    return "You take the duck. The hat stays on despite your best efforts to dislodge it.";
+  }
+
   public getLocationText(): string {
     return "A cowboy duck in a tiny brown hat is here.";
   }

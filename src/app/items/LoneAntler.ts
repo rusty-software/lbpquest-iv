@@ -13,7 +13,7 @@ export class LoneAntler extends BaseItem {
   }
 
   public take(_gameEngine: GameEngine): string {
-    return "It's mounted beside the door. You leave it where it is.";
+    return "It's bolted to the cedar. You consider it for longer than is reasonable, finally leaving it.";
   }
 
   public examine(_gameEngine: GameEngine): string {

@@ -12,6 +12,11 @@ export class OrderNote extends BaseItem {
     return true;
   }
 
+  public take(_gameEngine: GameEngine): string {
+    this.taken = true;
+    return "You take the note. Its contents are already in your head, but having the note feels right.";
+  }
+
   public examine(_gameEngine: GameEngine): string {
     return "A short note in black marker, folded once. Written quickly:\n\nWENT TO THE CABIN. FOLLOW THE STRING LIGHTS.\n\nBelow that, in different ink, someone added:\n\nCODE ORDER: COURT · SHED · TUB · BLIND";
   }
