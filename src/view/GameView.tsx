@@ -25,8 +25,10 @@ export class GameView extends React.Component<any, StartState> {
   public handleKeyDown(event: KeyboardEvent) {
     if (this.state.gameStarted) return;
     if (event.key === "Enter" || event.key === "n" || event.key === "N") {
+      event.preventDefault();
       this.setState({ gameStarted: true, loadGame: false });
     } else if ((event.key === "l" || event.key === "L") && GameEngine.hasSave()) {
+      event.preventDefault();
       this.setState({ gameStarted: true, loadGame: true });
     }
   }
