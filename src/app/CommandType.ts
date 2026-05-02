@@ -24,6 +24,7 @@ export class CommandType {
   public static readonly ex = new CommandType("ex", false);
   public static readonly examine = new CommandType("examine", true);
   public static readonly enter = new CommandType("enter", true);
+  public static readonly save = new CommandType("save", true);
   public static readonly help = new CommandType("help", true);
 
   private constructor(

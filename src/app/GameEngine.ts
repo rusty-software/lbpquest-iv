@@ -14,9 +14,11 @@ import {
 import { GameError } from "./GameError";
 import { Item } from "./Item";
 import { ItemKey } from "./items";
+import { Gerald } from "./items/Gerald";
 import { Location } from "./Location";
 import { LocationKey } from "./locations";
 import { QuestTracker } from "./QuestTracker";
+import { ItemSaveState, SaveGame } from "./SaveGame";
 import { Startup } from "./Startup";
 
 export class GameEngine {
@@ -53,6 +55,11 @@ export class GameEngine {
     Startup.init();
     this.items = Startup.items;
     this.locations = Startup.locations;
+    for (const [locationKey, location] of this.locations) {
+      for (const item of location.items) {
+        item.currentLocationKey = locationKey;
+      }
+    }
   }
 
   public constructor() {
@@ -193,6 +200,12 @@ export class GameEngine {
         break;
       }
 
+      case CommandType.save: {
+        this.save();
+        this.events.push(new ItemEvent("Game saved."));
+        break;
+      }
+
       case CommandType.take: {
         this.actionCount++;
         const locationItem = this.getLocationItemByName(rest);
@@ -200,6 +213,7 @@ export class GameEngine {
           if (locationItem.canTake(this)) {
             this.score += !locationItem.taken ? locationItem.value : 0;
             locationItem.taken = true;
+            locationItem.currentLocationKey = LocationKey._Nowhere;
             this.inventory.push(locationItem);
             this.currentLocation.items.splice(
               this.currentLocation.items.indexOf(locationItem),
@@ -235,6 +249,7 @@ export class GameEngine {
         this.actionCount++;
         const inventoryItem = this.getInventoryItemByName(rest);
         if (inventoryItem) {
+          inventoryItem.currentLocationKey = this.currentLocation.id;
           this.currentLocation.items.push(inventoryItem);
           this.inventory.splice(this.inventory.indexOf(inventoryItem), 1);
           this.events.push(new ItemEvent(inventoryItem.drop(this)));
@@ -407,7 +422,10 @@ export class GameEngine {
     const geraldTree = this.getLocation(LocationKey.GeraldTree);
     const orderNote = this.getItem(ItemKey.OrderNote);
     orderNote.isShown = true;
-    geraldTree.items.push(this.getItem(ItemKey.Gerald));
+    orderNote.currentLocationKey = LocationKey.GeraldTree;
+    const gerald = this.getItem(ItemKey.Gerald);
+    gerald.currentLocationKey = LocationKey.GeraldTree;
+    geraldTree.items.push(gerald);
     geraldTree.items.push(orderNote);
     this.geraldLocationKey = LocationKey.GeraldTree;
 
@@ -448,7 +466,9 @@ export class GameEngine {
       (this.geraldPatrolIndex + 1) % this.geraldPatrol.length;
     this.geraldLocationKey = this.geraldPatrol[this.geraldPatrolIndex];
     const toLoc = this.getLocation(this.geraldLocationKey);
-    toLoc.items.push(this.getItem(ItemKey.Gerald));
+    const gerald = this.getItem(ItemKey.Gerald);
+    gerald.currentLocationKey = this.geraldLocationKey;
+    toLoc.items.push(gerald);
 
     if (geraldWasHere) {
       const msg =
@@ -532,5 +552,94 @@ export class GameEngine {
 
   private getInventoryItemByKey(itemKey: ItemKey): Item | undefined {
     return this.inventory.find((i) => i.id === itemKey);
+  }
+
+  public static hasSave(): boolean {
+    return SaveGame.hasSave();
+  }
+
+  public save(): void {
+    const itemStates: ItemSaveState[] = [];
+    for (const [key, item] of this.items) {
+      itemStates.push({
+        key,
+        taken: item.taken,
+        isShown: item.isShown,
+        currentLocationKey: item.currentLocationKey,
+      });
+    }
+    const gerald = this.getItem(ItemKey.Gerald) as Gerald;
+    SaveGame.write({
+      currentLocationKey: this.currentLocation.id,
+      score: this.score,
+      actionCount: this.actionCount,
+      completedQuests: this.questTracker.getCompletedIds(),
+      visitedLocations: Array.from(this.visitedLocations),
+      inventory: this.inventory.map((item) => item.id as ItemKey),
+      itemStates,
+      geraldLocationKey: this.geraldLocationKey,
+      geraldKeyTheftDone: this.geraldKeyTheftDone,
+      geraldPatrolIndex: this.geraldPatrolIndex,
+      lastGeraldMoveAt: this.lastGeraldMoveAt,
+      geraldDescriptionIndex: gerald.descriptionIndex,
+    });
+  }
+
+  public load(): void {
+    const save = SaveGame.read();
+    if (!save) return;
+
+    this.init();
+
+    for (const location of this.locations.values()) {
+      location.items.splice(0);
+    }
+
+    for (const state of save.itemStates) {
+      const item = this.items.get(state.key);
+      if (!item) continue;
+      item.taken = state.taken;
+      item.isShown = state.isShown;
+      item.currentLocationKey = state.currentLocationKey;
+      if (state.currentLocationKey !== LocationKey._Nowhere) {
+        this.locations.get(state.currentLocationKey)?.items.push(item);
+      }
+    }
+
+    this.inventory.splice(0);
+    for (const itemKey of save.inventory) {
+      const item = this.items.get(itemKey);
+      if (item) this.inventory.push(item);
+    }
+
+    this.score = save.score;
+    this.actionCount = save.actionCount;
+    this.visitedLocations = new Set(save.visitedLocations);
+    this.questTracker.restore(save.completedQuests);
+
+    this.geraldLocationKey = save.geraldLocationKey;
+    this.geraldKeyTheftDone = save.geraldKeyTheftDone;
+    this.geraldPatrolIndex = save.geraldPatrolIndex;
+    this.lastGeraldMoveAt = save.lastGeraldMoveAt;
+    (this.getItem(ItemKey.Gerald) as Gerald).descriptionIndex = save.geraldDescriptionIndex;
+
+    this.restoreDynamicNeighbors();
+    this.currentLocation = this.getLocation(save.currentLocationKey);
+    this.events = [];
+  }
+
+  private restoreDynamicNeighbors(): void {
+    if (this.questTracker.isComplete(Constants.Quests.CabinCodeEntered)) {
+      const porch = this.getLocation(LocationKey.WhiskeyRoomPorch);
+      const whiskeyRoom = this.getLocation(LocationKey.WhiskeyRoom);
+      porch.neighbors.set("w" as Direction, whiskeyRoom);
+      whiskeyRoom.neighbors.set("e" as Direction, porch);
+    }
+    if (this.questTracker.isComplete(Constants.Quests.LGGUnlocked)) {
+      const lggExterior = this.getLocation(LocationKey.LGGExterior);
+      const lggRoom = this.getLocation(LocationKey.LGGRoom);
+      lggExterior.neighbors.set("n" as Direction, lggRoom);
+      lggRoom.neighbors.set("s" as Direction, lggExterior);
+    }
   }
 }

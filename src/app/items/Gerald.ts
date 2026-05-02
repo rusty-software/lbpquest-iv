@@ -16,7 +16,7 @@ export class Gerald extends BaseItem {
   public name = "gerald";
   public isShown = true;
   public value = 0;
-  private descriptionIndex = 0;
+  public descriptionIndex = 0;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return false;

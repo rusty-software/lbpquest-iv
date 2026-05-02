@@ -1,4 +1,5 @@
 import { GameEngine } from "./GameEngine";
+import { LocationKey } from "./locations";
 
 export interface Item {
   id: number;
@@ -6,6 +7,7 @@ export interface Item {
   isShown: boolean;
   value: number;
   taken: boolean;
+  currentLocationKey: LocationKey;
   customVerbs: Map<string, (gameEngine: GameEngine) => string>;
   getName(): string;
   getLocationText(): string;

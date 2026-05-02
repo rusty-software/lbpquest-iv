@@ -1,15 +1,18 @@
 import React from "react";
+import { GameEngine } from "../app/GameEngine";
+import { SaveGame } from "../app/SaveGame";
 import { PlayView } from "./PlayView";
 import { SplashView } from "./SplashView";
 
 interface StartState {
   gameStarted: boolean;
+  loadGame: boolean;
 }
 
 export class GameView extends React.Component<any, StartState> {
   constructor(props: any) {
     super(props);
-    this.state = { gameStarted: false };
+    this.state = { gameStarted: false, loadGame: false };
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleTouch = this.handleTouch.bind(this);
   }
@@ -20,21 +23,26 @@ export class GameView extends React.Component<any, StartState> {
   }
 
   public handleKeyDown(event: KeyboardEvent) {
-    if (!this.state.gameStarted && event.key === "Enter") {
-      this.setState({ gameStarted: true });
+    if (this.state.gameStarted) return;
+    if (event.key === "Enter" || event.key === "n" || event.key === "N") {
+      this.setState({ gameStarted: true, loadGame: false });
+    } else if ((event.key === "l" || event.key === "L") && GameEngine.hasSave()) {
+      this.setState({ gameStarted: true, loadGame: true });
     }
   }
 
   public handleTouch(_event: TouchEvent) {
     if (!this.state.gameStarted) {
-      this.setState({ gameStarted: true });
+      this.setState({ gameStarted: true, loadGame: false });
     }
   }
 
   public render() {
     return (
       <div id="game">
-        {this.state.gameStarted ? <PlayView /> : <SplashView />}
+        {this.state.gameStarted
+          ? <PlayView loadGame={this.state.loadGame} />
+          : <SplashView hasSave={SaveGame.hasSave()} />}
       </div>
     );
   }

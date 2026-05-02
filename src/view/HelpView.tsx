@@ -3,12 +3,14 @@ import packageJson from "../../package.json";
 const helpMapper: { [s: string]: string } = {
   help: " : shows this help text",
   inventory: " (inv) : lists the items in your bag",
-  examine: " (ex) <object> : e.g. `examine flashlight` to look closely at an item",
+  examine:
+    " (ex) <object> : e.g. `examine flashlight` to look closely at an item",
   look: " (l) : describes your current location",
   take: " <object> : e.g. `take flashlight` to add an item to your bag",
   use: " <object> : e.g. `use flashlight` to activate an item",
   drop: " <object> : e.g. `drop flashlight` to leave an item behind",
   enter: " <code> : e.g. `enter 1234` to enter a numeric code",
+  save: " : saves the current game",
 };
 
 interface HelpViewProps {

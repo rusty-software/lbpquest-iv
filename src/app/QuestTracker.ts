@@ -21,4 +21,14 @@ export class QuestTracker {
   public get completedCount(): number {
     return this.completed.size;
   }
+
+  public getCompletedIds(): string[] {
+    return Array.from(this.completed);
+  }
+
+  public restore(ids: string[]): void {
+    for (const id of ids) {
+      this.completed.add(id);
+    }
+  }
 }

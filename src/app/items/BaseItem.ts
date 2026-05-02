@@ -1,6 +1,7 @@
 import { GameEngine } from "../GameEngine";
 import { Item } from "../Item";
 import { ItemKey } from "./ItemKey";
+import { LocationKey } from "../locations";
 
 export class BaseItem implements Item {
   public id = ItemKey._Nothing;
@@ -8,6 +9,7 @@ export class BaseItem implements Item {
   public isShown = false;
   public value = 0;
   public taken = false;
+  public currentLocationKey = LocationKey._Nowhere;
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> =
     new Map();
 

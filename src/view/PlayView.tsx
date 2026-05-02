@@ -24,20 +24,27 @@ const HeaderView = (props: HeaderProps) => {
   );
 };
 
+interface PlayProps {
+  loadGame?: boolean;
+}
+
 interface GameState {
   events: GameEvent[];
   lastInputPointer: number;
 }
 
-export class PlayView extends Component<any, GameState> {
+export class PlayView extends Component<PlayProps, GameState> {
   private commandInput!: HTMLInputElement;
   private readonly gameEngine: GameEngine;
 
-  constructor(props: any) {
+  constructor(props: PlayProps) {
     super(props);
     this.onBlur = this.onBlur.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.gameEngine = new GameEngine();
+    if (props.loadGame) {
+      this.gameEngine.load();
+    }
     this.state = {
       events: this.gameEngine.getEvents(),
       lastInputPointer: 0,
