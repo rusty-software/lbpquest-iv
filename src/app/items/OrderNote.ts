@@ -14,20 +14,20 @@ export class OrderNote extends BaseItem {
 
   public take(_gameEngine: GameEngine): string {
     this.taken = true;
-    return "You take the note. Its contents are already in your head, but having the note feels right.";
+    return "You take the note. You get the sense that if you haven't read the note, you probably should...";
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A short note in black marker, folded once. Written quickly:\n\nWENT TO THE CABIN. FOLLOW THE STRING LIGHTS.\n\nBelow that, in different ink, someone added:\n\nCODE ORDER: COURT · SHED · TUB · BLIND";
+    return "A short note written with black marker with either quick or terrible handwriting, folded once.\n\nWENT TO THE WHISKEY CABIN. FOLLOW THE STRING LIGHTS.\n\nBelow that, in different ink, someone added:\n\nCODE ORDER: COURT · SHED · TUB · BLIND";
   }
 
   public use(_gameEngine: GameEngine): string {
     return "You read the note again. COURT · SHED · TUB · BLIND — in that order.";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
-    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
-  ]);
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["read", (gameEngine: GameEngine) => this.examine(gameEngine)]],
+  );
 
   public getLocationText(): string {
     return "A folded note lies here.";
