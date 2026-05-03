@@ -28,6 +28,6 @@ export class WhiskeyRoomPorch extends BaseLocation {
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
     ["use keypad", (gameEngine: GameEngine) => this.keypadResponse(gameEngine)],
     ["examine keypad", (gameEngine: GameEngine) => this.keypadResponse(gameEngine)],
-    ["examine plaque", (_gameEngine: GameEngine) => "A small brass plaque mounted above the keypad. Engraved in capital letters: OAKRIDGE RANCH — WHISKEY ROOM. Below that, smaller: AUTHORIZED GUESTS ONLY. You are a guest. Whether you are authorized depends on the code."],
+    ["examine plaque", (_gameEngine: GameEngine) => "A small brass plaque mounted above the keypad. Engraved in capital letters: OAKRIDGE RANCH — WHISKEY ROOM. Below that, smaller: AUTHORIZED GUESTS ONLY. And below that, in a smaller engraved serif: COURT · SHED · TUB · BLIND."],
   ]);
 }

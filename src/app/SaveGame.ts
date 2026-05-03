@@ -24,6 +24,7 @@ export interface SaveData {
   lastGeraldMoveAt: number;
   geraldDescriptionIndex: number;
   blantonsOpened: boolean;
+  glowStickCracked: boolean;
 }
 
 export const SaveGame = {

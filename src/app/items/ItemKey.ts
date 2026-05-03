@@ -28,4 +28,9 @@ export enum ItemKey {
   WhiskeyKey,
   OrderNote,
   FuelCanister,
+  LoneStarTallboy,
+  Pickleball,
+  Matches,
+  RoseBottle,
+  Kahlua,
 }

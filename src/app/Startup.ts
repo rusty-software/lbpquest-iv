@@ -16,14 +16,19 @@ import {
   GeraldNote,
   GlowStick,
   ItemKey,
+  Kahlua,
   LGGKey,
   LoneAntler,
   LoneStick,
+  LoneStarTallboy,
+  Matches,
   OrderNote,
+  Pickleball,
   PickleballPaddle,
   PlainRubberDuck,
   PoolSchedule,
   PropaneLantern,
+  RoseBottle,
   ScoreboardSign,
   StuffedArmadillo,
   TopoChicoBottle,
@@ -158,6 +163,11 @@ export class Startup {
     Startup.items.set(ItemKey.Gerald, new Gerald());
     Startup.items.set(ItemKey.OrderNote, new OrderNote());
     Startup.items.set(ItemKey.FuelCanister, new FuelCanister());
+    Startup.items.set(ItemKey.LoneStarTallboy, new LoneStarTallboy());
+    Startup.items.set(ItemKey.Pickleball, new Pickleball());
+    Startup.items.set(ItemKey.Matches, new Matches());
+    Startup.items.set(ItemKey.RoseBottle, new RoseBottle());
+    Startup.items.set(ItemKey.Kahlua, new Kahlua());
   }
 
   private static arrange() {
@@ -318,16 +328,15 @@ export class Startup {
       ["s" as Direction, Startup.getLocation(LocationKey.Kitchen)],
       ["sw" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
     ]);
+    loc.items = [
+      Startup.getItem(ItemKey.LoneStarTallboy),
+      Startup.getItem(ItemKey.Matches),
+    ];
     loc.customVerbs = new Map([
       [
         "examine coats",
         (_gameEngine) =>
           "A row of hooks, most holding fleece vests and rain jackets belonging to no one in particular. In the pocket of a canvas barn coat: a golf tee, a receipt from a gas station in Fredericksburg, and a note that reads 'DO NOT LEAVE GATE OPEN — G.' Gerald has apparently left notes in multiple locations on this property.",
-      ],
-      [
-        "examine tallboy",
-        (_gameEngine) =>
-          "Empty. Gerald got to it first — drank the whole thing somewhere and left the can here as a trophy, apparently. Nothing worth taking.",
       ],
     ]);
   }
@@ -413,13 +422,6 @@ export class Startup {
       Startup.getItem(ItemKey.BrokenJigger),
       Startup.getItem(ItemKey.BlantonsBottle),
     ];
-    loc.customVerbs = new Map([
-      [
-        "examine bar",
-        (_gameEngine) =>
-          "The oak bar is rough-cut and well-used. Pinned to the post behind it: a handwritten cocktail menu on cardstock, slightly warped from humidity.\n\nTHE BLIND BUCK — 1 oz bourbon, honey, splash of bitters\nTHE COURT JESTER — 3 oz ranch water, lime, never enough ice\nTHE SHED SPECIAL — 7-year rye, neat, no argument\nTHE TUB FLOAT — 2 oz coconut rum, pineapple, served in whatever's clean\n\nThe prices are crossed out. Everything here is on the ranch.",
-      ],
-    ]);
   }
 
   private static arrangeOakGroveNorth() {
@@ -462,13 +464,6 @@ export class Startup {
       ["w" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
     ]);
     loc.items = [Startup.getItem(ItemKey.PropaneLantern)];
-    loc.customVerbs = new Map([
-      [
-        "examine table",
-        (_gameEngine) =>
-          "A weathered cedar picnic table under the pavilion roof. Someone has carved into the wood over the years — initials, dates, a crude star. Near the corner, in deeper cuts than the rest: a turkey silhouette, recognizable to anyone who has spent time here, with the letters G.T.K. below it. Gerald the Gobbler King. He has always been here. He will outlast the table.",
-      ],
-    ]);
   }
 
   private static arrangeSouthMeadow() {
@@ -497,13 +492,6 @@ export class Startup {
       ["s" as Direction, Startup.getLocation(LocationKey.FirePit)],
       ["sw" as Direction, Startup.getLocation(LocationKey.SouthMeadow)],
     ]);
-    loc.customVerbs = new Map([
-      [
-        "examine pool",
-        (_gameEngine) =>
-          "The pool shifts between blue and green in the LED lighting cycle. The water is exceptionally clear. Near the far drain, something glints on the bottom. You peer closer. It's a quarter. You do not go in after it.",
-      ],
-    ]);
   }
 
   private static arrangeHotTub() {
@@ -524,13 +512,6 @@ export class Startup {
       Startup.getItem(ItemKey.ScoreboardSign),
       Startup.getItem(ItemKey.PickleballPaddle),
     ];
-    loc.customVerbs = new Map([
-      [
-        "ring bell",
-        (_gameEngine) =>
-          "You ring the bell. A clear, carrying tone crosses the empty court. From somewhere to the north, distantly, there is a single gobble. Then silence. The scoreboard still reads GERALD: 3 / HUMANS: 0. It will probably always read this.",
-      ],
-    ]);
   }
 
   private static arrangePoolEquipmentShed() {
@@ -541,6 +522,7 @@ export class Startup {
     loc.items = [
       Startup.getItem(ItemKey.PoolSchedule),
       Startup.getItem(ItemKey.FuelCanister),
+      Startup.getItem(ItemKey.Pickleball),
     ];
   }
 
@@ -621,13 +603,6 @@ export class Startup {
       // "w" to WhiskeyRoom is added at runtime when the correct code is entered
     ]);
     loc.items = [Startup.getItem(ItemKey.LoneAntler)];
-    loc.customVerbs = new Map([
-      [
-        "examine plaque",
-        (_gameEngine) =>
-          "A small brass plaque mounted above the keypad. It reads:\n\nCOURT · SHED · TUB · BLIND",
-      ],
-    ]);
   }
 
   private static arrangeWhiskeyRoom() {
@@ -653,6 +628,7 @@ export class Startup {
       // s back to LGGExterior is set when the door is unlocked
       ["n" as Direction, Startup.getLocation(LocationKey.VodkaRoom)],
     ]);
+    loc.items = [Startup.getItem(ItemKey.RoseBottle)];
   }
 
   private static arrangeVodkaRoom() {
@@ -660,6 +636,9 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["s" as Direction, Startup.getLocation(LocationKey.LGGRoom)],
     ]);
-    loc.items = [Startup.getItem(ItemKey.OrderNote)];
+    loc.items = [
+      Startup.getItem(ItemKey.OrderNote),
+      Startup.getItem(ItemKey.Kahlua),
+    ];
   }
 }

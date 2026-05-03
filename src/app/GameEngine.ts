@@ -16,6 +16,7 @@ import { Item } from "./Item";
 import { ItemKey } from "./items";
 import { BlantonsBottle } from "./items/BlantonsBottle";
 import { Gerald } from "./items/Gerald";
+import { GlowStick } from "./items/GlowStick";
 import { Location } from "./Location";
 import { LocationKey } from "./locations";
 import { QuestTracker } from "./QuestTracker";
@@ -250,9 +251,7 @@ export class GameEngine {
         this.actionCount++;
         const inventoryItem = this.getInventoryItemByName(rest);
         if (inventoryItem) {
-          inventoryItem.currentLocationKey = this.currentLocation.id;
-          this.currentLocation.items.push(inventoryItem);
-          this.inventory.splice(this.inventory.indexOf(inventoryItem), 1);
+          this.drop(inventoryItem.id as ItemKey);
           this.events.push(new ItemEvent(inventoryItem.drop(this)));
         } else {
           const locationItem = this.getLocationItemByName(rest);
@@ -389,12 +388,19 @@ export class GameEngine {
     );
   }
 
+  private hasCrackedGlowStick(): boolean {
+    return (
+      this.inventoryContains(ItemKey.GlowStick) &&
+      (this.getItem(ItemKey.GlowStick) as GlowStick).cracked
+    );
+  }
+
   public move(direction: Direction): void {
     const newLocation = this.currentLocation.neighbors.get(direction);
     if (newLocation) {
       if (
         newLocation.isDark &&
-        !(this.hasActiveFlashlight() || this.hasLitLantern())
+        !(this.hasActiveFlashlight() || this.hasLitLantern() || this.hasCrackedGlowStick())
       ) {
         this.events.push(
           new GameErrorEvent(
@@ -513,6 +519,14 @@ export class GameEngine {
     this.inventory.splice(this.inventory.indexOf(item), 1);
   }
 
+  public drop(itemKey: ItemKey): void {
+    const item = this.getItem(itemKey);
+    if (!this.inventoryContains(itemKey)) return;
+    item.currentLocationKey = this.currentLocation.id;
+    this.currentLocation.items.push(item);
+    this.removeFromInventory(itemKey);
+  }
+
   public addToInventory(itemKey: ItemKey): void {
     this.inventory.push(this.getItem(itemKey));
   }
@@ -585,6 +599,7 @@ export class GameEngine {
       lastGeraldMoveAt: this.lastGeraldMoveAt,
       geraldDescriptionIndex: gerald.descriptionIndex,
       blantonsOpened: blantons.opened,
+      glowStickCracked: (this.getItem(ItemKey.GlowStick) as GlowStick).cracked,
     });
   }
 
@@ -626,6 +641,7 @@ export class GameEngine {
     this.lastGeraldMoveAt = save.lastGeraldMoveAt;
     (this.getItem(ItemKey.Gerald) as Gerald).descriptionIndex = save.geraldDescriptionIndex;
     (this.getItem(ItemKey.BlantonsBottle) as BlantonsBottle).opened = save.blantonsOpened;
+    (this.getItem(ItemKey.GlowStick) as GlowStick).cracked = save.glowStickCracked;
 
     this.restoreDynamicNeighbors();
     this.currentLocation = this.getLocation(save.currentLocationKey);

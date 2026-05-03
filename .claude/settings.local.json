@@ -3,7 +3,13 @@
     "allow": [
       "Bash(npx tsc *)",
       "Bash(grep -v \"^--$\")",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(sed -n '547,575p' /Users/rusty/Projects/lbpquest-iv/src/app/Startup.ts)",
+      "Bash(sed -n '650,680p' /Users/rusty/Projects/lbpquest-iv/src/app/Startup.ts)",
+      "Bash(sed -n '384,395p' /Users/rusty/Projects/lbpquest-iv/src/app/Startup.ts)",
+      "Bash(sed -n '459,480p' /Users/rusty/Projects/lbpquest-iv/src/app/Startup.ts)",
+      "Bash(sed -n '509,560p' /Users/rusty/Projects/lbpquest-iv/src/app/Startup.ts)",
+      "Bash(sed -n '536,560p' /Users/rusty/Projects/lbpquest-iv/src/app/Startup.ts)"
     ]
   }
 }
