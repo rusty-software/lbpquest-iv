@@ -25,6 +25,10 @@ export class OrderNote extends BaseItem {
     return "You read the note again. COURT · SHED · TUB · BLIND — in that order.";
   }
 
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
+    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
+  ]);
+
   public getLocationText(): string {
     return "A folded note lies here.";
   }

@@ -31,7 +31,8 @@ export class Gerald extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    const desc = geraldDescriptions[this.descriptionIndex % geraldDescriptions.length];
+    const desc =
+      geraldDescriptions[this.descriptionIndex % geraldDescriptions.length];
     this.descriptionIndex++;
     return desc;
   }
@@ -45,17 +46,23 @@ export class Gerald extends BaseItem {
   }
 
   public getLocationText(): string {
-    return "A large tom turkey stands here. Gerald. He was here first.";
+    return "A large tom turkey stands here. His name is Gerald. He was here first.";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map<string, (gameEngine: GameEngine) => string>([
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map<
+    string,
+    (gameEngine: GameEngine) => string
+  >([
     [
       "give crackers to",
       (gameEngine: GameEngine) => {
         if (gameEngine.inventoryContains(ItemKey.Crackers)) {
           gameEngine.removeFromInventory(ItemKey.Crackers);
           gameEngine.currentLocation.removeItem(ItemKey.Gerald);
-          gameEngine.questTracker.complete(Constants.Quests.GeraldDefeated, gameEngine);
+          gameEngine.questTracker.complete(
+            Constants.Quests.GeraldDefeated,
+            gameEngine,
+          );
           return "You open the crackers and toss them. Gerald materializes his full attention onto them with startling speed. He is occupied. He wanders off, eating, satisfied. The path is clear.";
         }
         return "You don't have any crackers.";
@@ -66,7 +73,10 @@ export class Gerald extends BaseItem {
       (gameEngine: GameEngine) => {
         if (gameEngine.inventoryContains(ItemKey.BrokenJigger)) {
           gameEngine.currentLocation.removeItem(ItemKey.Gerald);
-          gameEngine.questTracker.complete(Constants.Quests.GeraldDefeated, gameEngine);
+          gameEngine.questTracker.complete(
+            Constants.Quests.GeraldDefeated,
+            gameEngine,
+          );
           return "You hold up the brass jigger. It catches the light. Gerald's pupils dilate. He lunges for it, misses, and vanishes into the oaks at high speed, still chasing the glint. The path is clear.";
         }
         return "You don't have anything shiny to show him.";

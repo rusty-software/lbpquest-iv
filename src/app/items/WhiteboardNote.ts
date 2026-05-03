@@ -23,4 +23,8 @@ export class WhiteboardNote extends BaseItem {
   public use(_gameEngine: GameEngine): string {
     return "You consider adding something to the whiteboard. You decide not to.";
   }
+
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
+    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
+  ]);
 }

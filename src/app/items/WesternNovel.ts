@@ -24,4 +24,8 @@ export class WesternNovel extends BaseItem {
   public use(_gameEngine: GameEngine): string {
     return "You read a few more pages. The cowboy shoots someone. It is unresolved. You put the book down at page 14.";
   }
+
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
+    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
+  ]);
 }

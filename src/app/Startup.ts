@@ -216,7 +216,7 @@ export class Startup {
       [
         "examine sign",
         (_gameEngine) =>
-          'The sign reads "OAKRIDGE RANCH" and appears to be made of black powder-coated steel. A silhouette of a black-tailed stag in profile dominates the center of the sign, and the entire thing is backlit with a variable LED. You can see a sticky note attached to the back of the sign post.',
+          'The sign reads "OAKRIDGE RANCH" and appears to be made of black powder-coated steel. A silhouette of a black-tailed stag in profile dominates the center of the sign, and the entire thing is lit from below with a spectacular LED. You can see a sticky note attached to the back of the sign post.',
       ],
       ["read note", (_gameEngine) => noteText],
       ["examine note", (_gameEngine) => noteText],
@@ -365,7 +365,12 @@ export class Startup {
       ["w" as Direction, Startup.getLocation(LocationKey.Hallway)],
       ["e" as Direction, Startup.getLocation(LocationKey.MasterBathroom)],
     ]);
-    loc.items = [Startup.getItem(ItemKey.ChildTent)];
+    loc.items = [
+      Startup.getItem(ItemKey.ChildTent),
+      Startup.getItem(ItemKey.GlowStick),
+      Startup.getItem(ItemKey.GeraldNote),
+      Startup.getItem(ItemKey.StuffedArmadillo),
+    ];
   }
 
   private static arrangeMasterBathroom() {

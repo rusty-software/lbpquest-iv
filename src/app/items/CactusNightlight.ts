@@ -17,23 +17,17 @@ export class CactusNightlight extends BaseItem {
   }
 
   public examine(gameEngine: GameEngine): string {
-    if (!gameEngine.inventoryContains(ItemKey.Batteries) && !this.batteriesTaken) {
-      this.batteriesTaken = true;
-      gameEngine.addToInventory(ItemKey.Batteries);
-      const batteries = gameEngine.getItem(ItemKey.Batteries);
+    const batteries = gameEngine.getItem(ItemKey.Batteries);
+    if (!batteries.taken) {
       batteries.taken = true;
+      gameEngine.addToInventory(ItemKey.Batteries);
       gameEngine.score += batteries.value;
       return "A small ceramic cactus nightlight on the bedside table, green, squat, and cheerful. As you examine it, the battery compartment spontaneously pops open and two AA batteries are ejected, flying straight at your face. You catch them just before they can impact your nose and put them safely in your bag.";
     }
-    if (this.batteriesTaken) {
-      return "A small ceramic cactus nightlight on the bedside table. The battery compartment is open and empty. It is less cheerful now.";
-    }
-    return "A small ceramic cactus nightlight on the bedside table, green, squat, and cheerful. It has a battery compartment on the back.";
+    return "A small ceramic cactus nightlight on the bedside table. The battery compartment is open and empty. It is less cheerful now.";
   }
 
   public use(_gameEngine: GameEngine): string {
     return "The nightlight is already doing its job. Sort of.";
   }
-
-  private batteriesTaken = false;
 }

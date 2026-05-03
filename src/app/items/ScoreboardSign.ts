@@ -25,4 +25,8 @@ export class ScoreboardSign extends BaseItem {
   public use(_gameEngine: GameEngine): string {
     return "You update the scoreboard in your mind. It does not improve.";
   }
+
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
+    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
+  ]);
 }

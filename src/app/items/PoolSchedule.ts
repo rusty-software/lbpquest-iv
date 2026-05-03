@@ -26,6 +26,10 @@ export class PoolSchedule extends BaseItem {
     return "The schedule is informational. It informs you that Gerald's pool time is Tuesday at 7:00 PM.";
   }
 
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
+    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
+  ]);
+
   public getLocationText(): string {
     return "A laminated pool schedule is taped to the wall.";
   }

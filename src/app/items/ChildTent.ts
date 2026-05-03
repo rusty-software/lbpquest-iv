@@ -17,8 +17,7 @@ export class ChildTent extends BaseItem {
   }
 
   public examine(gameEngine: GameEngine): string {
-    const alreadyLooked = this.entered;
-    this.entered = true;
+    const alreadyLooked = gameEngine.getItem(ItemKey.GlowStick).isShown;
 
     if (!alreadyLooked) {
       gameEngine.getItem(ItemKey.GlowStick).isShown = true;
@@ -32,6 +31,4 @@ export class ChildTent extends BaseItem {
   public use(_gameEngine: GameEngine): string {
     return "You crouch and look inside the tent. There is a stuffed armadillo in there. It regards you with button eyes and no particular judgment.";
   }
-
-  private entered = false;
 }
