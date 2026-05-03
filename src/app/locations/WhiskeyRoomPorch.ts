@@ -1,3 +1,4 @@
+import { GameEngine } from "../GameEngine";
 import { BaseLocation } from "./BaseLocation";
 import { LocationKey } from "./LocationKey";
 import { Direction } from "../Direction";
@@ -16,4 +17,17 @@ export class WhiskeyRoomPorch extends BaseLocation {
       this.appendItems()
     );
   }
+
+  private keypadResponse(_gameEngine: GameEngine): string {
+    if (this.neighbors.has("w" as Direction)) {
+      return "The door is already open.";
+    }
+    return "A flush-mounted numeric keypad, digits zero through nine, set into the cedar beside the door handle. To enter a code, type ENTER followed by the four digits — for example, ENTER 1234.";
+  }
+
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
+    ["use keypad", (gameEngine: GameEngine) => this.keypadResponse(gameEngine)],
+    ["examine keypad", (gameEngine: GameEngine) => this.keypadResponse(gameEngine)],
+    ["examine plaque", (_gameEngine: GameEngine) => "A small brass plaque mounted above the keypad. Engraved in capital letters: OAKRIDGE RANCH — WHISKEY ROOM. Below that, smaller: AUTHORIZED GUESTS ONLY. You are a guest. Whether you are authorized depends on the code."],
+  ]);
 }
