@@ -7,7 +7,7 @@ export class PropaneLantern extends BaseItem {
   public id = ItemKey.PropaneLantern;
   public name = "lantern";
   public isShown = true;
-  public value = 4;
+  public value = 8;
   public isLit = false;
 
   public canTake(_gameEngine: GameEngine): boolean {

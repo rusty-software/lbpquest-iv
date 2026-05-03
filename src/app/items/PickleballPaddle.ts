@@ -6,7 +6,7 @@ export class PickleballPaddle extends BaseItem {
   public id = ItemKey.PickleballPaddle;
   public name = "paddle";
   public isShown = true;
-  public value = 1;
+  public value = 2;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

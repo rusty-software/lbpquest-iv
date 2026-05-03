@@ -6,7 +6,7 @@ export class WesternNovel extends BaseItem {
   public id = ItemKey.WesternNovel;
   public name = "novel";
   public isShown = true;
-  public value = 2;
+  public value = 4;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

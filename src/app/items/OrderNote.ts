@@ -6,7 +6,7 @@ export class OrderNote extends BaseItem {
   public id = ItemKey.OrderNote;
   public name = "cabin note";
   public isShown = false;
-  public value = 2;
+  public value = 4;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

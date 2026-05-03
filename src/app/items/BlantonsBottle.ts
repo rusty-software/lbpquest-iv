@@ -6,7 +6,7 @@ export class BlantonsBottle extends BaseItem {
   public id = ItemKey.BlantonsBottle;
   public name = "blanton's";
   public isShown = true;
-  public value = 5;
+  public value = 10;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

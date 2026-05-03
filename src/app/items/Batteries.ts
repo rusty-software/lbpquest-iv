@@ -7,7 +7,7 @@ export class Batteries extends BaseItem {
   public id = ItemKey.Batteries;
   public name = "batteries";
   public isShown = false;
-  public value = 5;
+  public value = 10;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

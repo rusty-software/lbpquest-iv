@@ -6,7 +6,7 @@ export class TopoChicoBottle extends BaseItem {
   public id = ItemKey.TopoChicoBottle;
   public name = "topo chico";
   public isShown = true;
-  public value = 3;
+  public value = 5;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

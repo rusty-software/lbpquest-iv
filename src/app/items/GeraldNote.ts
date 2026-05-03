@@ -6,7 +6,7 @@ export class GeraldNote extends BaseItem {
   public id = ItemKey.GeraldNote;
   public name = "tent note";
   public isShown = false;
-  public value = 2;
+  public value = 4;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

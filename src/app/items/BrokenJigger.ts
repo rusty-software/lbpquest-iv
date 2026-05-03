@@ -6,7 +6,7 @@ export class BrokenJigger extends BaseItem {
   public id = ItemKey.BrokenJigger;
   public name = "jigger";
   public isShown = true;
-  public value = 3;
+  public value = 5;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

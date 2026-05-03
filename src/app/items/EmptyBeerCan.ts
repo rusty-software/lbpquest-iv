@@ -7,7 +7,7 @@ export class EmptyBeerCan extends BaseItem {
   public id = ItemKey.EmptyBeerCan;
   public name = "beer can";
   public isShown = true;
-  public value = 1;
+  public value = 2;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

@@ -8,7 +8,7 @@ export class Binoculars extends BaseItem {
   public id = ItemKey.Binoculars;
   public name = "binoculars";
   public isShown = true;
-  public value = 5;
+  public value = 10;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

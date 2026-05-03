@@ -9,7 +9,7 @@ export class LGGKey extends BaseItem {
   public id = ItemKey.LGGKey;
   public name = "key";
   public isShown = false;
-  public value = 10;
+  public value = 20;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

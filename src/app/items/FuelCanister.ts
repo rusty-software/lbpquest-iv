@@ -7,7 +7,7 @@ export class FuelCanister extends BaseItem {
   public id = ItemKey.FuelCanister;
   public name = "fuel canister";
   public isShown = true;
-  public value = 3;
+  public value = 5;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

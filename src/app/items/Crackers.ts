@@ -6,7 +6,7 @@ export class Crackers extends BaseItem {
   public id = ItemKey.Crackers;
   public name = "crackers";
   public isShown = true;
-  public value = 3;
+  public value = 5;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

@@ -6,7 +6,7 @@ export class GlowStick extends BaseItem {
   public id = ItemKey.GlowStick;
   public name = "glow stick";
   public isShown = false;
-  public value = 2;
+  public value = 4;
   public cracked = false;
 
   public canTake(_gameEngine: GameEngine): boolean {

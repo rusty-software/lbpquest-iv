@@ -6,7 +6,7 @@ export class LoneStarTallboy extends BaseItem {
   public id = ItemKey.LoneStarTallboy;
   public name = "tallboy";
   public isShown = true;
-  public value = 1;
+  public value = 2;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

@@ -7,7 +7,7 @@ export class Flashlight extends BaseItem {
   public id = ItemKey.Flashlight;
   public name = "flashlight";
   public isShown = true;
-  public value = 5;
+  public value = 10;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;

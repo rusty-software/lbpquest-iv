@@ -6,7 +6,7 @@ export class RoseBottle extends BaseItem {
   public id = ItemKey.RoseBottle;
   public name = "rosé";
   public isShown = true;
-  public value = 2;
+  public value = 4;
 
   public canTake(_gameEngine: GameEngine): boolean {
     return true;
