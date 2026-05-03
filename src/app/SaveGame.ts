@@ -23,6 +23,7 @@ export interface SaveData {
   geraldPatrolIndex: number;
   lastGeraldMoveAt: number;
   geraldDescriptionIndex: number;
+  blantonsOpened: boolean;
 }
 
 export const SaveGame = {

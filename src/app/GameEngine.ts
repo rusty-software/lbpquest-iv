@@ -14,6 +14,7 @@ import {
 import { GameError } from "./GameError";
 import { Item } from "./Item";
 import { ItemKey } from "./items";
+import { BlantonsBottle } from "./items/BlantonsBottle";
 import { Gerald } from "./items/Gerald";
 import { Location } from "./Location";
 import { LocationKey } from "./locations";
@@ -569,6 +570,7 @@ export class GameEngine {
       });
     }
     const gerald = this.getItem(ItemKey.Gerald) as Gerald;
+    const blantons = this.getItem(ItemKey.BlantonsBottle) as BlantonsBottle;
     SaveGame.write({
       currentLocationKey: this.currentLocation.id,
       score: this.score,
@@ -582,6 +584,7 @@ export class GameEngine {
       geraldPatrolIndex: this.geraldPatrolIndex,
       lastGeraldMoveAt: this.lastGeraldMoveAt,
       geraldDescriptionIndex: gerald.descriptionIndex,
+      blantonsOpened: blantons.opened,
     });
   }
 
@@ -622,6 +625,7 @@ export class GameEngine {
     this.geraldPatrolIndex = save.geraldPatrolIndex;
     this.lastGeraldMoveAt = save.lastGeraldMoveAt;
     (this.getItem(ItemKey.Gerald) as Gerald).descriptionIndex = save.geraldDescriptionIndex;
+    (this.getItem(ItemKey.BlantonsBottle) as BlantonsBottle).opened = save.blantonsOpened;
 
     this.restoreDynamicNeighbors();
     this.currentLocation = this.getLocation(save.currentLocationKey);

@@ -12,15 +12,30 @@ export class BlantonsBottle extends BaseItem {
     return true;
   }
 
+  public opened = false;
+
   public examine(_gameEngine: GameEngine): string {
+    if (this.opened) {
+      return "A fifth of Blanton's Single Barrel Bourbon, open. The gold wax is broken at the neck, although the horse-and-jockey stopper remains intact.";
+    }
     return "An unopened fifth of Blanton's Single Barrel Bourbon. The gold wax cap is unbroken. The little horse-and-jockey stopper is sealed inside. Someone showed remarkable restraint.";
   }
 
   public getLocationText(): string {
-    return "An unopened fifth of Blanton's is here.";
+    return this.opened
+      ? "A fifth of Blanton's is here."
+      : "An unopened fifth of Blanton's is here.";
   }
 
   public use(_gameEngine: GameEngine): string {
+    if (this.opened) {
+      return "You open the Blanton's again, smell the bourbon, and realize that it's still not the right moment.";
+    }
+    this.opened = true;
     return "You open the Blanton's. You smell the bourbon. You close it again. Some things should wait for the right moment.";
   }
+
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["drink", (gameEngine: GameEngine) => this.use(gameEngine)]],
+  );
 }
