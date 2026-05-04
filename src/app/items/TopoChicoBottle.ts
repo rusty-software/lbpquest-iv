@@ -13,11 +13,11 @@ export class TopoChicoBottle extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "An empty Topo Chico bottle on the armrest of an Adirondack chair at the fire pit. Someone was here recently. The bottle is dry inside — they finished it properly, at least.";
+    return "An empty Topo Chico bottle. The bottle is completely dry inside. Whoever last drank from it finished it properly.";
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You look through the bottle at the sky. The light is interesting. Nothing happens.";
+    return "Given it's empty, you look through the bottle at the sky. The light is interesting. Nothing happens.";
   }
 
   public getLocationText(): string {

@@ -13,18 +13,18 @@ export class WhiteboardNote extends BaseItem {
   }
 
   public take(_gameEngine: GameEngine): string {
-    return "It's on the fridge. You leave it.";
+    return "What happens if someone else needs to leave an important fridge note? You wisely decide to leave it.";
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A small whiteboard on the refrigerator door. Written in red marker:\n\n\"Gerald got the last two beers. Check the whiskey room.\"\n\nThe handwriting is resigned.";
+    return 'A small whiteboard on the refrigerator door. Written in red marker:\n\n"Gerald got the last two beers. Check the whiskey room."\n\nThe handwriting is resigned.';
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You consider adding something to the whiteboard. You decide not to.";
+    return "You consider adding something to the whiteboard, but finally decide not to.";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
-    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
-  ]);
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["read", (gameEngine: GameEngine) => this.examine(gameEngine)]],
+  );
 }

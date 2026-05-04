@@ -12,9 +12,12 @@ export function playPickleball(gameEngine: GameEngine): string {
     return "You'd need a paddle. One might be around here somewhere.";
   }
   if (!gameEngine.inventoryContains(ItemKey.Pickleball)) {
-    return "You have the paddle but no ball. Check the equipment shed.";
+    return "You have the paddle but no ball. Maybe check the equipment shed...?";
   }
-  gameEngine.questTracker.complete(Constants.Quests.PickleballPlayed, gameEngine);
+  gameEngine.questTracker.complete(
+    Constants.Quests.PickleballPlayed,
+    gameEngine,
+  );
   return "You serve to yourself, which is not regulation play but is what is available. The court has good bounce. The net height is correct. You play a set against the back fence, which is a patient opponent. You win, in the technical sense. The scoreboard still reads GERALD: 3 / HUMANS: 0. You do not update it.";
 }
 

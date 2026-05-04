@@ -13,21 +13,21 @@ export class RoseBottle extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A bottle of Provençal rosé, already cold. The label is tasteful — pale pink wine in a clear bottle. Someone brought this specifically. Someone with a plan.";
+    return "A bottle of Provençal rosé, perpetually chilled. The label is tasteful — pale pink wine in a clear bottle. Someone brought this specifically. Someone with a plan.";
   }
 
   public use(_gameEngine: GameEngine): string {
     if (!this.taken) {
       return "You should take it first.";
     }
-    return "You pour a glass of rosé. It is cold, dry, and exactly right. You feel immediately more at ease.";
+    return "You pour a glass of rosé from a glass conveniently at hand. It is cold, dry, and exactly right. You feel immediately more at ease.";
   }
 
   public getLocationText(): string {
-    return "A bottle of rosé is chilling on the bar.";
+    return "A bottle of rosé is chilling like a villing.";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
-    ["drink", (gameEngine: GameEngine) => this.use(gameEngine)],
-  ]);
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["drink", (gameEngine: GameEngine) => this.use(gameEngine)]],
+  );
 }

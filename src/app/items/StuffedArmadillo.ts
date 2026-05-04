@@ -42,6 +42,10 @@ export class StuffedArmadillo extends BaseItem {
     return "You set the armadillo on the bed. It sits there, surveying the room with button-eyed serenity. This is where it belongs. You feel certain of this.";
   }
 
+  public drop(gameEngine: GameEngine): string {
+    return this.leaveArmadillo(gameEngine);
+  }
+
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
     [
       ["leave", (gameEngine: GameEngine) => this.leaveArmadillo(gameEngine)],

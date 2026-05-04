@@ -19,14 +19,14 @@ export class ScoreboardSign extends BaseItem {
 
   public examine(gameEngine: GameEngine): string {
     gameEngine.questTracker.complete(Constants.Quests.DigitCourt, gameEngine);
-    return "A small whiteboard on a hook by the sports court gate. Written in green marker:\n\nGERALD: 3\nHUMANS: 0\n\nThe 3 has a quality of permanence to it — not a score so much as a fact of the property. The marker is nearly dry. No one has tried to change it.";
+    return "A small whiteboard on a hook by the sports court gate. Written in green marker:\n\nGERALD: 3\nHUMANS: 0\n\nThe 3 has a quality of permanence to it — not a score so much as a fact of the property. The marker is completely dry. No one has tried to change it.";
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You update the scoreboard in your mind. It does not improve.";
+    return "You update the scoreboard, but only in your mind since the marker is dry. Somehow, the score still doesn't improve.";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
-    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
-  ]);
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["read", (gameEngine: GameEngine) => this.examine(gameEngine)]],
+  );
 }

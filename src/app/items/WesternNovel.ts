@@ -18,14 +18,14 @@ export class WesternNovel extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "NO QUARTER GIVEN, a western novel. The cover shows a cowboy silhouetted against a sunset. The bookmark is at page 12. It has always been at page 12. You open to page 12. It is the middle of a sentence that started on page 11. You read it. Nothing in it suggests why someone stopped here.";
+    return "NO QUARTER GIVEN, a western novel. The cover shows a cowboy silhouetted against a sunset. The bookmark is at page 12. Perhaps it's always been at page 12. You open the book to page 12. It starts in the middle of a sentence that began on page 11.\n\n\"...no better place to heal a broken heart than on the back of a horse.\"\n\nThere's nothing to suggest why those that read that line stop here, yet you find yourself stopping as well.";
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You read a few more pages. The cowboy shoots someone. It is unresolved. You put the book down at page 14.";
+    return "And just what are you planning to do with this book, if not read it...?";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
-    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
-  ]);
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["read", (gameEngine: GameEngine) => this.examine(gameEngine)]],
+  );
 }
