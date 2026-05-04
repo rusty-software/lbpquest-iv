@@ -1,6 +1,8 @@
 import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
+import { LocationKey } from "../locations/LocationKey";
+import { playPickleball } from "../locations/SportsCourt";
 
 export class PickleballPaddle extends BaseItem {
   public id = ItemKey.PickleballPaddle;
@@ -25,7 +27,10 @@ export class PickleballPaddle extends BaseItem {
     return "A pickleball paddle. Standard weight, slightly worn grip tape. Gerald ignores it entirely, which says something about Gerald that you can't quite articulate.";
   }
 
-  public use(_gameEngine: GameEngine): string {
+  public use(gameEngine: GameEngine): string {
+    if (gameEngine.currentLocation.id === LocationKey.SportsCourt) {
+      return playPickleball(gameEngine);
+    }
     return "You swing the paddle. The air does not resist meaningfully.";
   }
 }

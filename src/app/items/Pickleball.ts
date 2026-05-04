@@ -1,6 +1,8 @@
 import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
+import { LocationKey } from "../locations/LocationKey";
+import { playPickleball } from "../locations/SportsCourt";
 
 export class Pickleball extends BaseItem {
   public id = ItemKey.Pickleball;
@@ -16,7 +18,10 @@ export class Pickleball extends BaseItem {
     return "A regulation pickleball — the outdoor kind, with holes for aerodynamics. It is a small, yellow, fundamentally serious object that has become inexplicably popular among people who, like you, have reached an age of contentment.";
   }
 
-  public use(_gameEngine: GameEngine): string {
+  public use(gameEngine: GameEngine): string {
+    if (gameEngine.currentLocation.id === LocationKey.SportsCourt) {
+      return playPickleball(gameEngine);
+    }
     return "Without a paddle and a court, this is just bouncing a ball.";
   }
 
