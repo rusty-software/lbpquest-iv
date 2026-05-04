@@ -13,7 +13,7 @@ export class ChildTent extends BaseItem {
   }
 
   public take(_gameEngine: GameEngine): string {
-    return "The tent is fully assembled and anchored to the carpet. You're not going to carry it anywhere.";
+    return "The tent is fully assembled and anchored to the carpet. You're not going to be able to dislodge it, much less cram it into your bag.";
   }
 
   public examine(gameEngine: GameEngine): string {
@@ -23,12 +23,12 @@ export class ChildTent extends BaseItem {
       gameEngine.getItem(ItemKey.GlowStick).isShown = true;
       gameEngine.getItem(ItemKey.StuffedArmadillo).isShown = true;
       gameEngine.getItem(ItemKey.GeraldNote).isShown = true;
-      return "A child's pop-up tent in the corner of the master bedroom, fully assembled, door flap open. Inside: a green glow stick still faintly active, a stuffed armadillo, and a handwritten tent note.";
+      return "A child's pop-up tent in the corner of the master bedroom, fully assembled, door flap open. Inside, you see a green glow stick, a stuffed armadillo, and a handwritten tent note.";
     }
     return "A child's pop-up tent. It is exactly as strange as it was the first time you looked.";
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You crouch and look inside the tent. There is a stuffed armadillo in there. It regards you with button eyes and no particular judgment.";
+    return "Unfortunately, you're a bit on the large side to effectively use this tent.";
   }
 }

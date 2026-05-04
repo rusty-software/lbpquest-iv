@@ -22,10 +22,10 @@ export class GeraldNote extends BaseItem {
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You read the note again. It says what it says.";
+    return "And how, pray tell, would one go about using a note? What is this, junior high?!";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
-    ["read", (gameEngine: GameEngine) => this.examine(gameEngine)],
-  ]);
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["read", (gameEngine: GameEngine) => this.examine(gameEngine)]],
+  );
 }

@@ -17,7 +17,7 @@ export class LGGKey extends BaseItem {
 
   public take(_gameEngine: GameEngine): string {
     this.taken = true;
-    return "You take the key. The leather is cool and a little gritty from the soil. LGG... I wonder what that stands for...?";
+    return "You take the key. The leather is cool and a little gritty. LGG... I wonder what that stands for...?";
   }
 
   public examine(_gameEngine: GameEngine): string {
@@ -40,6 +40,6 @@ export class LGGKey extends BaseItem {
       lggRoom.neighbors.set("s" as Direction, lggExterior);
       return "The key slides in smoothly. A small sound, like a held breath released. The door swings open on cedar-scented air, and pink neon light spills out from inside.\n\nYou can go north to enter.";
     }
-    return "You're not sure where to use this key right now.";
+    return "You're not sure where to use this key right now, but you know it's not right here.";
   }
 }

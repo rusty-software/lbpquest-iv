@@ -13,7 +13,7 @@ export class LoneStick extends BaseItem {
   }
 
   public take(_gameEngine: GameEngine): string {
-    return "The bracket is bolted firmly into the wall. You give the stick an experimental tug. It doesn't move. You tug it again. It doesn't move again. You will not be mentioning this to anyone.";
+    return "The bracket is bolted firmly into the wall. You give the stick an experimental tug. It doesn't move. You tug it again. It doesn't move again. You will not be mentioning your tugging attempts to anyone.";
   }
 
   public examine(_gameEngine: GameEngine): string {
@@ -21,6 +21,6 @@ export class LoneStick extends BaseItem {
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You look at the stick on the bracket. The stick does not respond.";
+    return "You attempt to use the stick on the bracket. The stick does not respond to your attempts.";
   }
 }

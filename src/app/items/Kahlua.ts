@@ -20,14 +20,14 @@ export class Kahlua extends BaseItem {
     if (!this.taken) {
       return "You should take it first.";
     }
-    return "You take a pull of Kahlúa directly from the bottle, because no one is watching and the glasses are in the other room. It is sweet, rich, and unambiguously correct.";
+    return "You take a pull of Kahlúa directly from the bottle, because no one is watching and the glasses are in some other room. It is sweet, rich, and unambiguously tasty.";
   }
 
   public getLocationText(): string {
-    return "A bottle of Kahlúa is on the bar shelf.";
+    return "A bottle of Kahlúa is here, tempting you...";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
-    ["drink", (gameEngine: GameEngine) => this.use(gameEngine)],
-  ]);
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["drink", (gameEngine: GameEngine) => this.use(gameEngine)]],
+  );
 }

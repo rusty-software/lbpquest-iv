@@ -21,6 +21,6 @@ export class Matches extends BaseItem {
   }
 
   public getLocationText(): string {
-    return "A box of long matches is on the shelf.";
+    return "A box of long matches is here.";
   }
 }

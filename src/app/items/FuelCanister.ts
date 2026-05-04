@@ -14,7 +14,7 @@ export class FuelCanister extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A small green propane canister, the kind that screws into a camp lantern or stove. It has good weight to it — still full.";
+    return "A small green propane canister, the kind that screws into a camp lantern or stove. It has good weight to it — still full-ish.";
   }
 
   public getLocationText(): string {
@@ -33,6 +33,6 @@ export class FuelCanister extends BaseItem {
       gameEngine.removeFromInventory(ItemKey.FuelCanister);
       return "You screw the canister into the lantern base and turn the valve. A soft hiss, then a click — the mantle catches and blooms into warm amber light. The lantern is lit.";
     }
-    return "You twist the valve. Propane hisses out briefly. You stop before you waste it.";
+    return "You twist the valve. Propane hisses out briefly. You stop before you waste it all.";
   }
 }

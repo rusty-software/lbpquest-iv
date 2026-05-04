@@ -13,7 +13,7 @@ export class BrokenJigger extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A brass mechanical bar jigger, the kind with two cones joined at the waist. One side has sheared off the pivot — it's broken, unusable as a measuring device. But it's very shiny. It catches the light in a way that seems objectively irresponsible.";
+    return "A brass mechanical bar jigger, the kind with two cones joined at the waist. One side has sheared off the pivot — it's broken, unusable as a reliable measuring device. But it's very shiny. It catches the light in a way that seems objectively irresponsible.";
   }
 
   public getLocationText(): string {

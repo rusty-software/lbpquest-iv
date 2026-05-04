@@ -22,7 +22,7 @@ export class OrderNote extends BaseItem {
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You read the note again. COURT · SHED · TUB · BLIND — in that order.";
+    return "You suspect that instead of using the note, you should read it.";
   }
 
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(

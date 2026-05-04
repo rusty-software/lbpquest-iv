@@ -28,6 +28,6 @@ export class CactusNightlight extends BaseItem {
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "The nightlight is already doing its job. Sort of.";
+    return "The nightlight is already doing its job, if it's job is decorative instead of functional.";
   }
 }

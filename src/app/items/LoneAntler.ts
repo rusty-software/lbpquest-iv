@@ -23,12 +23,12 @@ export class LoneAntler extends BaseItem {
       gameEngine,
     );
     if (isFirst) {
-      return "A single antler, two tines, mounted beside the whiskey room porch door. You lean in and notice a faint carving in the base: a small oak leaf, barely a centimeter wide, pressed into the bone with something thin and careful. Someone left their mark here. It has been here long enough that it no longer draws comment from whoever comes and goes.";
+      return "A single antler, sporting two tines, mounted beside the whiskey room porch door. You lean in and notice a faint carving in the base: a small oak leaf, barely a centimeter wide, pressed into the bone with something thin and careful. Someone left their mark here. It has been here long enough that it no longer draws comment from whoever comes and goes.";
     }
     return "A single antler, two tines, mounted beside the whiskey room porch door. The oak leaf carving in the base is there if you know to look for it.";
   }
 
   public use(_gameEngine: GameEngine): string {
-    return "You look at the antler. The antler does not engage.";
+    return "You try to figure out how to use the antler. The antler does not condone your antics. You cease your attempts to use it.";
   }
 }

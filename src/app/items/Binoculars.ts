@@ -19,7 +19,7 @@ export class Binoculars extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A pair of 8x42 binoculars. Good glass... these were not bought cheaply. Someone left them here but apparently does not need them...";
+    return "A pair of 8x42 binoculars. Good quality glass... these were not bought cheaply...";
   }
 
   public use(gameEngine: GameEngine): string {
@@ -35,9 +35,9 @@ export class Binoculars extends BaseItem {
           Constants.Quests.FireLit,
         );
         if (fireLit) {
-          return "Through the binoculars you can see past the pool deck to the fire pit clearing beyond. The camp chairs are arranged around the pit. The fire is going — flickering flame light, orange against the dark trees. Someone (you) made that fire. You scan for movement. The chairs are empty, but the fire doesn't care.";
+          return "Through the binoculars you can see past the pool deck to the fire pit clearing beyond. The camp chairs are arranged around the pit. The fire is going — flickering flame light, orange against the dark trees. Someone (you) made that fire. You scan for movement but detect none. The chairs are empty, and the fire doesn't care.";
         }
-        return "Through the binoculars you can see past the pool deck to the fire pit clearing beyond. The camp chairs are arranged. The fire pit is cold. No one is there, or near there, or visible anywhere in that direction.";
+        return "Through the binoculars you can see past the pool deck to the fire pit clearing beyond. The camp chairs are arranged around it. The fire pit is cold. No one is there, or near there, or visible anywhere in that direction.";
       }
       case LocationKey.DeerBlind: {
         const hotTub = gameEngine.getLocation(LocationKey.HotTub);
@@ -45,8 +45,11 @@ export class Binoculars extends BaseItem {
           (i) => i.id === ItemKey.PlainRubberDuck && i.isShown,
         );
         if (duckInTub) {
-          gameEngine.questTracker.complete(Constants.Quests.DigitTub, gameEngine);
-          return "Through the shooting window you scan north. You see two deer in the meadow, motionless. Continuing the scan, you see the pool deck and the hot tub above it, jets running. You train the glass on the hot tub. There is a rubber duck in there. You hold the focus on the flat base of it. Faded marker. The number 2.";
+          gameEngine.questTracker.complete(
+            Constants.Quests.DigitTub,
+            gameEngine,
+          );
+          return "Through the shooting window you scan north. You see two deer in the meadow, motionless. Continuing the scan, you see the pool deck and the hot tub above it, jets running. You train the glass on the hot tub. There is a rubber duck in there. As it bobs up and down, you hold the focus on the flat base of it. In faded marker, you see the number 2 written on bottom.";
         }
         return "Through the shooting window you scan north. You see two deer in the meadow, motionless. Continuing the scan, you see the pool deck and the hot tub above it, jets running. The hot tub is otherwise unoccupied.";
       }

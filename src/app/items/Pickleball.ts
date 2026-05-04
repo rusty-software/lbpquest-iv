@@ -13,7 +13,7 @@ export class Pickleball extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A regulation pickleball — the outdoor kind, with holes for aerodynamics. It is a small, yellow, fundamentally serious object that has become inexplicably popular among people who have reached an age of contentment.";
+    return "A regulation pickleball — the outdoor kind, with holes for aerodynamics. It is a small, yellow, fundamentally serious object that has become inexplicably popular among people who, like you, have reached an age of contentment.";
   }
 
   public use(_gameEngine: GameEngine): string {
@@ -21,6 +21,6 @@ export class Pickleball extends BaseItem {
   }
 
   public getLocationText(): string {
-    return "A pickleball sits in the equipment bin.";
+    return "A pickleball is here, looking a bit forlorn.";
   }
 }

@@ -13,7 +13,7 @@ export class LoneStarTallboy extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A Lone Star tallboy, cold from the mudroom refrigerator. The Texas state seal is on the can. The seal is proud. The beer is adequate. Together they are iconic.";
+    return "A Lone Star tallboy, cold from the mudroom refrigerator. The Texas state seal is on the can. The seal is overtly proud. The beer is distinctly adequate. Together they are iconic.";
   }
 
   public use(_gameEngine: GameEngine): string {
@@ -23,7 +23,11 @@ export class LoneStarTallboy extends BaseItem {
     return "You should probably take it first.";
   }
 
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["drink", (gameEngine: GameEngine) => this.use(gameEngine)]],
+  );
+
   public getLocationText(): string {
-    return "A Lone Star tallboy is on the mudroom shelf.";
+    return "A Lone Star tallboy is here, tempting you...";
   }
 }

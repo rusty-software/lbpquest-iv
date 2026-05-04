@@ -18,7 +18,7 @@ export class BlantonsBottle extends BaseItem {
     if (this.opened) {
       return "A fifth of Blanton's Single Barrel Bourbon, open. The gold wax is broken at the neck, although the horse-and-jockey stopper remains intact.";
     }
-    return "An unopened fifth of Blanton's Single Barrel Bourbon. The gold wax cap is unbroken. The little horse-and-jockey stopper is sealed inside. Someone showed remarkable restraint.";
+    return "An unopened fifth of Blanton's Single Barrel Bourbon. The gold wax cap is unbroken. The little horse-and-jockey stopper is still sealed. Someone showed remarkable restraint.";
   }
 
   public getLocationText(): string {

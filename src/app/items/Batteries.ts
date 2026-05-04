@@ -19,9 +19,12 @@ export class Batteries extends BaseItem {
 
   public use(gameEngine: GameEngine): string {
     if (gameEngine.inventoryContains(ItemKey.Flashlight)) {
-      gameEngine.questTracker.complete(Constants.Quests.FlashlightActivated, gameEngine);
+      gameEngine.questTracker.complete(
+        Constants.Quests.FlashlightActivated,
+        gameEngine,
+      );
       gameEngine.removeFromInventory(ItemKey.Batteries);
-      return "You load the batteries into the flashlight. It clicks on. A bright beam. Much better.";
+      return "You load the batteries into the flashlight. It clicks on, generating a bright beam. Much better.";
     }
     return "You hold the batteries. They do not do much on their own.";
   }

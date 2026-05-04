@@ -6,8 +6,8 @@ import { ItemKey } from "./ItemKey";
 const geraldDescriptions = [
   "Gerald is a large tom turkey, and he is standing in the middle of the path. He looks at you with one eye, then the other. He does not move. He makes a sound like a rusty gate.",
   "Gerald — a full-grown tom turkey, for the record — has arrived and is now patrolling the area with the grim efficiency of a regional manager doing a surprise audit.",
-  "Gerald is here. A turkey. Your size, approximately. He is simply being Gerald, in his place. You are the intruder in this arrangement.",
-  "Gerald the turkey appears to have eaten something. He seems satisfied. He does not explain.",
+  "Gerald is here. He's a large turkey, approimately your size. He is currently simply being Gerald, and he's in one of his places. You are the intruder in this arrangement.",
+  "Gerald the turkey appears to have eaten something. He seems satisfied, but offers nothing in the way of explanation.",
   "Gerald — large, bronze-feathered, deeply unimpressed — is standing very close to something on the ground. He is not touching it. He is not moving from it.",
 ];
 
@@ -23,7 +23,7 @@ export class Gerald extends BaseItem {
   }
 
   public take(_gameEngine: GameEngine): string {
-    return "You cannot take Gerald. Gerald takes things from you. That is the direction this relationship runs.";
+    return "You cannot take Gerald. Gerald *can* take things from you. That is the direction this relationship runs.";
   }
 
   public drop(_gameEngine: GameEngine): string {
@@ -63,7 +63,7 @@ export class Gerald extends BaseItem {
             Constants.Quests.GeraldDefeated,
             gameEngine,
           );
-          return "You open the crackers and toss them. Gerald materializes his full attention onto them with startling speed. He is occupied. He wanders off, eating, satisfied. The path is clear.";
+          return "You open the crackers and toss them. Gerald focuses his full attention onto them with startling speed. He is briefly occupied with vigorous pecking, the stops abruptly. He wanders off, seemingly satisfied with what was eaten. The path is clear.";
         }
         return "You don't have any crackers.";
       },
