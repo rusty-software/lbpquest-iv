@@ -18,19 +18,21 @@ export class PoolDeck extends BaseLocation {
       return "You'd need both ducks. The cowboy duck is somewhere in the Lodge.";
     }
     if (!gameEngine.inventoryContains(ItemKey.PlainRubberDuck)) {
-      return "You'd need both ducks. The plain duck is in the hot tub.";
+      return "You'd need both ducks. You don't have the plain duck.";
     }
     gameEngine.questTracker.complete(Constants.Quests.DucksRaced, gameEngine);
-    return "You place both ducks at the near edge of the pool and start the waterfall feature. A current develops. The cowboy duck, with its hat and its convictions, pulls ahead early. The plain duck is steady, principled, unconcerned with hats. They cross the far end together. You declare a tie. Neither duck disputes this. (3 points)";
+    return "You place both ducks at the near edge of the pool and start the waterfall feature. A current develops. The cowboy duck, with its hat and its convictions, pulls ahead early. The plain duck is steady, principled, unconcerned with hats. They cross the far end together. You declare a tie. Neither duck disputes this.";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
     [
-      "examine pool",
-      (_gameEngine) =>
-        "The pool shifts between blue and green in the LED lighting cycle. The water is exceptionally clear. Near the far drain, something glints on the bottom. You peer closer. It's a quarter. You do not go in after it.",
+      [
+        "examine pool",
+        (_gameEngine) =>
+          "The pool shifts between blue and green in the LED lighting cycle. The water is exceptionally clear. Near the far drain, something glints on the bottom. You peer closer. It's a quarter. You do not go in after it.",
+      ],
+      ["race ducks", (gameEngine: GameEngine) => this.raceDucks(gameEngine)],
+      ["duck race", (gameEngine: GameEngine) => this.raceDucks(gameEngine)],
     ],
-    ["race ducks", (gameEngine: GameEngine) => this.raceDucks(gameEngine)],
-    ["duck race", (gameEngine: GameEngine) => this.raceDucks(gameEngine)],
-  ]);
+  );
 }

@@ -22,7 +22,7 @@ export class GlowStick extends BaseItem {
     if (this.cracked) {
       return "A cracked green glow stick, bent and activated. It produces a steady, sickly green light — not bright, but enough. It smells faintly chemical.";
     }
-    return "A green chemical glow stick, still active, producing a dim sickly light. It is not bright enough to safely navigate the cedar brake. It is only bright enough to make you feel like you should be at a rave, circa 2003.";
+    return "A green chemical glow stick, still sealed and inert. Nothing happening yet. Bend it until you hear the inner vial snap and you'll have light — not much light, but enough.";
   }
 
   public use(_gameEngine: GameEngine): string {

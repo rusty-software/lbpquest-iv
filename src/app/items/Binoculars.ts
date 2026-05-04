@@ -2,7 +2,7 @@ import { Constants } from "../Constants";
 import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
-import { LocationKey } from "../locations";
+import { LocationKey } from "../locations/LocationKey";
 
 export class Binoculars extends BaseItem {
   public id = ItemKey.Binoculars;
@@ -19,20 +19,39 @@ export class Binoculars extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A pair of 8x42 binoculars. Good glass — these were not bought cheaply. Someone left them here and apparently does not need them back.";
+    return "A pair of 8x42 binoculars. Good glass... these were not bought cheaply. Someone left them here but apparently does not need them...";
   }
 
   public use(gameEngine: GameEngine): string {
     switch (gameEngine.currentLocation.id) {
       case LocationKey.WoodenPavilion:
-        return "Through the binoculars you can see the Lodge's back porch clearly — the rocking chairs, the flatscreen TV, the log bar. In one of the rocking chairs, something large and brown is sitting. You adjust the focus. It is Gerald. He is just sitting there. In a rocking chair. On the back porch.";
-      case LocationKey.BackPorch:
+        gameEngine.questTracker.complete(
+          Constants.Quests.GeraldSpotted,
+          gameEngine,
+        );
+        return "Through the binoculars you can see the Lodge's back porch clearly: the rocking chairs, the flatscreen TV, the log bar. In one of the rocking chairs, something large and brown is sitting. You adjust the focus. It is Gerald. He is just sitting there. In a rocking chair. On the back porch.";
+      case LocationKey.BackPorch: {
+        const fireLit = gameEngine.questTracker.isComplete(
+          Constants.Quests.FireLit,
+        );
+        if (fireLit) {
+          return "Through the binoculars you can see past the pool deck to the fire pit clearing beyond. The camp chairs are arranged around the pit. The fire is going — flickering flame light, orange against the dark trees. Someone (you) made that fire. You scan for movement. The chairs are empty, but the fire doesn't care.";
+        }
         return "Through the binoculars you can see past the pool deck to the fire pit clearing beyond. The camp chairs are arranged. The fire pit is cold. No one is there, or near there, or visible anywhere in that direction.";
-      case LocationKey.DeerBlind:
-        gameEngine.questTracker.complete(Constants.Quests.DigitTub, gameEngine);
-        return "Through the shooting window you scan north. Two deer in the meadow, motionless. The pool deck. The hot tub above it, jets running. You train the glass on the hot tub. There is a rubber duck in there. You hold the focus on the flat base of it. Faded marker. The number 2.";
+      }
+      case LocationKey.DeerBlind: {
+        const hotTub = gameEngine.getLocation(LocationKey.HotTub);
+        const duckInTub = hotTub.items.some(
+          (i) => i.id === ItemKey.PlainRubberDuck && i.isShown,
+        );
+        if (duckInTub) {
+          gameEngine.questTracker.complete(Constants.Quests.DigitTub, gameEngine);
+          return "Through the shooting window you scan north. You see two deer in the meadow, motionless. Continuing the scan, you see the pool deck and the hot tub above it, jets running. You train the glass on the hot tub. There is a rubber duck in there. You hold the focus on the flat base of it. Faded marker. The number 2.";
+        }
+        return "Through the shooting window you scan north. You see two deer in the meadow, motionless. Continuing the scan, you see the pool deck and the hot tub above it, jets running. The hot tub is otherwise unoccupied.";
+      }
       default:
-        return "You raise the binoculars and look around. The view is interesting from here.";
+        return "You raise the binoculars and look around. The view isn't very interesting from here.";
     }
   }
 

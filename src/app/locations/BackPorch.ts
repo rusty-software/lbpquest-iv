@@ -18,22 +18,26 @@ export class BackPorch extends BaseLocation {
     if (!gameEngine.inventoryContains(ItemKey.BlantonsBottle)) {
       return "You'd need the Blanton's. It might be here on the porch somewhere.";
     }
-    const blanton = gameEngine.getItem(ItemKey.BlantonsBottle) as BlantonsBottle;
+    const blanton = gameEngine.getItem(
+      ItemKey.BlantonsBottle,
+    ) as BlantonsBottle;
     if (!blanton.opened) {
       return "The Blanton's is still sealed. You might want to open it first.";
     }
     gameEngine.questTracker.complete(Constants.Quests.DrinkMixed, gameEngine);
-    return "You find a glass behind the bar — short, heavy, the right weight. Two fingers of Blanton's. A single large ice cube from the steel bucket. A moment while it settles. You take it to the rocking chair. You drink slowly. The string lights are on. The night is warm. Your friends are somewhere out there. This is the right drink at the right time. (2 points)";
+    return "You find a glass behind the bar — short, heavy, the right weight. Two fingers of Blanton's. A single large ice cube from the steel bucket. A moment while it settles. You take it to the rocking chair. You drink slowly. The string lights are on. The night is warm. Your friends are somewhere out there, but for now... this is the right drink at the right time.";
   }
 
-  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map([
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
     [
-      "examine bar",
-      (_gameEngine) =>
-        "The oak bar is rough-cut and well-used. Pinned to the post behind it: a handwritten cocktail menu on cardstock, slightly warped from humidity.\n\nTHE BLIND BUCK — 1 oz bourbon, honey, splash of bitters\nTHE COURT JESTER — 3 oz ranch water, lime, never enough ice\nTHE SHED SPECIAL — 7-year rye, neat, no argument\nTHE TUB FLOAT — 2 oz coconut rum, pineapple, served in whatever's clean\n\nThe prices are crossed out. Everything here is on the ranch.",
+      [
+        "examine bar",
+        (_gameEngine) =>
+          "The oak bar is rough-cut and well-used. Pinned to the post behind it: a handwritten cocktail menu on cardstock, slightly warped from humidity.\n\nTHE BLIND BUCK — 1 oz bourbon, honey, splash of bitters\nTHE COURT JESTER — 3 oz ranch water, lime, never enough ice\nTHE SHED SPECIAL — 7-year rye, neat, no argument\nTHE TUB FLOAT — 2 oz coconut rum, pineapple, served in whatever's clean\n\nThe prices are crossed out. Everything here is on the ranch.",
+      ],
+      ["make drink", (gameEngine: GameEngine) => this.makeDrink(gameEngine)],
+      ["mix drink", (gameEngine: GameEngine) => this.makeDrink(gameEngine)],
+      ["pour drink", (gameEngine: GameEngine) => this.makeDrink(gameEngine)],
     ],
-    ["make drink", (gameEngine: GameEngine) => this.makeDrink(gameEngine)],
-    ["mix drink", (gameEngine: GameEngine) => this.makeDrink(gameEngine)],
-    ["pour drink", (gameEngine: GameEngine) => this.makeDrink(gameEngine)],
-  ]);
+  );
 }
