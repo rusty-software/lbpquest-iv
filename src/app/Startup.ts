@@ -549,7 +549,7 @@ export class Startup {
           gameEngine.questTracker.isComplete(
             Constants.Quests.FlashlightActivated,
           )
-            ? "Your flashlight sweeps across the cedar trunks. The trees grow in close here, old and twisted. On one trunk near the center, scratched at shoulder height: GOT U. Two letters. Gerald's work, or just bark damage from something passing through. You choose not to decide."
+            ? "Your flashlight sweeps across the cedar trunks. The trees grow in close here, old and twisted. On one trunk near the center, scratched at shoulder height: GOT U. One word, and one letter. Gerald's work, or just bark damage from something passing through. You choose not to decide."
             : "You can't see much in the dark. The cedar presses close. Something moves in the branches. It is probably just wind.",
       ],
     ]);
@@ -580,7 +580,7 @@ export class Startup {
               Constants.Quests.LanternMarkings,
               gameEngine,
             );
-            return "You hold the lantern close. In the warm amber light, scratched into the cedar plank above the rifle rest: R.B. & K.C. — OPENING WEEKEND, NOV '18. Someone brought their person. There are small hearts drawn on either side, careful despite the medium. The lantern light makes them readable where the flashlight's beam never could.";
+            return "You hold the lantern close. In the warm amber light, scratched into the cedar plank above the rifle rest: T.R. & E.H. — OPENING WEEKEND, NOV '18. Someone brought their person. There are small hearts drawn on either side, careful despite the medium. The lantern light makes them readable where the flashlight's beam never could.";
           }
           return "You can tell something is scratched into the plank, but the beam washes the faded marks out. A warmer light might do better.";
         },

@@ -13,7 +13,7 @@ export class GreatRoom extends BaseLocation {
 
     if (visitCount < 5) {
       s +=
-        '\n\nThe great buck fixes you with one glass eye. "You. Yes. I\'ll be brief. Your companions have gone to the innermost room — through the neon, into the dark, to the cabin at the end of the trail. The way is sealed by a four-digit code. The numbers are written in the ranch itself. Look at what has been scored, scheduled, measured, and labeled. The order of those numbers waits for you somewhere in the neon."';
+        '\n\nThe great buck fixes you with one glass eye, then speaks.\n\n"You. Yes. I\'ll be brief. Your companions have gone to the innermost room — through the neon, into the dark, to the cabin at the end of the trail. The way is sealed by a four-digit code. The numbers are written in the ranch itself. Look at what has been scored, scheduled, measured, and labeled. The order of those numbers waits for you somewhere in the neon."';
     } else if (visitCount < 15) {
       s +=
         '\n\nThe great buck regards you, then says, "Still ranging. Good. Four numbers, four places on this property — court, shed, tub, and blind. Their order is in the neon room. Seek it out if you\'ve not been there yet."';

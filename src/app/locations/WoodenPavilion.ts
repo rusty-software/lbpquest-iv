@@ -13,7 +13,7 @@ export class WoodenPavilion extends BaseLocation {
       [
         "examine table",
         (_gameEngine) =>
-          "A weathered cedar picnic table under the pavilion roof. Someone has carved into the wood over the years — initials, dates, a crude star. Near the corner, in deeper cuts than the rest: a turkey silhouette, recognizable to anyone who has spent time here, with the letters G.T.K. below it. Gerald the Gobbler King. He has always been here. He will outlast the table.",
+          "A weathered cedar picnic table under the pavilion roof. Someone has carved into the wood over the years — initials, dates, a crude star. Near the corner, in deeper cuts than the rest: a turkey silhouette, recognizable to anyone who has spent time here, with the letters G.T.G.K. below it. Gerald the Gobbler King. He has always been here. He will likey outlast the table.",
       ],
     ],
   );

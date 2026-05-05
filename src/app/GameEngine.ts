@@ -147,7 +147,7 @@ export class GameEngine {
             whiskeyRoom.neighbors.set("e" as Direction, porch);
             this.events.push(
               new ItemEvent(
-                "You enter 3-7-2-1. Four soft tones in sequence. A click — distinct and satisfied — and the door swings open on cedar and woodsmoke. Warm amber light spills out from inside.\n\nYou can go west to enter.",
+                "You enter 3-7-2-1. Four soft tones in sequence. A click — distinct and satisfied — and the door swings open silent hinges. You are greeted with scents of cedar and woodsmoke. Warm amber light spills out from inside.\n\nYou can go west to enter.",
               ),
             );
           } else if (
@@ -367,7 +367,7 @@ export class GameEngine {
       if (firstVisit) {
         this.events.push(
           new WinEvent(
-            'And here, finally: your friends. Someone is in the corner chair with a whiskey. Someone else is at the bar, mid-explanation of a card game to a person who is clearly not listening. They look up when you come in.\n\n"There you are," someone says. "We\'ve been here for an hour. Grab a glass."\n\nYou do.\n\nThe walk through the property — the field, the grove, the turkey, all of it — becomes a story you\'ll tell at this bar, in this room, at the end of these string lights, before the weekend is done.',
+            "And here, finally, you have found your friends. Some are huddled in the corner chairs enjoying whiskey. Others are at the bar, hearing tales of games of all kinds won and lost. Everyone looks up when you come in.\n\n\"There you are! We've been here for an hours. Grab a glass!\"\n\nYou do.\n\nThe walk through the property — the field, the grove, the turkey, all of it — becomes a story you'll tell at this bar, in this room, at the end of these string lights, before the weekend is done.",
           ),
         );
       }
@@ -400,7 +400,11 @@ export class GameEngine {
     if (newLocation) {
       if (
         newLocation.isDark &&
-        !(this.hasActiveFlashlight() || this.hasLitLantern() || this.hasCrackedGlowStick())
+        !(
+          this.hasActiveFlashlight() ||
+          this.hasLitLantern() ||
+          this.hasCrackedGlowStick()
+        )
       ) {
         this.events.push(
           new GameErrorEvent(
@@ -438,7 +442,7 @@ export class GameEngine {
 
     this.events.push(
       new ItemEvent(
-        "As you step back under the oaks, something crashes through the cedar at full speed. Gerald — it is definitely Gerald — snatches the folded note right out of your hand with his beak, in a single practiced motion, and is gone north before you finish the sentence you were starting to form. You hear the crunch of gravel. The cabin note is gone.",
+        "As you step back under the oaks, something crashes through the cedar at full speed. Gerald — it is definitely Gerald — snatches the folded note right out of your bag with his beak, in a single practiced motion, and is gone north before you finish the sentence you were starting to form. You hear the crunch of gravel. The cabin note is gone.",
       ),
     );
   }
@@ -639,9 +643,12 @@ export class GameEngine {
     this.geraldKeyTheftDone = save.geraldKeyTheftDone;
     this.geraldPatrolIndex = save.geraldPatrolIndex;
     this.lastGeraldMoveAt = save.lastGeraldMoveAt;
-    (this.getItem(ItemKey.Gerald) as Gerald).descriptionIndex = save.geraldDescriptionIndex;
-    (this.getItem(ItemKey.BlantonsBottle) as BlantonsBottle).opened = save.blantonsOpened;
-    (this.getItem(ItemKey.GlowStick) as GlowStick).cracked = save.glowStickCracked;
+    (this.getItem(ItemKey.Gerald) as Gerald).descriptionIndex =
+      save.geraldDescriptionIndex;
+    (this.getItem(ItemKey.BlantonsBottle) as BlantonsBottle).opened =
+      save.blantonsOpened;
+    (this.getItem(ItemKey.GlowStick) as GlowStick).cracked =
+      save.glowStickCracked;
 
     this.restoreDynamicNeighbors();
     this.currentLocation = this.getLocation(save.currentLocationKey);

@@ -11,7 +11,7 @@ export class SharedBathroom extends BaseLocation {
       (i) => i.id === ItemKey.WesternNovel && i.isShown,
     );
     const novelSentence = novelPresent
-      ? " Someone left a paperback western novel on the back of the toilet. The cover shows a cowboy silhouetted against a sunset and the title: NO QUARTER GIVEN. The bookmark is at page 12. It has always been at page 12."
+      ? " Someone left a paperback western novel on the back of the toilet. The cover shows a cowboy silhouetted against a sunset and the title: NO QUARTER GIVEN."
       : "";
     let itemText = "";
     this.items

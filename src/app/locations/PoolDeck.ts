@@ -28,8 +28,29 @@ export class PoolDeck extends BaseLocation {
     [
       [
         "examine pool",
-        (_gameEngine) =>
-          "The pool shifts between blue and green in the LED lighting cycle. The water is exceptionally clear. Near the far drain, something glints on the bottom. You peer closer. It's a quarter. You do not go in after it.",
+        (gameEngine: GameEngine) => {
+          const hasCowboy = gameEngine.inventoryContains(
+            ItemKey.CowboyRubberDuck,
+          );
+          const hasPlain = gameEngine.inventoryContains(
+            ItemKey.PlainRubberDuck,
+          );
+          const raced = gameEngine.questTracker.isComplete(
+            Constants.Quests.DucksRaced,
+          );
+          const base =
+            "The pool shifts between blue and green in the LED lighting cycle. The water is exceptionally clear. Near the far drain, something glints on the bottom. You peer closer. It's a quarter. You do not go in after it. The waterfall feature at the far end pushes a gentle current the full length of the pool.";
+          if (raced) {
+            return `${base} The ducks raced here. You remember the thrill of victory and the agony of defeat.`;
+          }
+          if (hasCowboy && hasPlain) {
+            return `${base} You're holding two rubber ducks. The current would carry them the full length. You could race them.`;
+          }
+          if (hasCowboy || hasPlain) {
+            return `${base} The current would carry something small the full length of the pool. You'd want two of them to make it interesting.`;
+          }
+          return `${base} It occurs to you that something small and buoyant would travel the full length without any help at all.`;
+        },
       ],
       ["race ducks", (gameEngine: GameEngine) => this.raceDucks(gameEngine)],
       ["duck race", (gameEngine: GameEngine) => this.raceDucks(gameEngine)],
