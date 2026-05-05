@@ -10,8 +10,16 @@ export class StuffedArmadillo extends BaseItem {
   public isShown = false;
   public value = 4;
 
-  public canTake(_gameEngine: GameEngine): boolean {
-    return true;
+  public canTake(gameEngine: GameEngine): boolean {
+    return !gameEngine.questTracker.isComplete(Constants.Quests.ArmadilloReturned);
+  }
+
+  public take(gameEngine: GameEngine): string {
+    if (gameEngine.questTracker.isComplete(Constants.Quests.ArmadilloReturned)) {
+      return "It's home. Leave it.";
+    }
+    this.taken = true;
+    return "Taken.";
   }
 
   public examine(_gameEngine: GameEngine): string {
