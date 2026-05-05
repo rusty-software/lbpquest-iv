@@ -25,6 +25,10 @@ export class Pickleball extends BaseItem {
     return "Without a paddle and a court, this is just bouncing a ball.";
   }
 
+  public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
+    [["play", (gameEngine: GameEngine) => this.use(gameEngine)]],
+  );
+
   public getLocationText(): string {
     return "A pickleball is here, looking a bit forlorn.";
   }

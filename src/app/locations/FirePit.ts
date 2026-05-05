@@ -4,6 +4,17 @@ import { ItemKey } from "../items/ItemKey";
 import { BaseLocation } from "./BaseLocation";
 import { LocationKey } from "./LocationKey";
 
+export function lightFire(gameEngine: GameEngine): string {
+  if (gameEngine.questTracker.isComplete(Constants.Quests.FireLit)) {
+    return "The fire is already going. You feed it a piece of cedar. It accepts.";
+  }
+  if (!gameEngine.inventoryContains(ItemKey.Matches)) {
+    return "You could light it with some matches. You don't have any.";
+  }
+  gameEngine.questTracker.complete(Constants.Quests.FireLit, gameEngine);
+  return "You strike a long match against the box and touch it to the paper and cedar. The fire catches slowly at first, then with conviction. The pit glows. The clearing changes completely.";
+}
+
 export class FirePit extends BaseLocation {
   public id = LocationKey.FirePit;
   public title = "Fire Pit";
@@ -42,17 +53,6 @@ export class FirePit extends BaseLocation {
     return `You arrive at a wide ring of tamped earth in a clearing. ${fireDesc} ${chairDesc} The oaks are dense enough here that this spot feels genuinely separate from the Lodge and the pool, its own place with its own logic.${topoSentence}${msgPart}\n\nThe pool deck is to the north. The south meadow is to the northwest. The cedar brake is to the south.${itemText}`;
   }
 
-  private lightFire(gameEngine: GameEngine): string {
-    if (gameEngine.questTracker.isComplete(Constants.Quests.FireLit)) {
-      return "The fire is already going. You feed it a piece of cedar. It accepts.";
-    }
-    if (!gameEngine.inventoryContains(ItemKey.Matches)) {
-      return "You could light it with some matches. You don't have any.";
-    }
-    gameEngine.questTracker.complete(Constants.Quests.FireLit, gameEngine);
-    return "You strike a long match against the box and touch it to the paper and cedar. The fire catches slowly at first, then with conviction. The pit glows. The clearing changes completely.";
-  }
-
   private sitByFire(gameEngine: GameEngine): string {
     if (!gameEngine.questTracker.isComplete(Constants.Quests.FireLit)) {
       return "The fire pit is cold. You sit in a chair anyway, which is fine, but it is not the same thing.";
@@ -66,9 +66,9 @@ export class FirePit extends BaseLocation {
 
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
     [
-      ["light fire", (gameEngine: GameEngine) => this.lightFire(gameEngine)],
-      ["start fire", (gameEngine: GameEngine) => this.lightFire(gameEngine)],
-      ["use matches", (gameEngine: GameEngine) => this.lightFire(gameEngine)],
+      ["light fire", (gameEngine: GameEngine) => lightFire(gameEngine)],
+      ["start fire", (gameEngine: GameEngine) => lightFire(gameEngine)],
+      ["use matches", (gameEngine: GameEngine) => lightFire(gameEngine)],
       ["sit by fire", (gameEngine: GameEngine) => this.sitByFire(gameEngine)],
       ["sit down", (gameEngine: GameEngine) => this.sitByFire(gameEngine)],
       ["sit", (gameEngine: GameEngine) => this.sitByFire(gameEngine)],

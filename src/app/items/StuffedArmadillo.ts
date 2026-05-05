@@ -23,9 +23,6 @@ export class StuffedArmadillo extends BaseItem {
   }
 
   private leaveArmadillo(gameEngine: GameEngine): string {
-    if (!gameEngine.inventoryContains(ItemKey.StuffedArmadillo)) {
-      return "You'd need to have it with you first.";
-    }
     if (gameEngine.currentLocation.id !== LocationKey.BedroomThree) {
       return "This doesn't feel like the right place for it.";
     }
@@ -42,15 +39,23 @@ export class StuffedArmadillo extends BaseItem {
     return "You set the armadillo on the bed. It sits there, surveying the room with button-eyed serenity. This is where it belongs. You feel certain of this.";
   }
 
+  private handleArmadillo(gameEngine: GameEngine): string {
+    if (!gameEngine.inventoryContains(ItemKey.StuffedArmadillo)) {
+      return "You'd need to have it with you first.";
+    }
+    return this.leaveArmadillo(gameEngine);
+  }
+
   public drop(gameEngine: GameEngine): string {
     return this.leaveArmadillo(gameEngine);
   }
 
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
     [
-      ["leave", (gameEngine: GameEngine) => this.leaveArmadillo(gameEngine)],
-      ["place", (gameEngine: GameEngine) => this.leaveArmadillo(gameEngine)],
-      ["return", (gameEngine: GameEngine) => this.leaveArmadillo(gameEngine)],
+      ["put", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
+      ["leave", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
+      ["place", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
+      ["return", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
     ],
   );
 }

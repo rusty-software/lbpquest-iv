@@ -23,6 +23,11 @@ export class Flashlight extends BaseItem {
   }
 
   public use(gameEngine: GameEngine): string {
+    if (
+      gameEngine.questTracker.isComplete(Constants.Quests.FlashlightActivated)
+    ) {
+      return "The flashlight is on.";
+    }
     if (gameEngine.inventoryContains(ItemKey.Batteries)) {
       gameEngine.questTracker.complete(
         Constants.Quests.FlashlightActivated,

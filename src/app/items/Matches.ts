@@ -1,6 +1,7 @@
 import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
+import { lightFire } from "../locations/FirePit";
 
 export class Matches extends BaseItem {
   public id = ItemKey.Matches;
@@ -16,8 +17,8 @@ export class Matches extends BaseItem {
     return "A box of long fireplace matches. Still mostly full. The striking strip is intact.";
   }
 
-  public use(_gameEngine: GameEngine): string {
-    return "You strike a match. It flares. You hold it for a moment, then shake it out. Fire requires context.";
+  public use(gameEngine: GameEngine): string {
+    return lightFire(gameEngine);
   }
 
   public getLocationText(): string {

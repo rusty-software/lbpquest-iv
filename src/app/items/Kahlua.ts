@@ -4,7 +4,7 @@ import { ItemKey } from "./ItemKey";
 
 export class Kahlua extends BaseItem {
   public id = ItemKey.Kahlua;
-  public name = "kahlúa";
+  public name = "kahlua";
   public isShown = true;
   public value = 4;
 

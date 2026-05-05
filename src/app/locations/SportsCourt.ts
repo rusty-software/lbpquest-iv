@@ -46,10 +46,7 @@ export class SportsCourt extends BaseLocation {
         (_gameEngine) =>
           "You ring the bell. A clear, carrying tone crosses the empty court. From somewhere to the north, distantly, there is a single gobble. Then silence. The scoreboard still reads GERALD: 3 / HUMANS: 0. It will probably always read this.",
       ],
-      [
-        "play pickleball",
-        (gameEngine: GameEngine) => playPickleball(gameEngine),
-      ],
+      ["play", (gameEngine: GameEngine) => playPickleball(gameEngine)],
     ],
   );
 }
