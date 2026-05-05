@@ -18,6 +18,7 @@ export class EmptyBeerCan extends BaseItem {
     const geraldTree = gameEngine.getLocation(LocationKey.GeraldTree);
     if (geraldTree.hasItem(ItemKey.LGGKey)) {
       geraldTree.showItem(ItemKey.LGGKey);
+      return "You pick it up — and underneath, pressed flat into the soil: a small key on a leather fob. LGG is stamped into the leather in a neat serif font. Someone left this here on purpose.";
     }
     return "Taken.";
   }
