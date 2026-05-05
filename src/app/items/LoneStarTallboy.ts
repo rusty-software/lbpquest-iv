@@ -13,7 +13,7 @@ export class LoneStarTallboy extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A Lone Star tallboy, cold from the mudroom refrigerator. The Texas state seal is on the can. The seal is overtly proud. The beer is distinctly adequate. Together they are iconic.";
+    return "A Lone Star tallboy, still retaining a semblance of coolness. The Texas state seal is on the can. The seal is overtly proud. The beer is distinctly adequate. Together they are iconic.";
   }
 
   public use(_gameEngine: GameEngine): string {

@@ -61,7 +61,7 @@ export class FirePit extends BaseLocation {
       return "You are already doing this. You are sitting by the fire. You are fine.";
     }
     gameEngine.questTracker.complete(Constants.Quests.SatByFire, gameEngine);
-    return "You pull one of the Adirondack chairs a little closer and sit down. The fire is the right size — big enough to matter, small enough to feel deliberate. You stay for a while. This is what you came for.";
+    return "You pull one of the Adirondack chairs a little closer and sit down. The fire is the right size — big enough to matter, small enough to avoid first degree burns. You stay for a while. This is what you came for.";
   }
 
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
@@ -69,6 +69,7 @@ export class FirePit extends BaseLocation {
       ["light fire", (gameEngine: GameEngine) => lightFire(gameEngine)],
       ["start fire", (gameEngine: GameEngine) => lightFire(gameEngine)],
       ["use matches", (gameEngine: GameEngine) => lightFire(gameEngine)],
+      ["sit in chair", (gameEngine: GameEngine) => this.sitByFire(gameEngine)],
       ["sit by fire", (gameEngine: GameEngine) => this.sitByFire(gameEngine)],
       ["sit down", (gameEngine: GameEngine) => this.sitByFire(gameEngine)],
       ["sit", (gameEngine: GameEngine) => this.sitByFire(gameEngine)],

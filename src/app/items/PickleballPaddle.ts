@@ -24,7 +24,7 @@ export class PickleballPaddle extends BaseItem {
   }
 
   public examine(_gameEngine: GameEngine): string {
-    return "A pickleball paddle. Standard weight, slightly worn grip tape. Gerald ignores it entirely, which says something about Gerald that you can't quite articulate.";
+    return "A pickleball paddle. Standard weight, slightly worn grip tape. Gerald has ignored it entirely, which says something about Gerald that you can't quite articulate.";
   }
 
   public use(gameEngine: GameEngine): string {
