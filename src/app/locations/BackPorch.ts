@@ -9,7 +9,7 @@ export class BackPorch extends BaseLocation {
   public id = LocationKey.BackPorch;
   public title = "Back Porch";
   public descriptionText =
-    "You step out onto the back porch — the Lodge's best feature. A broad cedar-roofed pavilion extends from the rear of the building. A massive flatscreen TV is mounted flush to the cedar wall, currently showing a highway somewhere in the mountains — the kind of highway that goes somewhere much colder than here. An outdoor sectional sofa with linen cushions surrounds a low fire table. Two wooden rocking chairs face the yard. Against one post stands a high-top bar built from the cross-section of an enormous live oak trunk, still rough on the edges. String lights run from the eaves out toward the pool deck.\n\nThe Great Room is to the north. The pool deck is to the southeast.";
+    "You step out onto the back porch — the Lodge's best feature. A broad cedar-roofed pavilion extends from the rear of the building. A massive flatscreen TV is mounted flush to the cedar wall, currently showing a highway somewhere in the mountains — the kind of highway that goes somewhere much colder than here. An outdoor sectional sofa with linen cushions surrounds a low fire table. Two wooden rocking chairs face the yard. Against one post stands a high-top bar built from the cross-section of an enormous live oak trunk, still rough on the edges. String lights run from the eaves out toward the pool deck.\n\nThe Great Room is to the north. The pool deck is to the southeast. The oak grove is to the southwest.";
 
   private makeDrink(gameEngine: GameEngine): string {
     if (gameEngine.questTracker.isComplete(Constants.Quests.DrinkMixed)) {

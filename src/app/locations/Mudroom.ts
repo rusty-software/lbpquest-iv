@@ -17,6 +17,6 @@ export class Mudroom extends BaseLocation {
     this.items
       .filter((i) => i.isShown && i.id !== ItemKey.LoneStarTallboy)
       .forEach((i) => (itemText += `\n\n${i.getLocationText()}`));
-    return `You are in a utilitarian room at the back of the kitchen. A boot rack holds four pairs of boots, none of them yours. Coat hooks line the wall beside it. A washer and dryer sit stacked in the corner.${tallboySentence} A back door leads out to the oak grove to the southwest.\n\nThe kitchen is to the south. The oak grove is to the southwest.${itemText}`;
+    return `You are in a utilitarian room between the Great Room and the back porch. A boot rack holds four pairs of boots, none of them yours. Coat hooks line the wall beside it. A washer and dryer sit stacked in the corner.${tallboySentence} A back door leads out to a porch.\n\nThe back porch is to the south. The Great Room is to the north.${itemText}`;
   }
 }

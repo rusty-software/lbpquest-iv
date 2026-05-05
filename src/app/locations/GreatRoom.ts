@@ -23,7 +23,7 @@ export class GreatRoom extends BaseLocation {
     }
 
     s +=
-      "\n\nTo the west is the front porch. To the north is the kitchen. To the east is the hallway. The back porch is to the south.";
+      "\n\nTo the west is the front porch. To the north is the kitchen. To the east is the hallway. The mud room is to the south.";
     s += super.appendItems();
     return s;
   }

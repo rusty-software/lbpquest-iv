@@ -305,7 +305,7 @@ export class Startup {
       ["w" as Direction, Startup.getLocation(LocationKey.FrontPorch)],
       ["n" as Direction, Startup.getLocation(LocationKey.Kitchen)],
       ["e" as Direction, Startup.getLocation(LocationKey.Hallway)],
-      ["s" as Direction, Startup.getLocation(LocationKey.BackPorch)],
+      ["s" as Direction, Startup.getLocation(LocationKey.Mudroom)],
     ]);
   }
 
@@ -313,7 +313,6 @@ export class Startup {
     const loc = Startup.getLocation(LocationKey.Kitchen);
     loc.neighbors = new NeighborMap([
       ["s" as Direction, Startup.getLocation(LocationKey.GreatRoom)],
-      ["n" as Direction, Startup.getLocation(LocationKey.Mudroom)],
     ]);
     loc.items = [
       Startup.getItem(ItemKey.Flashlight),
@@ -325,8 +324,8 @@ export class Startup {
   private static arrangeMudroom() {
     const loc = Startup.getLocation(LocationKey.Mudroom);
     loc.neighbors = new NeighborMap([
-      ["s" as Direction, Startup.getLocation(LocationKey.Kitchen)],
-      ["sw" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
+      ["n" as Direction, Startup.getLocation(LocationKey.GreatRoom)],
+      ["s" as Direction, Startup.getLocation(LocationKey.BackPorch)],
     ]);
     loc.items = [
       Startup.getItem(ItemKey.LoneStarTallboy),
@@ -359,6 +358,7 @@ export class Startup {
       ["s" as Direction, Startup.getLocation(LocationKey.Hallway)],
     ]);
     loc.items = [Startup.getItem(ItemKey.CactusNightlight)];
+    // TODO: move to bunkroom
     loc.customVerbs = new Map([
       [
         "examine bunks",
@@ -417,6 +417,7 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["n" as Direction, Startup.getLocation(LocationKey.GreatRoom)],
       ["se" as Direction, Startup.getLocation(LocationKey.PoolDeck)],
+      ["sw" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
     ]);
     loc.items = [
       Startup.getItem(ItemKey.BrokenJigger),
@@ -427,7 +428,7 @@ export class Startup {
   private static arrangeOakGroveNorth() {
     const loc = Startup.getLocation(LocationKey.OakGroveNorth);
     loc.neighbors = new NeighborMap([
-      ["ne" as Direction, Startup.getLocation(LocationKey.Mudroom)],
+      ["ne" as Direction, Startup.getLocation(LocationKey.BackPorch)],
       ["s" as Direction, Startup.getLocation(LocationKey.OakGroveSouth)],
       ["e" as Direction, Startup.getLocation(LocationKey.WoodenPavilion)],
       ["w" as Direction, Startup.getLocation(LocationKey.WhiskeyRoomTrail)],
@@ -447,7 +448,7 @@ export class Startup {
     loc.neighbors = new NeighborMap([
       ["n" as Direction, Startup.getLocation(LocationKey.OakGroveNorth)],
       ["e" as Direction, Startup.getLocation(LocationKey.PoolDeck)],
-      ["s" as Direction, Startup.getLocation(LocationKey.SouthMeadow)],
+      ["se" as Direction, Startup.getLocation(LocationKey.SouthMeadow)],
     ]);
     loc.customVerbs = new Map([
       [
@@ -469,7 +470,7 @@ export class Startup {
   private static arrangeSouthMeadow() {
     const loc = Startup.getLocation(LocationKey.SouthMeadow);
     loc.neighbors = new NeighborMap([
-      ["n" as Direction, Startup.getLocation(LocationKey.OakGroveSouth)],
+      ["nw" as Direction, Startup.getLocation(LocationKey.OakGroveSouth)],
       ["se" as Direction, Startup.getLocation(LocationKey.FirePit)],
       ["ne" as Direction, Startup.getLocation(LocationKey.PoolDeck)],
     ]);
