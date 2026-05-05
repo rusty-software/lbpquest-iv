@@ -52,9 +52,10 @@ export class StuffedArmadillo extends BaseItem {
 
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
     [
-      ["put", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
+      ["hang", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
       ["leave", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
       ["place", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
+      ["put", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
       ["return", (gameEngine: GameEngine) => this.handleArmadillo(gameEngine)],
     ],
   );

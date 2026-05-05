@@ -37,6 +37,14 @@ export const HelpView = (props: HelpViewProps) => {
       <br />
       <div className="help-description">
         Use logic and the property to figure out the rest.
+      </div>
+      <br />
+      <div className="help-description">
+        If you try to do something and get a response indicating the game didn't
+        understand what you were doing, you might try to expand the description.
+        For example, if you try "eat bagel" and the game says "There is no bagel
+        here," you might try "eat blueberry bagel". The game sometimes has to
+        qualify items where multiple types of those items exist...
         <div className="tiny-font">version: {packageJson.version}</div>
       </div>
     </div>

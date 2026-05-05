@@ -9,7 +9,7 @@ export class GreatRoom extends BaseLocation {
     const visitCount = this.visitedLocationCount;
 
     let s =
-      "You are in the heart of the Lodge, and it is not subtle. A cathedral ceiling of exposed steel trusses soars overhead. The far wall is dominated by a massive stone fireplace, and above it — staring directly at you — is an enormous mounted whitetail buck with a twelve-point rack. Two more mounted deer heads flank it at different heights. Along the opposite wall: a long farmhouse dining table that seats fourteen, easy. The surfaces are loaded with antler candleholders, trinkets, and a mounted fish or two. Every wall has something looking at you.";
+      "You are in the heart of the Lodge, and it is not subtle. A cathedral ceiling of exposed steel trusses soars overhead. The far wall is dominated by a massive stone fireplace, and above it, staring directly at you, is an enormous mounted whitetail buck with a twelve-point rack. Two more mounted deer heads flank it at different heights. Along the opposite wall: a long farmhouse dining table that easily seats fourteen. The surfaces are loaded with antler candleholders, trinkets, and a mounted fish or two. Every wall has something looking at you.";
 
     if (visitCount < 5) {
       s +=

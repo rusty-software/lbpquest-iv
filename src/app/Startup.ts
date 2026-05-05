@@ -290,12 +290,15 @@ export class Startup {
       ["s" as Direction, Startup.getLocation(LocationKey.ParkingArea)],
       ["e" as Direction, Startup.getLocation(LocationKey.GreatRoom)],
     ]);
+    const chairText =
+      "The rocking chairs appear identical, both made of smooth, light oak. Despite their obvious age, they appear well cared for and only slightly worn.";
+    const sitText =
+      "You sit in one of the rocking chairs. It creaks agreeably. From here you can see the parking area, Gerald's Tree in the distance, and a sliver of the north field. Somewhere out there, Gerald is operating on his own schedule. You rock once. You get up. The chair continues to rock slightly after you leave.";
     loc.customVerbs = new Map([
-      [
-        "sit in rocking chair",
-        (_gameEngine) =>
-          "You sit in one of the rocking chairs. It creaks agreeably. From here you can see the parking area, Gerald's Tree in the distance, and a sliver of the north field. Somewhere out there, Gerald is operating on his own schedule. You rock once. You get up. The chair continues to rock slightly after you leave.",
-      ],
+      ["examine chair", (_gameEngine) => chairText],
+      ["examine rocking chair", (_gameEngine) => chairText],
+      ["sit in chair", (_gameEngine) => sitText],
+      ["sit in rocking chair", (_gameEngine) => sitText],
     ]);
   }
 
