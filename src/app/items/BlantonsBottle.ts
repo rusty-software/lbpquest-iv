@@ -36,6 +36,9 @@ export class BlantonsBottle extends BaseItem {
   }
 
   public customVerbs: Map<string, (gameEngine: GameEngine) => string> = new Map(
-    [["drink", (gameEngine: GameEngine) => this.use(gameEngine)]],
+    [
+      ["open", (gameEngine: GameEngine) => this.use(gameEngine)],
+      ["drink", (gameEngine: GameEngine) => this.use(gameEngine)],
+    ],
   );
 }
