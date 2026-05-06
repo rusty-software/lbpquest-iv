@@ -457,7 +457,7 @@ export class Startup {
       [
         "examine string lights",
         (_gameEngine) =>
-          "Warm white bulbs strung between oak trunks, running northwest and west through the trees. They disappear around a bend, but you can trace the line — they lead somewhere. Probably the outbuildings. Follow them and you'll end up somewhere specific.",
+          "Warm white bulbs strung between oak trunks, running northwest and west through the trees. They disappear around a bend, but you can trace the line — they lead somewhere. Probably the outbuildings. Follow them and you'll almost certainly end up... at a place or two?",
       ],
     ]);
   }
@@ -584,7 +584,7 @@ export class Startup {
               Constants.Quests.LanternMarkings,
               gameEngine,
             );
-            return "You hold the lantern close. In the warm amber light, scratched into the cedar plank above the rifle rest: T.R. & E.H. — OPENING WEEKEND, NOV '18. Someone brought their person. There are small hearts drawn on either side, careful despite the medium. The lantern light makes them readable where the flashlight's beam never could.";
+            return "You hold the lantern close. In the warm amber light, scratched into the cedar plank above the rifle rest: T.R. & E.H. — OPENING WEEKEND, NOV '18. Someone brought their person. There are small hearts drawn on either side, careful despite the medium. The scratch marks look extremely old. The lantern light makes them readable where the flashlight's beam never could.";
           }
           return "You can tell something is scratched into the plank, but the beam washes the faded marks out. A warmer light might do better.";
         },

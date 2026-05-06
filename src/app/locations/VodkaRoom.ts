@@ -27,7 +27,7 @@ export class VodkaRoom extends BaseLocation {
       .forEach((i) => (itemText += `\n\n${i.getLocationText()}`));
 
     return (
-      `You enter and the neon says THE VODKA ROOM. The light is cold purple-white — the only light in here, which is either deliberate or nobody thought to put in a window. Industrial wire shelving covers three walls, lined with flavored vodkas and mixers${shelfKahlua}. A purple fur rug covers the floor. Two camp chairs face the center, one knocked sideways.\n\n` +
+      `You enter and a neon sign says THE VODKA ROOM. The light is cold purple-white — the only light in here, which is either deliberate or nobody thought to put in a window. Industrial wire shelving covers three walls, lined with flavored vodkas and mixers${shelfKahlua}. A purple fur rug covers the floor. Two camp chairs face the center, one knocked sideways.\n\n` +
       `Someone was here recently... You see empty glasses and a card game left mid-hand — someone was winning and clearly not worried about it.${chairKahlua}\n\n` +
       noteText +
       "\n\nThe LGG room is to the south." +

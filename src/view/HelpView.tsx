@@ -10,6 +10,7 @@ const helpMapper: { [s: string]: string } = {
   use: " <object> : e.g. `use flashlight` to activate an item",
   drop: " <object> : e.g. `drop flashlight` to leave an item behind",
   enter: " <code> : e.g. `enter 1234` to enter a numeric code",
+  wait: " (z) : cause time to pass without you having to move",
   save: " : saves the current game",
 };
 

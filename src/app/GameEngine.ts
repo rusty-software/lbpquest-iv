@@ -17,6 +17,7 @@ import { ItemKey } from "./items";
 import { BlantonsBottle } from "./items/BlantonsBottle";
 import { Gerald } from "./items/Gerald";
 import { GlowStick } from "./items/GlowStick";
+import { PropaneLantern } from "./items/PropaneLantern";
 import { Location } from "./Location";
 import { LocationKey } from "./locations";
 import { QuestTracker } from "./QuestTracker";
@@ -111,6 +112,23 @@ export class GameEngine {
     const rest = lowerInput.substr(!!cmd ? cmd.name.length + 1 : 0);
 
     this.events.push(new NewInputEvent(input));
+
+    if (lowerInput === "locate gerald") {
+      const currentLoc = this.getLocation(this.geraldLocationKey);
+      if (this.geraldKeyTheftDone) {
+        this.events.push(
+          new ItemEvent(`Gerald is at ${currentLoc.title}. He has concluded his business and is not going anywhere.`),
+        );
+      } else {
+        const nextIndex = (this.geraldPatrolIndex + 1) % this.geraldPatrol.length;
+        const nextLoc = this.getLocation(this.geraldPatrol[nextIndex]);
+        this.events.push(
+          new ItemEvent(`Gerald is currently at ${currentLoc.title}. He will move to ${nextLoc.title} on your next action.`),
+        );
+      }
+      return;
+    }
+
     switch (cmd) {
       case CommandType.n:
       case CommandType.s:
@@ -205,6 +223,13 @@ export class GameEngine {
       case CommandType.save: {
         this.save();
         this.events.push(new ItemEvent("Game saved."));
+        break;
+      }
+
+      case CommandType.z:
+      case CommandType.wait: {
+        this.actionCount++;
+        this.events.push(new ItemEvent("Time passes..."));
         break;
       }
 
@@ -649,6 +674,8 @@ export class GameEngine {
       save.blantonsOpened;
     (this.getItem(ItemKey.GlowStick) as GlowStick).cracked =
       save.glowStickCracked;
+    (this.getItem(ItemKey.PropaneLantern) as PropaneLantern).isLit =
+      this.questTracker.isComplete(Constants.Quests.LanternLit);
 
     this.restoreDynamicNeighbors();
     this.currentLocation = this.getLocation(save.currentLocationKey);

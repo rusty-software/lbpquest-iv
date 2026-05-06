@@ -32,7 +32,7 @@ export class FirePit extends BaseLocation {
       : "The metal fire pit in the center sits cold, with a stack of split cedar beside it that someone arranged with care.";
 
     const chairDesc = satByFire
-      ? "You've already settled into one of the Adirondack chairs tonight."
+      ? "Four camp chairs ring the pit — one of the Adirondacks is still pulled a little closer than the others."
       : "Four camp chairs are arranged in a ring — two folding nylon, two Adirondack.";
 
     const msgPart = fireLit
@@ -58,7 +58,7 @@ export class FirePit extends BaseLocation {
       return "The fire pit is cold. You sit in a chair anyway, which is fine, but it is not the same thing.";
     }
     if (gameEngine.questTracker.isComplete(Constants.Quests.SatByFire)) {
-      return "You are already doing this. You are sitting by the fire. You are fine.";
+      return "You already had your sit. The chair is still there, still warm probably. You could sit again, but it would be a different thing.";
     }
     gameEngine.questTracker.complete(Constants.Quests.SatByFire, gameEngine);
     return "You pull one of the Adirondack chairs a little closer and sit down. The fire is the right size — big enough to matter, small enough to avoid first degree burns. You stay for a while. This is what you came for.";

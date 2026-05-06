@@ -2,6 +2,7 @@ import { Constants } from "../Constants";
 import { GameEngine } from "../GameEngine";
 import { BaseItem } from "./BaseItem";
 import { ItemKey } from "./ItemKey";
+import { PropaneLantern } from "./PropaneLantern";
 
 export class FuelCanister extends BaseItem {
   public id = ItemKey.FuelCanister;
@@ -23,8 +24,7 @@ export class FuelCanister extends BaseItem {
 
   public use(gameEngine: GameEngine): string {
     if (gameEngine.inventoryContains(ItemKey.PropaneLantern)) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const lantern = gameEngine.getItem(ItemKey.PropaneLantern) as any;
+      const lantern = gameEngine.getItem(ItemKey.PropaneLantern) as PropaneLantern;
       if (lantern.isLit) {
         return "The lantern is already burning.";
       }

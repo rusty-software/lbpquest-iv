@@ -25,11 +25,13 @@ export class CommandType {
   public static readonly examine = new CommandType("examine", true);
   public static readonly enter = new CommandType("enter", true);
   public static readonly save = new CommandType("save", true);
+  public static readonly z = new CommandType("z", false);
+  public static readonly wait = new CommandType("wait", true);
   public static readonly help = new CommandType("help", true);
 
   private constructor(
     public readonly name: string,
-    public readonly visible: boolean
+    public readonly visible: boolean,
   ) {
     CommandType.values.push(this);
   }

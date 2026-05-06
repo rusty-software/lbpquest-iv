@@ -8,6 +8,8 @@ export class LoneStarTallboy extends BaseItem {
   public isShown = true;
   public value = 2;
 
+  public opened = false;
+
   public canTake(_gameEngine: GameEngine): boolean {
     return true;
   }
@@ -18,7 +20,12 @@ export class LoneStarTallboy extends BaseItem {
 
   public use(_gameEngine: GameEngine): string {
     if (this.taken) {
-      return "You crack the tallboy. It hisses. You drink. It tastes exactly like Texas.";
+      if (!this.opened) {
+        this.opened = true;
+        return "You crack the tallboy. It hisses. You drink. It tastes exactly like Texas.";
+      } else {
+        return "You take another drink. Still cool, and tastes even MORE Like Texas!";
+      }
     }
     return "You should probably take it first.";
   }

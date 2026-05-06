@@ -4,7 +4,7 @@ import { ItemKey } from "./ItemKey";
 
 export class RoseBottle extends BaseItem {
   public id = ItemKey.RoseBottle;
-  public name = "rosé";
+  public name = "rose";
   public isShown = true;
   public value = 4;
 
