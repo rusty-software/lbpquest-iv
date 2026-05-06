@@ -24,7 +24,6 @@ export * from "./LoneAntler";
 export * from "./PickleballPaddle";
 export * from "./Binoculars";
 export * from "./Gerald";
-export * from "./WhiskeyKey";
 export * from "./OrderNote";
 export * from "./PoolSchedule";
 export * from "./FuelCanister";
